@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>☀️ Morning Brief — Tech & AI | 29 มีนาคม 2026 🎙️ ภาษาไทย</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #06090f;
+    --navy-light: #0d1420;
+    --navy-mid: #111827;
+    --cyan: #22d3ee;
+    --cyan-dim: rgba(34,211,238,0.10);
+    --cyan-border: rgba(34,211,238,0.25);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251,191,36,0.10);
+    --rose: #f43f5e;
+    --white: #f8fafc;
+    --muted: #94a3b8;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    padding-bottom: 140px;
+  }
+
+  /* ── STICKY PLAYER ── */
+  #player-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, rgba(6,9,15,0) 0%, rgba(6,9,15,0.97) 18%, rgba(13,20,32,1) 100%);
+    padding: 14px 32px 24px;
+    z-index: 200;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(34,211,238,0.15);
+  }
+  .player-cover {
+    width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--cyan), #6366f1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .player-info { flex: 1; min-width: 0; }
+  .player-title { font-size: 13px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .player-subtitle { font-size: 11px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; }
+  .player-controls { display: flex; align-items: center; gap: 8px; }
+  .ctrl-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: none; cursor: pointer; transition: all 0.2s;
+    font-size: 16px;
+  }
+  .ctrl-play {
+    width: 52px; height: 52px; font-size: 20px;
+    background: linear-gradient(135deg, var(--cyan), #0ea5e9);
+    color: var(--navy); font-weight: 700;
+  }
+  .ctrl-play:hover { transform: scale(1.08); box-shadow: 0 0 24px rgba(34,211,238,0.5); }
+  .ctrl-secondary { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--white); }
+  .ctrl-secondary:hover { background: rgba(255,255,255,0.1); }
+  .ctrl-btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none !important; }
+  .speed-btn {
+    padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    color: var(--cyan); cursor: pointer; font-family: 'IBM Plex Mono', monospace;
+    transition: all 0.2s;
+  }
+  .speed-btn:hover { background: var(--cyan-dim); border-color: var(--cyan); }
+  .progress-track {
+    flex: 1; min-width: 160px; height: 4px;
+    background: rgba(255,255,255,0.1); border-radius: 2px;
+    cursor: pointer; position: relative;
+  }
+  #progress-fill {
+    height: 100%; border-radius: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--cyan), var(--amber));
+    transition: width 0.3s;
+    box-shadow: 0 0 8px rgba(34,211,238,0.4);
+  }
+  .now-label {
+    font-size: 11px; color: var(--cyan);
+    font-family: 'IBM Plex Mono', monospace;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .pulse-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--cyan); display: inline-block;
+    animation: pulse 1.4s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+  #current-section-name { color: var(--white); font-size: 11px; }
+
+  /* ── HERO HEADER ── */
+  .hero {
+    background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+    border-bottom: 1px solid var(--card-border);
+    padding: 48px 40px 36px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,211,238,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; }
+  .hero-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .hero-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+  .hero-title .th { background: linear-gradient(135deg, var(--cyan), var(--amber)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 18px; }
+  .meta-chip {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 20px;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    font-size: 12px; color: var(--muted);
+  }
+  .meta-chip .icon { font-size: 14px; }
+  .host-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; border-radius: 20px;
+    background: rgba(34,211,238,0.08); border: 1px solid var(--cyan-border);
+    font-size: 13px; color: var(--cyan); font-weight: 500;
+  }
+  .voice-info {
+    margin-top: 14px; font-size: 12px; color: var(--muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  #voice-status { color: var(--amber); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+
+  /* ── CONTENT LAYOUT ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 32px 40px; }
+  @media (max-width: 640px) { .main { padding: 24px 20px; } .hero { padding: 32px 20px 24px; } #player-bar { padding: 10px 16px 20px; } }
+
+  /* ── SECTION CARDS ── */
+  .section-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 28px; margin-bottom: 20px;
+    transition: border-color 0.3s, background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .section-card.speaking {
+    border-color: rgba(34,211,238,0.4);
+    background: rgba(34,211,238,0.03);
+    box-shadow: 0 0 24px rgba(34,211,238,0.08);
+  }
+  .section-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--cyan), transparent);
+    opacity: 0; transition: opacity 0.3s;
+    border-radius: 16px 0 0 16px;
+  }
+  .section-card.speaking::before { opacity: 1; }
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .section-icon {
+    width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+    background: var(--cyan-dim); border: 1px solid var(--cyan-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .section-cue { font-size: 13px; font-weight: 600; color: var(--cyan); }
+  .para {
+    font-size: 15px; line-height: 1.9; color: #cbd5e1;
+    margin-bottom: 14px; border-radius: 8px; padding: 4px 6px;
+    transition: background 0.3s;
+  }
+  .para:last-child { margin-bottom: 0; }
+  .para.speaking-para {
+    background: rgba(34,211,238,0.07);
+    color: var(--white);
+  }
+  .dataops-box {
+    margin-top: 18px; padding: 16px 18px;
+    background: rgba(251,191,36,0.06);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 10px; font-size: 14px; line-height: 1.8;
+    color: #e2c97a;
+  }
+  .dataops-box strong { color: var(--amber); }
+
+  /* ── HIGHLIGHTS GRID ── */
+  .highlights {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px; margin-bottom: 24px;
+  }
+  .highlight-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 18px; text-align: center;
+  }
+  .hl-num { font-size: 1.8rem; font-weight: 700; color: var(--cyan); font-family: 'IBM Plex Mono', monospace; }
+  .hl-label { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 28px 0; font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--card-border);
+  }
+
+  /* ── HOSTING GUIDE ── */
+  .hosting-box {
+    background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.25);
+    border-radius: 14px; padding: 24px; margin-bottom: 20px;
+  }
+  .hosting-title { font-size: 15px; font-weight: 600; color: #a5b4fc; margin-bottom: 14px; }
+  .hosting-step {
+    display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start;
+  }
+  .step-num {
+    width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #a5b4fc;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .step-text { font-size: 13px; line-height: 1.7; color: #cbd5e1; }
+  .step-text code {
+    background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--cyan);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── STICKY PLAYER ── -->
+<div id="player-bar">
+  <div class="player-cover">🎙️</div>
+  <div class="player-info">
+    <div class="player-title">Morning Brief — 29 มีนาคม 2026 (ภาษาไทย)</div>
+    <div class="player-subtitle" id="current-section-name">กดเล่นเพื่อฟังพอดแคสต์ภาษาไทย</div>
+  </div>
+  <div class="progress-track" onclick="seekByClick(event, this)">
+    <div id="progress-fill"></div>
+  </div>
+  <div class="player-controls">
+    <button class="ctrl-btn ctrl-secondary" id="btn-back" onclick="prevSection()" title="ส่วนก่อนหน้า" disabled>⏮</button>
+    <button class="ctrl-btn ctrl-play" id="btn-play" onclick="togglePlay()">▶</button>
+    <button class="ctrl-btn ctrl-secondary" id="btn-next" onclick="nextSection()" title="ส่วนถัดไป" disabled>⏭</button>
+    <button class="ctrl-btn ctrl-secondary" id="btn-stop" onclick="stopPlayback()" disabled>⏹</button>
+    <button class="speed-btn" id="speed-btn" onclick="cycleSpeed()">1.0×</button>
+  </div>
+  <div class="now-label" id="now-label" style="display:none">
+    <span class="pulse-dot"></span>
+    <span>กำลังเล่น: </span><span id="now-section"></span>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">☀️ Morning Brief — Tech &amp; AI • อาทิตย์ที่ 29 มีนาคม 2026</div>
+    <h1 class="hero-title">สรุปข่าวเทคโนโลยีและ AI<br><span class="th">พอดแคสต์ภาษาไทย 🇹🇭</span></h1>
+    <div class="host-badge">🎙️ เสียงไทย (ชาย) • Web Speech API</div>
+    <div class="voice-info">
+      เสียงอ่านจาก: <span id="voice-status">กำลังโหลดเสียง...</span>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-chip"><span class="icon">⏱</span> ประมาณ 18 นาที</div>
+      <div class="meta-chip"><span class="icon">🌐</span> Host ได้ฟรีบน GitHub Pages / Netlify</div>
+      <div class="meta-chip"><span class="icon">📱</span> รองรับ iOS, Android, Desktop</div>
+      <div class="meta-chip"><span class="icon">🎯</span> 8 หัวข้อหลัก</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="main">
+
+  <!-- Highlights -->
+  <div class="highlights">
+    <div class="highlight-card">
+      <div class="hl-num">$650B</div>
+      <div class="hl-label">งบลงทุน Data Center ปี 2026</div>
+    </div>
+    <div class="highlight-card">
+      <div class="hl-num">1.05M</div>
+      <div class="hl-label">Tokens — Context Window ของ GPT-5.4</div>
+    </div>
+    <div class="highlight-card">
+      <div class="hl-num">80%</div>
+      <div class="hl-label">ฐานข้อมูลใหม่บน Databricks สร้างโดย AI Agent</div>
+    </div>
+    <div class="highlight-card">
+      <div class="hl-num">ส.ค. 2026</div>
+      <div class="hl-label">EU AI Act บังคับใช้เต็มรูปแบบ</div>
+    </div>
+  </div>
+
+  <!-- Hosting Guide -->
+  <div class="hosting-box">
+    <div class="hosting-title">🚀 วิธี Host หน้านี้ฟรี — เพื่อฟังได้ทุกที่</div>
+    <div class="hosting-step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>GitHub Pages (แนะนำ):</strong> สร้าง repo ชื่อ <code>morning-brief</code> → อัปโหลดไฟล์นี้เป็น <code>index.html</code> → เปิด GitHub Pages → ได้ URL สาธารณะทันที เช่น <code>wipada.github.io/morning-brief</code></div>
+    </div>
+    <div class="hosting-step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Netlify Drop:</strong> ไปที่ <code>netlify.com/drop</code> → ลากวางไฟล์ HTML นี้ → ได้ URL ใน 30 วินาที ฟรีตลอด</div>
+    </div>
+    <div class="hosting-step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Substack Audio:</strong> สร้างไฟล์ MP3 จาก script ด้านล่าง → อัปโหลดเป็น Audio post บน Substack → subscriber ฟังได้ทาง app และ RSS</div>
+    </div>
+  </div>
+
+  <div class="section-divider">เนื้อหาพอดแคสต์วันนี้</div>
+
+  <!-- INTRO -->
+  <div class="section-card" id="sec-0" data-section-name="บทนำ">
+    <div class="section-header">
+      <div class="section-icon">🎙️</div>
+      <div class="section-cue">บทนำ</div>
+    </div>
+    <p class="para" data-para="0">
+      สวัสดีครับทุกท่าน ยินดีต้อนรับเข้าสู่ Morning Brief วันอาทิตย์ที่ 29 มีนาคม 2026 ครับ วันนี้ผมมีข่าวใหญ่หลายเรื่องที่คนทำงานด้านเทคโนโลยีและ Data ต้องรู้ครับ เราจะพูดถึงการเปิดตัว GPT-5.4 ที่สั่นสะเทือนวงการ งบลงทุน Data Center ขนาดมหึมา 650,000 ล้านดอลลาร์ กำหนด EU AI Act ที่กำลังจะมาถึง และอัปเดตสำคัญจาก Databricks และ Power BI ที่ทีม Data Operations ต้องรีบดำเนินการทันที มาเริ่มเลยครับ
+    </p>
+  </div>
+
+  <!-- AI MODELS -->
+  <div class="section-card" id="sec-1" data-section-name="AI Models &amp; Capabilities">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div class="section-cue">หัวข้อที่ 1 — AI Models &amp; Capabilities</div>
+    </div>
+    <p class="para" data-para="1">
+      ข่าวใหญ่ที่สุดของเดือนนี้ในด้าน AI Models คือการเปิดตัว GPT-5.4 ของ OpenAI ครับ เปิดตัวเมื่อวันที่ 5 มีนาคม มี 3 รุ่น คือ Standard สำหรับงานทั่วไป, Thinking ที่เน้น reasoning สำหรับการวิเคราะห์ซับซ้อน และ Pro สำหรับงาน enterprise สิ่งที่น่าทึ่งมากที่สุดคือ context window ที่รองรับได้ถึง 1.05 ล้าน tokens ครับ ใหญ่ที่สุดที่ OpenAI เคยเปิดให้ใช้งานในเชิงพาณิชย์
+    </p>
+    <p class="para" data-para="2">
+      ใน OSWorld benchmark ซึ่งจำลองงาน productivity จริงบนหน้าจอคอมพิวเตอร์ GPT-5.4 ทำคะแนนได้ 75% สูงกว่า baseline ของมนุษย์ที่ 72.4% ครับ นั่นหมายความว่าโมเดลนี้สามารถทำงานหลายขั้นตอนบน software จริงได้โดยอัตโนมัติ ไม่ใช่แค่แชทบอทอีกต่อไปแล้ว แต่มันคือ agent จริงๆ ครับ ในด้านอื่น NVIDIA Nemotron 3 Super เป็น open-weight model อันดับ 1 สำหรับงาน coding บน SWE-Bench Verified ด้วยคะแนน 60.47% และ Mistral AI เปิดตัว Voxtral TTS โมเดล text-to-speech ตัวแรกที่เป็น open-weight
+    </p>
+    <p class="para" data-para="3">
+      Morgan Stanley ออกมาเตือนนักลงทุนว่าผู้บริหาร AI lab ใหญ่ในสหรัฐฯ บอกให้เตรียมรับมือกับความก้าวหน้าของ AI ที่จะทำให้ตกใจครับ ส่วนตลาดโฆษณาที่ขับเคลื่อนด้วย AI คาดว่าจะแตะ 57,000 ล้านดอลลาร์ในปี 2026 เพิ่มขึ้น 63% เมื่อเทียบกับปีก่อน
+    </p>
+    <div class="dataops-box">
+      <strong>💡 DataOps Angle:</strong> Context window 1.05 ล้าน token บวกกับความสามารถ agentic ของ GPT-5.4 หมายความว่า data pipeline และ API ของท่านจะเจอ query pattern ที่ยาวขึ้น ซับซ้อนขึ้น และมักถูก initiate โดย AI system อื่น ถึงเวลาแล้วที่ต้องตรวจสอบ throughput capacity และ API latency baseline ก่อนที่ workload เหล่านี้จะมาจริงๆ ครับ
+    </div>
+  </div>
+
+  <!-- BIG TECH -->
+  <div class="section-card" id="sec-2" data-section-name="Big Tech Moves">
+    <div class="section-header">
+      <div class="section-icon">🏢</div>
+      <div class="section-cue">หัวข้อที่ 2 — Big Tech Moves</div>
+    </div>
+    <p class="para" data-para="4">
+      ตัวเลขที่โดดเด่นที่สุดสัปดาห์นี้คือ 650,000 ล้านดอลลาร์ครับ นั่นคือยอดรวมที่ Microsoft, Google, Amazon, Meta และ AI startups รายใหญ่กำลังลงทุนใน data center และ foundation model ในปี 2026 ถือเป็นการสร้าง infrastructure ครั้งใหญ่ที่สุดในประวัติศาสตร์เทคโนโลยีในระยะเวลาหนึ่งปีเดียวครับ SoftBank คนเดียวก็กำลังรวบรวมเงินลงทุนถึง 40,000 ล้านดอลลาร์เพื่อให้ OpenAI โดยเฉพาะ
+    </p>
+    <p class="para" data-para="5">
+      Meta เพิ่มงบลงทุน data center ที่เมือง El Paso เป็น 10,000 ล้านดอลลาร์ โดยตั้งเป้ากำลังไฟฟ้า 1 gigawatt ซึ่งมากกว่าแผนเดิม 6 เท่าครับ ส่วน Apple เลือกทิศทางที่แตกต่างออกไป โดยเปิด Siri ให้ AI assistant คู่แข่งอย่าง Gemini และ Claude เชื่อมต่อกับ iPhone โดยตรงใน iOS 27 Apple เดิมพันว่า iPhone คือ premium platform สำหรับส่งมอบ AI และจะทำเงินผ่าน subscription และ device pull-through แทนที่จะแข่งด้าน model capability ครับ
+    </p>
+    <p class="para" data-para="6">
+      ด้านกฎหมาย Meta และ Google กำลังอุทธรณ์คำตัดสินคณะลูกขุนในคดีเกี่ยวกับสุขภาพจิตวัยรุ่น คดีเหล่านี้เป็นครั้งแรกที่ jury ตัดสิน และอาจเปลี่ยนแปลงความรับผิดของ platform ในสหรัฐฯ อย่างมีนัยสำคัญ ถือเป็นความเสี่ยงด้านกฎระเบียบที่ต้องจับตาสำหรับทุก platform ครับ
+    </p>
+    <div class="dataops-box">
+      <strong>💡 DataOps Angle:</strong> คลื่นการลงทุน capex 650,000 ล้านดอลลาร์หมายถึง compute, storage และ AI infrastructure มหาศาลกำลังจะมาออนไลน์ทั่วโลก ทีม Data Ops ควรวางแผนรับมือกับ data volume ที่จะเพิ่มขึ้นอย่างมาก รอบการ refresh โมเดลที่เร็วขึ้น และ vendor API ใหม่ๆ ที่จะมาตลอดปี 2026 ครับ
+    </div>
+  </div>
+
+  <!-- BUSINESS -->
+  <div class="section-card" id="sec-3" data-section-name="Business &amp; Financial Signals">
+    <div class="section-header">
+      <div class="section-icon">📈</div>
+      <div class="section-cue">หัวข้อที่ 3 — Business &amp; Financial Signals</div>
+    </div>
+    <p class="para" data-para="7">
+      ในด้านธุรกิจและการเงิน มีการเปลี่ยนแปลงครั้งใหญ่กำลังเกิดขึ้นในตลาดทุนเมื่อปลายเดือนมีนาคม 2026 ครับ นักวิเคราะห์เรียกปรากฏการณ์นี้ว่า "The Great Rotation" กล่าวคือ เงินทุนสถาบันกำลังเทออกจากหุ้น mega-cap technology และหันไปหาหุ้นอุตสาหกรรมดั้งเดิมอย่างเครื่องจักรหนัก สินค้าอุปโภคบริโภค และวัสดุอุตสาหกรรม หุ้น tech ที่หนักด้าน S&P 500 ลดลง 0.87% ขณะที่ Dow Jones เพิ่มขึ้น 0.17% ครับ
+    </p>
+    <p class="para" data-para="8">
+      สัญญาณจากนักลงทุนชัดเจนมาก: ยุคที่รางวัลตกแก่บริษัทที่แค่มีคำว่า AI ในเอกสารนักลงทุนนั้นจบไปแล้วครับ ตลาดตอนนี้ต้องการหลักฐานของ monetization ตำแหน่ง competitive ที่ป้องกันได้ และเส้นทางที่น่าเชื่อถือสู่ return on capital ปัจจัยเสี่ยง macro ยังเพิ่มแรงกดดัน เพราะ Federal Reserve ส่งสัญญาณว่าดอกเบี้ยจะอยู่สูงนานกว่าคาด และน้ำมันดิบเคยขึ้นไปแตะ 100 ดอลลาร์ต่อบาร์เรลในช่วงกลางเดือนมีนาคม
+    </p>
+    <div class="dataops-box">
+      <strong>💡 DataOps Angle:</strong> แรงกดดันเรื่อง ROI หมายความว่าทีม Data Ops ตอนนี้ต้องทำงานในสภาพแวดล้อมที่ทุก pipeline ทุกโมเดล และทุก data product จะถูกตรวจสอบเรื่องคุณค่าทางธุรกิจที่วัดได้ สร้าง metrics ไว้ล่วงหน้า ได้แก่ cost-per-insight, pipeline reliability score และ AI data readiness dashboard ก่อนที่ผู้บริหารจะมาถามครับ
+    </div>
+  </div>
+
+  <!-- GEOPOLITICS -->
+  <div class="section-card" id="sec-4" data-section-name="Geopolitics &amp; Regulation">
+    <div class="section-header">
+      <div class="section-icon">🌍</div>
+      <div class="section-cue">หัวข้อที่ 4 — Geopolitics &amp; Regulation</div>
+    </div>
+    <p class="para" data-para="9">
+      ด้านภูมิรัฐศาสตร์และกฎระเบียบ นาฬิกากำลังนับถอยหลังสำหรับองค์กรที่ทำงานในยุโรปครับ EU AI Act สำหรับ high-risk AI จะมีผลบังคับใช้เต็มรูปแบบในเดือนสิงหาคม 2026 อีกเพียง 5 เดือนข้างหน้า บทลงโทษกรณีไม่ปฏิบัติตามสูงถึง 35 ล้านยูโร หรือ 7% ของรายได้ทั่วโลก แล้วแต่ว่าจำนวนใดสูงกว่า นั่นหมายความว่าองค์กรต้องมีหลักฐานการปฏิบัติตามที่ตรวจสอบได้ด้วยระบบอัตโนมัติตั้งแต่ตอนนี้ ไม่ใช่เดือนกรกฎาคม ส่วนจีนก็มีกฎหมาย Cybersecurity ฉบับแก้ไขที่มีผลตั้งแต่ 1 มกราคม 2026 ซึ่งเป็นครั้งแรกที่ AI governance อยู่ในกฎหมายระดับชาติของจีน ส่งผลต่อองค์กรที่มีธุรกิจในจีนด้วยครับ
+    </p>
+    <p class="para" data-para="10">
+      ความขัดแย้งด้าน semiconductor ระหว่างสหรัฐฯ และจีนยิ่งทวีความรุนแรงขึ้นครับ รัฐบาลสหรัฐฯ ประกาศให้ AI chip ระดับสูงสุดเป็นสินค้าควบคุมการส่งออก GPU รุ่นก้าวหน้าที่สุดยังถูกจำกัด จีนตอบโต้ด้วยการจำกัดการนำเข้าเช่นกัน แต่ละฝ่ายพยายามปิดกั้นการเข้าถึง compute power ของอีกฝ่าย ทำให้ความยืดหยุ่นของ chip supply chain กลายเป็นประเด็นเชิงกลยุทธ์ที่สำคัญมากครับ
+    </p>
+    <div class="dataops-box">
+      <strong>💡 DataOps Angle:</strong> Governance-as-code หรือ DataGovOps ไม่ใช่ตัวเลือกอีกต่อไปครับ ด้วย EU AI Act ที่กำลังจะบังคับใช้และกฎหมายจีนที่มีผลแล้ว data pipeline ต้องผลิต audit trail อัตโนมัติ, lineage record และหลักฐานการปฏิบัติตามกฎระเบียบในฐานะผลลัพธ์มาตรฐาน ไม่ใช่รายงานที่ทำด้วยมือหลังจากนั้น
+    </div>
+  </div>
+
+  <!-- DATAOPS -->
+  <div class="section-card" id="sec-5" data-section-name="Data Engineering &amp; DataOps">
+    <div class="section-header">
+      <div class="section-icon">🔧</div>
+      <div class="section-cue">หัวข้อที่ 5 — Data Engineering &amp; DataOps Spotlight</div>
+    </div>
+    <p class="para" data-para="11">
+      ในด้าน Data Engineering และ DataOps สัญญาณที่สำคัญที่สุดสัปดาห์นี้มาจาก Databricks ครับ กว่า 80% ของฐานข้อมูลใหม่บนแพลตฟอร์มในช่วงปลายปี 2025 ถูกสร้างขึ้นโดย AI agent ไม่ใช่วิศวกรมนุษย์ คิดดูนะครับ ส่วนใหญ่ของการ provision ฐานข้อมูลใหม่บน data platform ชั้นนำของโลกตอนนี้ทำโดยเครื่องจักร ไม่ใช่คน นี่คือการเปลี่ยนแปลงครั้งใหญ่ที่หลายคนเคยทำนาย แต่ไม่คาดว่าจะเห็นเร็วขนาดนี้ครับ
+    </p>
+    <p class="para" data-para="12">
+      เทรนด์สำคัญที่กำหนดรูปร่าง data engineering ในปี 2026 มีความเชื่อมโยงกันครับ ประการแรก DataGovOps หรือ governance as code กำลังกลายเป็นกระแสหลัก กระบวนการ compliance, audit trail และ lineage tracking ถูก automate ผ่าน code ที่ฝังอยู่ใน pipeline แทนการดูแลด้วยมือ ประการที่สอง real-time data architecture กำลังสุกงอม การสนทนาเปลี่ยนจาก "ควร stream ไหม" เป็น "จะรวม streaming กับ batch เข้าด้วยกันอย่างไร" ประการที่สาม วินัยด้านต้นทุนมาถึงแล้ว วิศวกรไม่ได้ถูกคุ้มกันจากผลกระทบทางการเงินจากการเลือก infrastructure อีกต่อไปครับ
+    </p>
+    <p class="para" data-para="13">
+      บทสรุปที่ทุก Data Ops leader ควรจดจำในปีนี้คือ ความสำเร็จของ AI model ขึ้นอยู่กับ data engineering มากกว่าการเลือกโมเดลอย่างมีนัยสำคัญครับ องค์กรที่มี feature engineering ที่แข็งแกร่ง pipeline ที่เชื่อถือได้ และ data governance ที่แน่นหนา ผลลัพธ์ดีกว่าองค์กรที่มีโมเดลดีกว่าแต่ data foundation อ่อนแอกว่าอย่างสม่ำเสมอ
+    </p>
+  </div>
+
+  <!-- DATABRICKS -->
+  <div class="section-card" id="sec-6" data-section-name="Databricks Feature Updates">
+    <div class="section-header">
+      <div class="section-icon">🧱</div>
+      <div class="section-cue">หัวข้อที่ 6 — Databricks Feature Updates</div>
+    </div>
+    <p class="para" data-para="14">
+      อัปเดตจาก Databricks ในเดือนมีนาคม 2026 มีหลายตัวที่น่าสนใจครับ ที่ใหญ่ที่สุดสำหรับงาน machine learning คือ AI Runtime นำ GPU support มาสู่ Databricks serverless compute แล้วครับ นั่นหมายความว่า deep learning workload สามารถรันในโหมด serverless ได้ ขจัดอุปสรรคสุดท้ายสำหรับ fully serverless ML pipeline และ cluster ขนาด 5X-Large สำหรับ serverless และ pro SQL warehouse ก็อยู่ใน beta แล้วในทุก supported region ครับ
+    </p>
+    <p class="para" data-para="15">
+      ด้าน agentic Supervisor Agent ของ AgentBricks ตอนนี้รองรับ long-running task mode แล้วครับ โดยจะแบ่งงานที่ซับซ้อนออกเป็นหลาย request-response cycle อัตโนมัติ เพื่อหลีกเลี่ยง timeout ช่วยให้ agentic data workflow ในระดับ production เป็นไปได้จริง สำหรับ data integration managed Workday HCM connector ใน Lakeflow Connect อยู่ใน beta แล้ว ช่วยให้นำเข้าข้อมูลจาก Workday Human Capital Management เข้า Databricks ได้โดยไม่ต้องสร้าง custom ETL pipeline ครับ
+    </p>
+    <p class="para" data-para="16">
+      สองจุดด่วนที่น่าสนใจด้านคุณภาพและต้นทุน Data Quality Monitoring UI ตอนนี้รองรับ anomaly detection alert โดยตรงในแพลตฟอร์มแล้ว และ Vector Search endpoint จะถูกคิดเงินหลังจากสร้าง index แล้วเท่านั้น และหยุดคิดเงิน 24 ชั่วโมงหลังลบ index ครั้งสุดท้าย ขจัด idle endpoint cost สำหรับทีมที่จัดการ vector search index หลายตัวครับ
+    </p>
+    <div class="dataops-box">
+      <strong>💡 DataOps Angle:</strong> GPU serverless compute บวกกับ AgentBricks long-running task mode รวมกันถือเป็นการปลดล็อคความสามารถสำคัญมากครับ ออกแบบ ML pipeline architecture ให้ใช้ประโยชน์จาก serverless GPU ตั้งแต่ต้น และวางแผนสำหรับ agentic pattern แบบหลาย cycle ใน workflow orchestration ต้นทุนตอนนี้คุ้มค่าสำหรับองค์กรส่วนใหญ่แล้วครับ
+    </div>
+  </div>
+
+  <!-- POWER BI -->
+  <div class="section-card" id="sec-7" data-section-name="Power BI Updates">
+    <div class="section-header">
+      <div class="section-icon">📊</div>
+      <div class="section-cue">หัวข้อที่ 7 — Power BI Updates</div>
+    </div>
+    <p class="para" data-para="17">
+      มาร์ชปี 2026 ถือเป็นเดือนสำคัญมากสำหรับ Power BI ครับ มีสองฟีเจอร์หลักที่ถึง General Availability พร้อมกัน ฟีเจอร์แรกคือ Translytical Task Flows ครับ นี่คือการเปลี่ยนแปลงพื้นฐานในสิ่งที่ Power BI ทำได้ ผู้ใช้งานสามารถดำเนินการได้โดยตรงจาก report ทั้งอัปเดตข้อมูล trigger workflow และ push การเปลี่ยนแปลงกลับไปยัง source system ทั้งหมดโดยไม่ต้องออกจาก BI layer Power BI กำลังกลายเป็นเครื่องมือเชิงปฏิบัติการ ไม่ใช่แค่ analytics layer แบบอ่านอย่างเดียวอีกต่อไปครับ
+    </p>
+    <p class="para" data-para="18">
+      ฟีเจอร์ที่สองคือ Direct Lake in OneLake ถึง General Availability แล้วครับ นั่นหมายความว่า Databricks-powered OneLake table สามารถเชื่อมต่อกับ Power BI ด้วย zero-copy, live semantic access ไม่มีการ duplication ข้อมูล ไม่มีความล่าช้าจาก scheduled refresh ช่องว่างด้าน latency ระหว่าง lakehouse และ dashboard ของท่านหมดไปแล้วสำหรับองค์กรที่ใช้ OneLake อยู่ครับ มีการเปลี่ยนแปลงที่ต้องการความสนใจทันทีด้วยครับ Power BI Desktop กำลังเปลี่ยนมาใช้ PBIR เป็น format ไฟล์ default ถ้าทีมของท่านใช้ git-based version control สำหรับ Power BI report ต้องทดสอบ CI/CD pipeline กับ format ใหม่นี้ก่อนที่มันจะ apply อัตโนมัติครับ
+    </p>
+    <div class="dataops-box">
+      <strong>💡 DataOps Angle:</strong> Direct Lake GA คือการรวมที่ทีม Data Ops รอมานานครับ เส้นทางตอนนี้ชัดเจน ingest และ transform ใน Databricks, เก็บใน OneLake, serve ใน Power BI ด้วย live high-performance access และไม่มีการ duplicate ข้อมูล ทำให้นี่เป็น recommended architecture สำหรับ BI project ใหม่ทุกโครงการครับ
+    </div>
+  </div>
+
+  <!-- FINANCIAL SERVICES -->
+  <div class="section-card" id="sec-8" data-section-name="AI in Financial Services">
+    <div class="section-header">
+      <div class="section-icon">🏦</div>
+      <div class="section-cue">หัวข้อที่ 8 — AI in Financial Services</div>
+    </div>
+    <p class="para" data-para="19">
+      สำหรับ AI ในภาคการเงิน ปี 2026 ถือเป็นปีที่ธนาคารหยุดทดลอง AI แล้วหันมาดำเนินการ AI จริงจังระดับองค์กรครับ การเปลี่ยนผ่านจากการทดลองไปสู่การ deploy ทั่วทั้งองค์กรกำลังเกิดขึ้นทั่วทั้งอุตสาหกรรม ธนาคารและ fintech กำลังนำ LLM และ multimodal AI มาใช้เพื่อทำ underwriting อัตโนมัติ ปรับปรุง risk analytics และปรับ customer interaction ให้เหมาะสมกับแต่ละบุคคล ส่งผลให้การตัดสินใจเร็วขึ้นและลด manual workload ทั่วทั้งการดำเนินงานครับ
+    </p>
+    <p class="para" data-para="20">
+      Agentic AI แสดงให้เห็นว่ามีศักยภาพอย่างมากในด้าน operations ครับ ในกรณีที่มีการบันทึกจากธนาคารแห่งหนึ่ง agentic case routing ซึ่งเป็นระบบ AI ที่ route และ prioritize support case ตามผลกระทบที่อาจเกิดขึ้น สามารถลด SLA breach ได้อย่างมีนัยสำคัญ US Treasury เพิ่งเปิดตัว AI Innovation Series เมื่อวันที่ 23 มีนาคม ซึ่งเป็นโครงการภาครัฐ-เอกชนเพื่อสนับสนุนความยืดหยุ่นของระบบการเงินสหรัฐฯ ในยุค AI ครับ
+    </p>
+    <div class="dataops-box">
+      <strong>💡 DataOps Angle:</strong> Financial services AI ในระดับ enterprise หมายถึงความต้องการที่เพิ่มขึ้นอย่างมากในด้าน data quality, real-time pipeline, audit trail และ model data readiness ถ้าท่านให้บริการลูกค้าในภาคการเงิน หรือทำงานอยู่ในองค์กรการเงิน ความต้องการด้าน data engineering กำลังเร่งตัวขึ้น ต้องวางแผน budget และ roadmap ไว้รองรับครับ
+    </div>
+  </div>
+
+  <!-- OUTRO -->
+  <div class="section-card" id="sec-9" data-section-name="สรุปและ Key Takeaways">
+    <div class="section-header">
+      <div class="section-icon">🎯</div>
+      <div class="section-cue">สรุปและ Key Takeaways</div>
+    </div>
+    <p class="para" data-para="21">
+      ก่อนจากกัน ขอทิ้งสามเรื่องที่สำคัญที่สุดสัปดาห์นี้ไว้ให้ครับ ข้อหนึ่ง ความสามารถ agentic และ context window ล้าน token ของ GPT-5.4 มาถึงแล้ว ตรวจสอบความพร้อมของ data pipeline ในการรับมือกับ query ที่ AI initiate และมี volume สูงได้เลยตอนนี้ ข้อสอง Databricks GPU serverless compute และ Power BI Direct Lake ที่ถึง General Availability พร้อมกัน สร้าง lakehouse-to-dashboard architecture ที่สมบูรณ์โดยไม่มีช่องว่างสำคัญ นี่คือการสนทนาด้าน architecture ที่ต้องพูดกับทีมสัปดาห์นี้ครับ ข้อสาม governance-as-code ตอนนี้เป็นข้อกำหนดทางกฎหมายในหลายเขตอำนาจศาล ไม่ใช่แค่ best practice อีกต่อไป ด้วย EU AI Act ที่จะบังคับใช้ในเดือนสิงหาคม automated lineage และ audit trail ต้องอยู่ใน pipeline roadmap ของท่านครับ
+    </p>
+    <p class="para" data-para="22">
+      นั่นคือ Morning Brief ของวันอาทิตย์ที่ 29 มีนาคม 2026 ครับ ผมคือ host ของท่าน ขอบคุณที่รับฟัง อยากให้ทุกท่านตื่นเต้น พัฒนาตัวเองอยู่เสมอ และนำด้วยข้อมูล แล้วพบกันใหม่พรุ่งนี้ครับ สวัสดีครับ
+    </p>
+  </div>
+
+</div><!-- end .main -->
+
+<script>
+// ── Voice Selection ──
+const synth = window.speechSynthesis;
+let voices = [];
+let selectedVoice = null;
+const SPEEDS = [0.8, 0.9, 1.0, 1.1, 1.25];
+let speedIdx = 2;
+
+function loadVoices() {
+  voices = synth.getVoices();
+  if (!voices.length) return;
+  // Prefer Thai male voices
+  const malePref = ['Niwat','niwat','th-TH-NiwatNeural','Male','male'];
+  const thaiVoices = voices.filter(v => v.lang === 'th-TH' || v.lang === 'th' || v.lang.startsWith('th'));
+
+  let found = null;
+  // Try exact male matches first
+  for (const pref of malePref) {
+    found = thaiVoices.find(v => v.name.includes(pref));
+    if (found) break;
+  }
+  // Fallback to any Thai voice
+  if (!found) found = thaiVoices[0];
+  // Last resort: any voice
+  if (!found) found = voices[0];
+
+  selectedVoice = found;
+  const statusEl = document.getElementById('voice-status');
+  if (found) {
+    const genderHint = (found.name.toLowerCase().includes('female') || found.name.toLowerCase().includes('kanya') || found.name.toLowerCase().includes('achara')) ? '👩' : '👨';
+    statusEl.textContent = `${genderHint} ${found.name} (${found.lang})`;
+  } else {
+    statusEl.textContent = 'ไม่พบเสียงภาษาไทย — ใช้เสียงเริ่มต้น';
+    statusEl.style.color = '#f43f5e';
+  }
+}
+
+if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadVoices;
+loadVoices();
+setTimeout(loadVoices, 500);
+setTimeout(loadVoices, 1500);
+
+// ── Paragraphs & State ──
+const allParas = Array.from(document.querySelectorAll('.para'));
+const allSections = Array.from(document.querySelectorAll('.section-card'));
+let currentIdx = 0;
+let paused = false;
+let playing = false;
+
+// ── UI Updates ──
+function setUI(isPlaying) {
+  const playBtn = document.getElementById('btn-play');
+  playBtn.textContent = isPlaying ? '⏸' : '▶';
+  document.getElementById('btn-stop').disabled = !isPlaying;
+  document.getElementById('btn-back').disabled = !isPlaying;
+  document.getElementById('btn-next').disabled = !isPlaying;
+  document.getElementById('now-label').style.display = isPlaying ? 'flex' : 'none';
+}
+
+function updateProgress() {
+  const pct = allParas.length ? (currentIdx / allParas.length) * 100 : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function highlightPara(idx) {
+  allParas.forEach((p, i) => p.classList.toggle('speaking-para', i === idx));
+  // Section highlight
+  allSections.forEach(s => s.classList.remove('speaking'));
+  if (allParas[idx]) {
+    const sec = allParas[idx].closest('.section-card');
+    if (sec) {
+      sec.classList.add('speaking');
+      sec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      document.getElementById('current-section-name').textContent = sec.dataset.sectionName || '';
+      document.getElementById('now-section').textContent = sec.dataset.sectionName || '';
+    }
+  }
+  updateProgress();
+}
+
+function speakFrom(idx) {
+  if (idx >= allParas.length) { stopPlayback(); return; }
+  currentIdx = idx;
+  highlightPara(idx);
+
+  const text = allParas[idx].innerText.trim();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'th-TH';
+  utt.rate = SPEEDS[speedIdx];
+  utt.pitch = 0.95;
+  utt.volume = 1;
+  if (selectedVoice) utt.voice = selectedVoice;
+
+  utt.onend = () => { if (playing && !paused) speakFrom(idx + 1); };
+  utt.onerror = (e) => { if (e.error !== 'interrupted') speakFrom(idx + 1); };
+
+  synth.speak(utt);
+}
+
+function togglePlay() {
+  if (playing && !paused) {
+    // Pause
+    synth.pause();
+    paused = true;
+    playing = false;
+    setUI(false);
+    document.getElementById('btn-play').textContent = '▶';
+  } else if (paused) {
+    // Resume
+    synth.resume();
+    paused = false;
+    playing = true;
+    setUI(true);
+  } else {
+    // Start fresh or continue
+    synth.cancel();
+    paused = false;
+    playing = true;
+    setUI(true);
+    // Reload voices in case they weren't ready
+    if (!selectedVoice) loadVoices();
+    speakFrom(currentIdx);
+  }
+}
+
+function stopPlayback() {
+  synth.cancel();
+  playing = false;
+  paused = false;
+  setUI(false);
+  allParas.forEach(p => p.classList.remove('speaking-para'));
+  allSections.forEach(s => s.classList.remove('speaking'));
+  document.getElementById('progress-fill').style.width = '0%';
+  document.getElementById('current-section-name').textContent = 'กดเล่นเพื่อฟังพอดแคสต์ภาษาไทย';
+}
+
+function prevSection() {
+  synth.cancel();
+  // Find current section start
+  const sec = allParas[currentIdx]?.closest('.section-card');
+  const secStart = allParas.findIndex(p => p.closest('.section-card') === sec);
+  const prevStart = secStart > 0 ? allParas.findIndex((p, i) => i < secStart && p.closest('.section-card') !== allParas[secStart - 1]?.closest('.section-card')) : 0;
+  // Simpler: go back to start of previous section
+  let target = 0;
+  for (let i = 0; i < allSections.length; i++) {
+    const secParas = allParas.filter(p => p.closest('.section-card') === allSections[i]);
+    if (secParas.length && allParas.indexOf(secParas[0]) < currentIdx) {
+      target = allParas.indexOf(secParas[0]);
+    }
+  }
+  currentIdx = target;
+  speakFrom(currentIdx);
+}
+
+function nextSection() {
+  synth.cancel();
+  const currentSec = allParas[currentIdx]?.closest('.section-card');
+  const currentSecIdx = allSections.indexOf(currentSec);
+  if (currentSecIdx < allSections.length - 1) {
+    const nextSec = allSections[currentSecIdx + 1];
+    const nextPara = allParas.find(p => p.closest('.section-card') === nextSec);
+    if (nextPara) { currentIdx = allParas.indexOf(nextPara); speakFrom(currentIdx); }
+  }
+}
+
+function cycleSpeed() {
+  speedIdx = (speedIdx + 1) % SPEEDS.length;
+  document.getElementById('speed-btn').textContent = SPEEDS[speedIdx].toFixed(1) + '×';
+}
+
+function seekByClick(e, track) {
+  const rect = track.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  const targetIdx = Math.floor(pct * allParas.length);
+  synth.cancel();
+  currentIdx = Math.max(0, Math.min(targetIdx, allParas.length - 1));
+  if (playing || paused) {
+    paused = false;
+    playing = true;
+    setUI(true);
+    speakFrom(currentIdx);
+  } else {
+    highlightPara(currentIdx);
+  }
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+  if (e.code === 'ArrowRight') nextSection();
+  if (e.code === 'ArrowLeft') prevSection();
+  if (e.code === 'Escape') stopPlayback();
+});
+</script>
+</body>
+</html>
