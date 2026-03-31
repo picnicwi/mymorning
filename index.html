@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Brief — วันอังคารที่ 31 มีนาคม 2026</title>
+<title>Morning Brief — พุธ 1 เมษายน 2026 (ภาษาไทย)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,11 +29,10 @@
     background: var(--bg);
     color: var(--text);
     font-family: 'IBM Plex Sans Thai', sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    padding-bottom: 120px;
+    font-size: 17px;
+    line-height: 2.0;
+    padding-bottom: 130px;
   }
-  /* ── HEADER ── */
   .site-header {
     background: linear-gradient(135deg, #06090f 0%, #0d1a2a 100%);
     border-bottom: 1px solid var(--border);
@@ -49,569 +48,487 @@
     font-family: 'IBM Plex Mono', monospace;
   }
   .site-header h1 {
-    font-size: clamp(20px, 4vw, 30px); font-weight: 700;
+    font-size: clamp(18px, 4vw, 28px); font-weight: 700;
     background: linear-gradient(90deg, var(--cyan), var(--amber));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text; margin-bottom: 4px;
   }
-  .site-header .subtitle {
-    font-size: 13px; color: var(--text-dim);
-  }
-  /* ── STAT CARDS ── */
+  .site-header .subtitle { font-size: 13px; color: var(--text-dim); font-family: 'IBM Plex Mono', monospace; }
   .stats-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 10px; padding: 16px 16px 8px;
     max-width: 900px; margin: 0 auto;
   }
   .stat-card {
-    background: var(--bg3); border: 1px solid var(--border);
+    background: var(--bg2); border: 1px solid var(--border);
     border-radius: 10px; padding: 12px 14px; text-align: center;
   }
-  .stat-card .stat-num {
-    font-size: 22px; font-weight: 700; color: var(--cyan);
-    font-family: 'IBM Plex Mono', monospace; line-height: 1.2;
+  .stat-card .stat-val {
+    font-size: 20px; font-weight: 700; color: var(--cyan);
+    font-family: 'IBM Plex Mono', monospace;
   }
   .stat-card .stat-label {
-    font-size: 11px; color: var(--text-dim); margin-top: 4px; line-height: 1.4;
+    font-size: 11px; color: var(--text-dim); margin-top: 2px;
   }
-  /* ── VOICE SELECTOR ── */
-  .voice-bar {
-    max-width: 900px; margin: 0 auto; padding: 10px 16px;
-    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  }
-  .voice-bar label { font-size: 12px; color: var(--text-dim); white-space: nowrap; }
-  .voice-bar select {
-    background: var(--bg3); color: var(--text); border: 1px solid var(--border);
-    border-radius: 6px; padding: 5px 10px; font-size: 13px;
-    font-family: 'IBM Plex Sans Thai', sans-serif; flex: 1; min-width: 200px;
-  }
-  .voice-bar .voice-status { font-size: 11px; color: var(--text-dim); }
-  /* ── CONTENT ── */
-  .content-wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+  .main-content { max-width: 860px; margin: 0 auto; padding: 16px; }
   .section-card {
     background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 14px; margin: 14px 0; padding: 22px 24px;
-    transition: border-color 0.3s;
-  }
-  .section-card.active { border-color: var(--cyan-dim); }
-  .section-label {
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--cyan); font-family: 'IBM Plex Mono', monospace;
-    margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
-  }
-  .section-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
+    border-radius: 14px; padding: 24px 26px; margin-bottom: 18px;
+    transition: border-color 0.3s, background 0.3s;
   }
   .section-card h2 {
-    font-size: 17px; font-weight: 600; color: var(--amber);
-    margin-bottom: 14px; line-height: 1.4;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--cyan);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
   }
   .section-card p {
-    color: var(--text); margin-bottom: 12px; font-size: 15.5px;
+    color: var(--text); margin-bottom: 16px; font-size: 16px;
+    line-height: 2.1;
   }
   .section-card p:last-child { margin-bottom: 0; }
-  .speaking { background: var(--speaking); border-radius: 6px; padding: 2px 4px; }
-  .dataops-angle {
-    margin-top: 14px; padding: 12px 16px;
-    background: rgba(34,211,238,0.07); border-left: 3px solid var(--cyan);
-    border-radius: 0 8px 8px 0; font-size: 14px; color: var(--cyan);
+  .dataops-callout {
+    background: linear-gradient(135deg, rgba(34,211,238,0.07), rgba(251,191,36,0.07));
+    border: 1px solid rgba(34,211,238,0.25);
+    border-radius: 10px; padding: 14px 16px; margin-top: 14px;
   }
-  .dataops-angle strong { color: var(--cyan); }
-  /* ── HOSTING GUIDE ── */
-  .hosting-box {
-    background: var(--bg3); border: 1px solid var(--amber-dim);
-    border-radius: 12px; padding: 18px 20px; margin: 14px 0;
+  .dataops-callout .callout-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--amber);
+    font-family: 'IBM Plex Mono', monospace; margin-bottom: 6px;
   }
-  .hosting-box h3 { color: var(--amber); font-size: 14px; margin-bottom: 10px; }
-  .hosting-box code {
-    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
-    background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;
-    color: var(--green);
-  }
-  .hosting-box p { font-size: 13px; color: var(--text-dim); margin-bottom: 6px; }
-  /* ── STICKY PLAYER ── */
+  .dataops-callout p { font-size: 15px; color: #cbd5e1; margin-bottom: 0; line-height: 1.9; }
+  .speaking { background: var(--speaking) !important; border-color: var(--amber) !important; }
+
+  /* Player Bar */
   .player-bar {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    position: fixed; bottom: 0; left: 0; right: 0;
     background: rgba(13,17,23,0.97);
     border-top: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    padding: 10px 16px;
+    padding: 10px 16px 14px;
+    z-index: 200;
+    backdrop-filter: blur(10px);
   }
-  .player-inner { max-width: 900px; margin: 0 auto; }
-  .progress-wrap {
-    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  .player-progress-wrap {
+    background: var(--bg3); height: 3px; border-radius: 2px;
+    margin-bottom: 10px; overflow: hidden; cursor: pointer;
   }
-  .progress-bar {
-    flex: 1; height: 4px; background: var(--bg3); border-radius: 2px;
-    cursor: pointer; position: relative;
+  .player-progress { height: 100%; background: var(--cyan); width: 0%; transition: width 0.5s linear; }
+  .player-controls {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap; justify-content: center;
   }
-  .progress-fill {
-    height: 100%; border-radius: 2px;
-    background: linear-gradient(90deg, var(--cyan), var(--amber));
-    width: 0%; transition: width 0.3s;
-  }
-  .time-label {
-    font-size: 11px; color: var(--text-dim);
-    font-family: 'IBM Plex Mono', monospace; white-space: nowrap;
-  }
-  .controls-row {
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-  }
-  .btn-ctrl {
+  .player-controls button {
     background: var(--bg3); border: 1px solid var(--border);
-    color: var(--text); border-radius: 8px; cursor: pointer;
-    padding: 7px 12px; font-size: 16px; transition: all 0.2s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .btn-ctrl:hover { background: var(--border); border-color: var(--cyan-dim); }
-  .btn-ctrl.primary { background: var(--cyan-dim); border-color: var(--cyan); color: #fff; }
-  .btn-ctrl.primary:hover { background: var(--cyan); }
-  .speed-btn {
-    background: var(--bg3); border: 1px solid var(--border);
-    color: var(--amber); border-radius: 6px; cursor: pointer;
-    padding: 5px 10px; font-size: 12px;
+    color: var(--text); border-radius: 8px; padding: 7px 14px;
+    font-size: 13px; cursor: pointer; transition: all 0.2s;
     font-family: 'IBM Plex Mono', monospace;
   }
-  .speed-btn:hover { border-color: var(--amber); }
-  .now-playing {
-    flex: 1; font-size: 12px; color: var(--text-dim);
-    min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    padding-left: 6px;
+  .player-controls button:hover { background: var(--cyan-dim); border-color: var(--cyan); }
+  .player-controls button.active { background: var(--cyan-dim); border-color: var(--cyan); color: white; }
+  .player-section-name {
+    font-size: 11px; color: var(--text-dim); text-align: center;
+    margin-top: 6px; font-family: 'IBM Plex Mono', monospace;
   }
-  .now-playing span { color: var(--cyan); }
-  .keyboard-hint {
-    font-size: 10px; color: var(--text-dim); padding-top: 4px;
-    font-family: 'IBM Plex Mono', monospace;
+
+  /* Hosting guide */
+  .hosting-guide {
+    background: var(--bg2); border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 14px; padding: 22px 24px; margin-bottom: 18px;
   }
+  .hosting-guide h3 {
+    color: var(--purple); font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 12px;
+  }
+  .hosting-guide p { font-size: 14px; color: var(--text-dim); margin-bottom: 8px; }
+  .hosting-guide code {
+    font-family: 'IBM Plex Mono', monospace; background: var(--bg3);
+    padding: 2px 6px; border-radius: 4px; color: var(--cyan); font-size: 13px;
+  }
+  .kbd {
+    display: inline-block; background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 4px; padding: 1px 6px; font-size: 12px;
+    font-family: 'IBM Plex Mono', monospace; color: var(--amber);
+  }
+  .lang-link { text-align: center; margin-bottom: 16px; }
+  .lang-link a {
+    color: var(--cyan); text-decoration: none; font-size: 13px;
+    border: 1px solid var(--cyan-dim); padding: 6px 16px; border-radius: 20px;
+    font-family: 'IBM Plex Mono', monospace; letter-spacing: 1px;
+  }
+  .lang-link a:hover { background: var(--cyan-dim); }
   @media (max-width: 600px) {
-    .section-card { padding: 16px 14px; }
-    .stats-row { grid-template-columns: repeat(3, 1fr); }
+    .section-card { padding: 18px; }
+    .player-controls button { padding: 6px 10px; font-size: 12px; }
   }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="date-badge">🎙 MORNING BRIEF PODCAST · TH</div>
-  <h1>Morning Brief — วันอังคารที่ 31 มีนาคม 2026</h1>
-  <div class="subtitle">สรุปข่าว AI, DataOps และ Tech สำหรับมืออาชีพด้านข้อมูล · ภาษาไทย</div>
+  <div class="date-badge">พุธ 1 เมษายน 2026 · Q2 วันแรก</div>
+  <h1>Morning Brief 🌅 ฉบับภาษาไทย</h1>
+  <div class="subtitle">The DataOps Intelligence Podcast · สำหรับ Wipada</div>
 </header>
 
-<!-- STAT CARDS -->
+<!-- Stat Cards -->
 <div class="stats-row">
   <div class="stat-card">
-    <div class="stat-num">$25B</div>
-    <div class="stat-label">ARR ของ OpenAI</div>
+    <div class="stat-val">$840B</div>
+    <div class="stat-label">มูลค่า OpenAI</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">1.05M</div>
-    <div class="stat-label">tokens context GPT-5.4</div>
+    <div class="stat-val">$665B</div>
+    <div class="stat-label">AI Capex Big Tech</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">$0.25</div>
-    <div class="stat-label">ต่อ 1M tokens Gemini Flash-Lite</div>
+    <div class="stat-val">75%</div>
+    <div class="stat-label">GPT-5.4 บน OSWorld</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">295%</div>
-    <div class="stat-label">ChatGPT uninstall spike</div>
+    <div class="stat-val">1M</div>
+    <div class="stat-label">Context Tokens</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">$7M</div>
-    <div class="stat-label">Data Tax ต่อปี Fortune 500</div>
+    <div class="stat-val">$25B</div>
+    <div class="stat-label">OpenAI รายได้ต่อปี</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">Aug 2</div>
-    <div class="stat-label">EU AI Act deadline 2026</div>
+    <div class="stat-val">800M</div>
+    <div class="stat-label">Samsung AI Devices</div>
   </div>
 </div>
 
-<!-- VOICE SELECTOR -->
-<div class="voice-bar content-wrap">
-  <label>🎤 เสียงไทย:</label>
-  <select id="voiceSelect">
-    <option value="">กำลังโหลดรายชื่อเสียง...</option>
-  </select>
-  <span class="voice-status" id="voiceStatus"></span>
-</div>
+<div class="main-content">
 
-<div class="content-wrap">
-
-<!-- INTRO -->
-<div class="section-card" data-section-name="บทนำ" data-section-index="0">
-  <div class="section-label">INTRO</div>
-  <h2>🎙 บทนำ — สวัสดีทุกท่าน</h2>
-  <p>สวัสดีครับทุกท่าน ยินดีต้อนรับสู่ Morning Brief — พอดแคสต์ข่าวประจำวันสำหรับมืออาชีพด้านเทคโนโลยีและข้อมูล ผมเป็น AI host ของท่าน และวันนี้คือวันอังคารที่ 31 มีนาคม 2026 ครับ ซึ่งเป็นวันสุดท้ายของไตรมาสที่หนึ่งของปีนี้พอดีเลยครับ</p>
-  <p>ต้องบอกว่า Q1 2026 นี่เป็นไตรมาสที่คึกคักมากในวงการ AI และ Data Engineering ครับ วันนี้เราจะพูดถึงแปดหัวข้อหลักด้วยกัน ได้แก่ ข่าว AI model ใหม่ล่าสุดรวมถึงการรั่วไหลของ model ลับจาก Anthropic, การเคลื่อนไหวของ Big Tech อย่าง Microsoft, Google และ Apple, สัญญาณทางธุรกิจและการเงินรวมถึงเส้นทาง IPO ของ OpenAI, กฎระเบียบ AI ทั่วโลกและ EU AI Act, การปฏิวัติของ Apache Iceberg ในโลก Data Engineering, อัปเดตจาก Databricks, อัปเดต Power BI และ Microsoft Fabric ประจำเดือนมีนาคม และสุดท้าย AI กับโลกบริการทางการเงินครับ</p>
-  <p>เยอะมากเลยใช่ไหมครับ งั้นเราไปกันเลยครับ</p>
-</div>
-
-<!-- SECTION 01 -->
-<div class="section-card" data-section-name="AI Models & Capabilities" data-section-index="1">
-  <div class="section-label">SECTION 01</div>
-  <h2>🤖 AI Models & Capabilities — โมเดล AI ยุคใหม่</h2>
-  <p>เริ่มกันที่ OpenAI ก่อนเลยครับ GPT-5.4 เปิดตัวเมื่อวันที่ 5 มีนาคมที่ผ่านมา และนี่คือก้าวกระโดดที่สำคัญมากครับ มีสามรุ่นด้วยกันคือ Standard, Thinking และ Pro โดยมี context window ในระดับ API ที่ใหญ่ถึง 1.05 ล้าน tokens ครับ ซึ่งเป็น context window ที่ใหญ่ที่สุดเท่าที่ OpenAI เคยเปิดให้ใช้เชิงพาณิชย์มาครับ</p>
-  <p>ในแง่ความแม่นยำของข้อมูล GPT-5.4 ลด error ในระดับ individual claim ได้ถึง 33 เปอร์เซ็นต์ และลด error ในระดับคำตอบทั้งหมดได้ 18 เปอร์เซ็นต์ เมื่อเทียบกับ GPT-5.2 ครับ และเมื่อวันที่ 17 มีนาคม OpenAI ยังออก GPT-5.4 Mini และ Nano ตามมาด้วย โดย Mini นั้นเปิดให้ผู้ใช้ ChatGPT ฟรีใช้งานได้แล้วครับ ตอนนี้ OpenAI มีโมเดลรวมกันถึง 85 โมเดลที่ให้บริการผ่าน API แล้วนะครับ</p>
-  <p>DataOps Angle: ด้วย context window ที่ใหญ่ถึง 1 ล้าน tokens ทีม data สามารถส่ง SQL codebase หรือ data dictionary ทั้งชุดเข้าไปใน prompt เดียวเพื่อทำ automated documentation หรือ code review ได้เลยครับ ถ้าท่านยังไม่ได้ปรับ AI workflow ใน Q1 วันนี้เป็นวันที่ดีที่จะเริ่มครับ</p>
-  <p>แต่เรื่องที่ฮือฮาที่สุดของเดือนนี้เป็นของ Anthropic ครับ มีการรั่วไหลของข้อมูลที่เปิดเผยว่า Anthropic กำลังพัฒนาโมเดลลับที่ใช้ชื่อรหัสว่า "Mythos" และ Anthropic ก็ยืนยันว่าจริงครับ พร้อมระบุว่าโมเดลนี้เป็น "step change" ในด้านความสามารถ ที่เหนือกว่า Claude Opus 4.6 อย่างมีนัยสำคัญ ยังไม่มีการเปิดเผยวันเปิดตัวนะครับ แต่ถ้า Mythos มาจริง ภูมิทัศน์การแข่งขันใน Q2 จะเปลี่ยนไปอย่างมากแน่นอนครับ</p>
-  <p>ฝั่ง Google ก็มีข่าวน่าสนใจครับ Gemini 3 Deep Think เปิดให้ใช้งานแล้วในแอป Gemini สำหรับผู้ที่สมัคร Ultra โดยออกแบบมาสำหรับงานวิทยาศาสตร์และวิศวกรรมที่ยากครับ ไม่ใช่แค่การแชททั่วไป นอกจากนี้ Google ยังออก Gemini 3.1 Flash-Lite ที่ตอบสนองเร็วขึ้น 2.5 เท่า ผลิต output เร็วขึ้น 45 เปอร์เซ็นต์ และมีราคาเพียง 25 เซนต์ต่อ 1 ล้าน input tokens เท่านั้นครับ</p>
-  <p>ที่น่าสนใจในฝั่ง open-source คือ Alibaba ออก Qwen 3.5 Small เมื่อวันที่ 1 มีนาคม ซึ่งประกอบด้วยโมเดล dense สี่ขนาดคือ 0.8B, 2B, 4B และ 9B parameters ครับ ทุกโมเดลรองรับ multimodal ทั้ง text, ภาพ และวิดีโอ และทั้งหมดใช้ license Apache 2.0 โดยรุ่น 9B ทำคะแนน 81.7 ใน GPQA Diamond ซึ่งเป็น benchmark ระดับปริญญาเอก สูงกว่าโมเดล proprietary หลายตัวเลยครับ</p>
-  <p>NVIDIA ก็ปล่อย Nemotron 3 Super ออกมาที่งาน GTC ครับ เป็นโมเดล hybrid ขนาด 120B parameters ทั้งหมด แต่มี active parameters แค่ 12B ทำคะแนน SWE-Bench Verified ได้ 60.47 เปอร์เซ็นต์ สำหรับงาน coding ระดับ enterprise นอกจากนี้ Mistral Small 4 ขนาด 119B parameters พร้อม context window 256K ก็เปิดตัวเมื่อวันที่ 16 มีนาคม และในฝั่งวิดีโอ ByteDance ร่วมกับ Peking University และ Canva ออก Helios ซึ่งสร้างวิดีโอยาว 60 วินาทีแบบ real-time บน GPU เครื่องเดียวได้เลยครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> โมเดล open-source แบบ multimodal อย่าง Qwen 3.5 เปิดทางให้ทีม data สามารถรัน AI ที่มีความสามารถสูงภายใน enterprise environment ที่ปลอดภัยได้แล้วครับ ถ้าองค์กรของท่านมีข้อจำกัดด้าน data sovereignty หรือ security ที่ขัดขวางการใช้ cloud AI ลอง benchmark Qwen 3.5 ดูในสัปดาห์นี้เลยครับ
+  <div class="lang-link">
+    <a href="morning-brief-podcast-2026-04-01.html">🇺🇸 Switch to English Version</a>
   </div>
-</div>
 
-<!-- SECTION 02 -->
-<div class="section-card" data-section-name="Big Tech Moves" data-section-index="2">
-  <div class="section-label">SECTION 02</div>
-  <h2>🏢 Big Tech Moves — การเคลื่อนไหวของยักษ์ใหญ่</h2>
-  <p>Microsoft มีเดือนมีนาคมที่น่าจดจำมากครับ บริษัทเปิดตัว Copilot Cowork ซึ่งเป็น AI agent ระดับ enterprise ที่ช่วยให้พนักงาน knowledge worker อ่าน วิเคราะห์ และจัดการไฟล์บนคอมพิวเตอร์ได้โดยตรง ที่น่าสนใจคือ Microsoft สร้าง Copilot Cowork นี้โดยใช้เทคโนโลยีจาก Anthropic ครับ นี่คือสัญญาณเชิงกลยุทธ์ที่ชัดเจนว่า Microsoft กำลังเปลี่ยนตัวเองเป็น multi-model platform และลดการพึ่งพา OpenAI อย่างเดียวลงครับ</p>
-  <p>นอกจากนี้ Microsoft ยังออก MAI-Image-2 จาก internal superintelligence team ซึ่งเป็น text-to-image model ที่สร้างภาพสมจริงขึ้น มีแสงเงาที่ดีขึ้น และ render ข้อความได้แม่นยำขึ้น เหมาะสำหรับงาน enterprise อย่างโปสเตอร์และ infographic และในระดับองค์กร Microsoft ได้รวมทีม Copilot สายพาณิชย์และสายผู้บริโภคเข้าด้วยกัน เพื่อสร้างประสบการณ์ผู้ใช้ที่เป็นหนึ่งเดียวกันครับ</p>
-  <p>ในขณะเดียวกัน OpenAI ก็ยืนยันว่าจะไม่ใช้ cloud ของ Microsoft แบบ exclusive อีกต่อไปครับ ความสัมพันธ์ระหว่างสองบริษัทนี้กำลังเปลี่ยนจาก partnership แบบ exclusive มาเป็นความร่วมมือในแบบ arms-length มากขึ้น และ Microsoft ก็ได้ทำ strategic partnership ใหม่กับ Anthropic อย่างเป็นทางการแล้วครับ</p>
-  <p>Google ปล่อย Personal Intelligence feature ให้กับผู้ใช้ทั้งหมดในสหรัฐอเมริกา ครับ ทำให้ Gemini สามารถดึงข้อมูลจาก Gmail, Photos และ YouTube มาใช้ตอบสนองได้อย่างตระหนักถึงบริบทมากขึ้น เดิมเฉพาะผู้ใช้แบบจ่ายเงินเท่านั้นที่ได้ใช้ แต่ตอนนี้ผู้ใช้ฟรีก็ได้ใช้แล้วในแบบ opt-in ครับ Google ยังเริ่มสร้าง managed MCP servers ด้วย เข้าร่วมกับ OpenAI และ Microsoft ในการรับ Model Context Protocol เป็น standard สำหรับการเชื่อมต่อ AI agent กับ tool และ service ต่างๆ ครับ</p>
-  <p>Apple เดินเกมต่างออกไปโดยจับมือกับ Google เพื่อรัน Gemini ขนาด 1.2 ล้านล้าน parameters บน Private Cloud Compute ของ Apple เองครับ รักษาความเป็นส่วนตัวของผู้ใช้ไว้ขณะที่ใช้ประโยชน์จากโมเดลที่ล้ำที่สุดของ Google ครับ</p>
-  <p>และเรื่องที่สร้างความฮือฮาที่สุดในเดือนนี้ครับ OpenAI ทำข้อตกลงเพื่อปรับใช้ AI บนเครือข่าย classified ของกระทรวงกลาโหมสหรัฐฯ ประกาศออกมาเพียงไม่กี่ชั่วโมงหลังจากที่รัฐบาล Trump รายงานว่าแบน Anthropic จากสัญญาภาครัฐทั้งหมด ส่งผลให้เกิด backlash ขนาดใหญ่ครับ hashtag QuitGPT มีผู้สนับสนุนถึง 2.5 ล้านคน และอัตราการ uninstall ChatGPT พุ่งสูงขึ้นถึง 295 เปอร์เซ็นต์ในคืนเดียวครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> กลยุทธ์ multi-model ของ Microsoft หมายความว่า workload ใน Fabric และ Copilot อาจถูกขับเคลื่อนด้วย AI backend ที่แตกต่างกันตามประเภทงานในอนาคตครับ ออกแบบ AI governance framework ของท่านให้เป็น model-agnostic ตั้งแต่ตอนนี้จะดีกว่าครับ
+  <!-- INTRO -->
+  <div class="section-card" data-section-name="บทนำ">
+    <h2>🎙️ บทนำ</h2>
+    <p>สวัสดีครับทุกท่าน ยินดีต้อนรับสู่ Morning Brief พอดแคสต์ข่าวประจำวันสำหรับนักวิชาชีพด้านข้อมูลและ AI โดยเฉพาะครับ วันนี้เป็นวันพุธที่ 1 เมษายน ปี 2026 หรือก็คือวันแรกของไตรมาสที่สองของปีนี้เลยครับ</p>
+    <p>วันนี้เรามีเนื้อหาครอบคลุมแปดหัวข้อใหญ่ครับ ได้แก่ เรื่อง GPT-5.4 ของ OpenAI ที่ถือเป็นก้าวกระโดดครั้งสำคัญ, การแข่งขันลงทุน AI infrastructure ของ Big Tech ที่มูลค่าเกือบ 700 พันล้านดอลลาร์, มูลค่าบริษัท OpenAI ที่พุ่งถึง 840 พันล้านดอลลาร์พร้อมกับแรงกดดันเรื่อง ROI, กฎระเบียบควบคุมการส่งออกชิปจากวอชิงตัน, ความก้าวหน้าของ Apache Iceberg และการรวม dbt กับ Flink ในวงการ data engineering, อัปเดตฟีเจอร์ล่าสุดของ Databricks, สิ่งที่ใหม่จาก Power BI และ Microsoft Fabric มีนาคม 2026 และสุดท้ายคือ Agentic AI ที่กำลังเปลี่ยนโฉมหน้าของบริการทางการเงินครับ มาเริ่มกันเลยครับ</p>
   </div>
-</div>
 
-<!-- SECTION 03 -->
-<div class="section-card" data-section-name="Business & Financial Signals" data-section-index="3">
-  <div class="section-label">SECTION 03</div>
-  <h2>💰 Business & Financial Signals — สัญญาณธุรกิจและการเงิน</h2>
-  <p>เรื่องเงินๆ ทองๆ ใน Q1 2026 นี้ต้องพูดถึง OpenAI ก่อนครับ บริษัทแตะ annualized recurring revenue ที่ 25,000 ล้านดอลลาร์แล้ว และกำลังเดินหน้าสู่ IPO ที่อาจเกิดขึ้นเร็วที่สุดปลายปี 2026 ครับ ส่วน Anthropic ก็กำลังเข้าใกล้ 19,000 ล้านดอลลาร์ในรายได้ annualized ซึ่งยืนยันว่าตลาดโมเดล AI ขั้นสูงกลายเป็นหนึ่งในกลุ่ม sector ที่เติบโตเร็วที่สุดในวงการเทคโนโลยีครับ</p>
-  <p>OpenAI มีการควบรวมที่น่าสนใจสองรายในเดือนมีนาคมครับ วันที่ 10 มีนาคม OpenAI เข้าซื้อ Promptfoo สตาร์ทอัพด้าน AI testing เพื่อเสริมความแข็งแกร่งในการตรวจสอบความปลอดภัยของ AI agent อัตโนมัติ และวันที่ 19 มีนาคม OpenAI เข้าซื้อ Astral ซึ่งเป็นบริษัทเบื้องหลัง uv และ ruff เครื่องมือ Python tooling ยอดนิยม ส่งสัญญาณว่า OpenAI สนใจ developer infrastructure มากขึ้นครับ</p>
-  <p>Amazon ประกาศ strategic partnership กับ OpenAI เพื่อสร้าง Stateful Runtime Environment บน Amazon Bedrock ร่วมกัน โดยวาง memory และ tool-use infrastructure เป็นรากฐานของ AI stack ยุคหน้าครับ ส่วนโฆษณาที่ขับเคลื่อนด้วย AI คาดว่าจะเติบโต 63 เปอร์เซ็นต์ในปี 2026 แตะระดับ 57,000 ล้านดอลลาร์ครับ</p>
-  <p>ด้านชิปคอมพิวเตอร์ Huawei ตั้งเป้าส่งชิป 950PR ถึง 750,000 ชิ้นในปี 2026 เพื่อท้าทาย H100 ของ NVIDIA ในฐานะชิปเทรน AI ที่ครองตลาดครับ บริษัทเทคโนโลยีจีนรายใหญ่เต็มใจที่จะรัน production workload บนชิปของ Huawei มากขึ้นเรื่อยๆ ครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> เมื่อ OpenAI จดทะเบียนในตลาดหลักทรัพย์ เราจะได้เห็นรายงานสาธารณะเกี่ยวกับต้นทุน infrastructure ของ AI และ margin ในที่สุดครับ data leader ควรติดตาม filing เหล่านั้นอย่างใกล้ชิด เพราะจะเผย unit economics จริงๆ ของการ deploy AI ในระดับ scale ซึ่งเป็นประโยชน์ต่อการตัดสินใจ build-vs-buy ของท่านโดยตรงครับ
+  <!-- SECTION 01 -->
+  <div class="section-card" data-section-name="01 · AI Models & Capabilities">
+    <h2>01 · AI Models &amp; Capabilities</h2>
+    <p>เรื่องที่โดดเด่นที่สุดในช่วงเข้า Q2 ปี 2026 ต้องยกให้ GPT-5.4 ของ OpenAI ครับ โมเดลนี้ได้ข้ามเส้นขีดความสามารถสำคัญไปแล้ว ด้วย context window ขนาด หนึ่งล้าน token ซึ่งใหญ่พอที่จะอ่านและวิเคราะห์ codebase ทั้งชุด, data dictionary ครบถ้วน, หรือสัญญาทางกฎหมายยาวๆ ได้ในครั้งเดียวครับ</p>
+    <p>ที่น่าสนใจยิ่งกว่าคือ GPT-5.4 ทำคะแนนได้ 75 เปอร์เซ็นต์บน OSWorld-V ซึ่งเป็น benchmark ที่จำลองงานจริงบนคอมพิวเตอร์ เช่น การนำทางในแอปพลิเคชัน, กรอกฟอร์ม, และทำงานหลายขั้นตอนอย่างต่อเนื่องครับ นี่หมายความว่า GPT-5.4 ไม่ได้แค่ตอบคำถามอีกต่อไป แต่มันสามารถ ลงมือทำงาน จริงๆ ได้แล้วครับ</p>
+    <p>นอกจากนี้ OpenAI ยังแตะรายได้ต่อปีที่ 25 พันล้านดอลลาร์ และมีรายงานว่าบริษัทกำลังวางแผนเข้า IPO อาจเร็วสุดภายในปลายปี 2026 นี้ครับ ซึ่งถ้าเกิดขึ้นจริง เราจะได้เห็นข้อมูลการเงินที่ชัดเจนเป็นครั้งแรกว่า unit economics ของการ deploy AI ในระดับใหญ่นั้นเป็นอย่างไรครับ</p>
+    <p>ส่วน Morgan Stanley ออกรายงานเตือนว่า AI จะมีการก้าวกระโดดครั้งใหญ่ในช่วงครึ่งแรกของปี 2026 และองค์กรส่วนใหญ่ยังไม่พร้อมรับมือกับความเปลี่ยนแปลงด้านแรงงานและการปฏิบัติงานที่จะตามมาครับ โดยเฉพาะในเรื่อง autonomous agent, multi-modal reasoning, และ real-time adaptive learning</p>
+    <p>ที่น่าสนใจอีกอย่างคือ Samsung ประกาศเป้าหมายจะติด Gemini AI ของ Google ไว้ในอุปกรณ์มือถือถึง 800 ล้านเครื่องภายในสิ้นปีนี้ครับ ซึ่งเป็นการขยาย AI ไปสู่กลุ่มสมาร์ทโฟนระดับกลางและล่างที่ไม่เคยเข้าถึง frontier AI มาก่อนครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>ความสามารถของ GPT-5.4 ในการทำงานหลายขั้นตอนอัตโนมัติบอกสัญญาณชัดเจนว่า AI agent จะเริ่มเข้ามาดูแลส่วนหนึ่งของ data pipeline, การตรวจสอบคุณภาพข้อมูล, และการสร้าง report ในองค์กรครับ ทีม DataOps ควรเริ่มกำหนดขอบเขต governance ของ AI ตั้งแต่ตอนนี้ก่อนที่แรงกดดันจากฝ่ายธุรกิจจะมาถึงครับ</p>
+    </div>
   </div>
-</div>
 
-<!-- SECTION 04 -->
-<div class="section-card" data-section-name="Geopolitics & Regulation" data-section-index="4">
-  <div class="section-label">SECTION 04</div>
-  <h2>🌍 Geopolitics & Regulation — ภูมิรัฐศาสตร์และกฎระเบียบ</h2>
-  <p>ขณะนี้เราเหลือเวลาอีกเพียงสี่เดือนก่อนที่ EU AI Act จะมีผลบังคับใช้อย่างสมบูรณ์ในวันที่ 2 สิงหาคม 2026 ครับ และภาพการเตรียมพร้อมยังน่าเป็นห่วงอยู่ ประเทศสมาชิก EU อย่างน้อย 12 ประเทศพลาดกำหนดเส้นตายในการแต่งตั้งหน่วยงานกำกับดูแลที่มีความสามารถระดับชาติ และ 19 ประเทศยังไม่ได้แต่งตั้งจุดติดต่อเดียวครับ</p>
-  <p>ข้อเสนอ Digital Omnibus ของคณะกรรมาธิการยุโรปซึ่งจะขยายกำหนดเส้นตายการปฏิบัติตาม AI ความเสี่ยงสูงออกไปจนถึงเดือนธันวาคม 2027 กำลังอยู่ระหว่างการเจรจา trilogue ในรัฐสภายุโรป โดยคาดว่าจะมีการรับรองอย่างเป็นทางการในช่วงกลางปี 2026 ครับ</p>
-  <p>เมื่อวันที่ 3 มีนาคม ได้มีการเผยแพร่ Second Draft Code of Practice ว่าด้วยการติดฉลากเนื้อหาที่สร้างโดย AI ครับ ซึ่งกำหนดให้ผู้ให้บริการ generative AI ต้องทำให้เนื้อหาที่ AI สร้างขึ้นสามารถระบุได้อย่างชัดเจน โดยเฉพาะ deepfake และข้อความที่มุ่งแจ้งข้อมูลสาธารณะในเรื่องสาธารณะต้องติดฉลากที่มองเห็นได้ชัดเจนครับ</p>
-  <p>กฎหมาย Basic AI Act ของเกาหลีใต้มีผลบังคับใช้แล้วตั้งแต่เดือนมกราคม 2026 ครับ โดยบังคับใช้แบบ extraterritorial กับระบบที่กระทบต่อผู้ใช้ชาวเกาหลี และกำหนดให้ต้องมี transparency, การประเมินความเสี่ยง, human oversight และเอกสารประกอบสำหรับระบบ AI ที่ส่งผลกระทบสูงครับ</p>
-  <p>ช่องว่างระหว่างสหรัฐอเมริกาและ EU กำลังกว้างขึ้นครับ รัฐบาล Trump รับเอาแนวทางกำกับดูแลแบบเบาๆ และเพิ่งอนุญาตให้ขายชิป H20 และ H200 ของ NVIDIA ให้จีนได้ สวนกระแส China hawks ในรัฐสภาครับ ส่วน UK Regulator ทั้ง ICO และ Ofcom ก็ออกคำสั่งเรียกข้อมูลอย่างเป็นทางการจาก xAI เกี่ยวกับโมเดล Grok ครับ เนื่องจากกังวลว่าความสามารถ image generation อาจถูกใช้สร้าง deepfake ที่ไม่ได้รับความยินยอมครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> ไม่ว่าข้อเสนอ Digital Omnibus จะผ่านหรือไม่ การสร้าง AI pipeline ที่พร้อมสำหรับ compliance ตั้งแต่ตอนนี้คือการตัดสินใจทางสถาปัตยกรรมที่ถูกต้องครับ อย่าเอาแผน compliance ของท่านไปพักรอความชัดเจนจาก regulator เด็ดขาดครับ
+  <!-- SECTION 02 -->
+  <div class="section-card" data-section-name="02 · Big Tech Moves">
+    <h2>02 · Big Tech Moves</h2>
+    <p>ตัวเลขการลงทุน AI ของ Big Tech ในปี 2026 นั้นน่าทึ่งมากครับ สี่ hyperscaler ใหญ่ได้แก่ Microsoft, Alphabet, Amazon, และ Meta กำลังวิ่งหน้าตั้งในทิศทางที่จะใช้เงินระหว่าง 635 ถึง 665 พันล้านดอลลาร์ในด้าน AI infrastructure ในปีนี้ครับ ซึ่งเพิ่มขึ้นจาก 381 พันล้านดอลลาร์ในปีที่แล้วถึง 67 ถึง 74 เปอร์เซ็นต์เลยทีเดียวครับ</p>
+    <p>ถ้าดูเป็นรายบริษัทครับ Amazon นำโด่งด้วย capital expenditure 200 พันล้านดอลลาร์, Alphabet อยู่ที่ 175 ถึง 185 พันล้าน, Microsoft วิ่งอยู่ที่อัตราต่อปี 145 พันล้าน, ส่วน Meta อยู่ที่ 115 ถึง 135 พันล้านดอลลาร์ครับ</p>
+    <p>ดีลที่สำคัญที่สุดในสัปดาห์นี้คือ OpenAI กับ Amazon ลงนามในข้อตกลงใหญ่ที่ OpenAI จะใช้กำลังประมวลผลขนาด 2 gigawatt จาก Trainium AI chip ของ Amazon พร้อมกับ OpenAI ยืนยันจะจ่าย AWS อีก 100 พันล้านดอลลาร์ในช่วง 8 ปีข้างหน้าครับ นี่คือการล็อก infrastructure ระยะยาวที่บอกทิศทางตลาด AI cloud อย่างชัดเจนครับ</p>
+    <p>ในส่วนผู้บริโภค Apple ยืนยันอย่างเป็นทางการว่า Siri รุ่นใหม่ที่ขับเคลื่อนด้วย Gemini ของ Google จะเปิดตัวในปี 2026 พร้อม cross-app integration แบบลึก, Samsung ตั้งเป้า 800 ล้านเครื่อง, ส่วน NVIDIA ก็ขยายฐานลูกค้าด้วยพาร์ทเนอร์ชิปกับ Alpamayo สำหรับรถยนต์ไร้คนขับโดยใช้แพลตฟอร์ม DRIVE Orin และ Thor ร่วมกับ digital twin simulation ครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>การลงทุน 200 พันล้านดอลลาร์ของ Amazon ครอบคลุมการขยายตัวของ Bedrock, SageMaker, และ Amazon Q ครับ ทีม data engineering ที่ยังไม่ได้ประเมิน AI-native service ของ AWS ควรนำเรื่องนี้ใส่ใน Q2 technology assessment roadmap ได้เลยครับ</p>
+    </div>
   </div>
-</div>
 
-<!-- SECTION 05 -->
-<div class="section-card" data-section-name="Data Engineering & DataOps Spotlight" data-section-index="5">
-  <div class="section-label">SECTION 05</div>
-  <h2>🧊 Data Engineering & DataOps Spotlight — Apache Iceberg ปฏิวัติวงการ</h2>
-  <p>มีนาคม 2026 จะถูกจดจำในฐานะเดือนที่ Apache Iceberg กลายเป็น open table format มาตรฐานของวงการอย่างเป็นทางการครับ มาดูกันว่าเกิดอะไรขึ้นบ้างนะครับ</p>
-  <p>เมื่อวันที่ 4 มีนาคม Snowflake เปิด Apache Iceberg version 3 เป็น public preview ครับ ความสามารถใหม่ที่สำคัญได้แก่ default column values, deletion vectors สำหรับประสิทธิภาพการเขียนที่ดีขึ้น และ row-level lineage tracking สำหรับ data governance และการตรวจสอบ Iceberg v3 support ถูก integrate เข้าไปใน streaming, batch ingestion, transformation, analytics, ML, AI และ disaster recovery ทั้งหมดครับ เมื่อวันที่ 2 มีนาคม Snowflake ยังเพิ่มความสามารถในการ query Delta-based Iceberg tables ที่มี deletion vectors และใช้ liquid clustering ซึ่งหมายความว่า Snowflake รองรับตารางที่เขียนด้วย Delta Lake version 4.0.0 ได้แล้วครับ</p>
-  <p>Databricks ประกาศ Public Preview สำหรับการรองรับ Apache Iceberg อย่างสมบูรณ์ใน Unity Catalog ครับ มีสองความสามารถใหม่คือ Managed Iceberg tables ที่ Unity Catalog เป็นเจ้าของ lifecycle ของตารางและทำหน้าที่เป็น authoritative catalog, และ External Iceberg table federation ที่ช่วยให้สามารถ query ตาราง Iceberg ที่จัดการโดย AWS Glue, Hive Metastores และ Snowflake Horizon Catalog ได้อย่างไร้รอยต่อครับ</p>
-  <p>ข่าวที่ใหญ่ที่สุดในวงการ Data Stack ครับ dbt Labs และ Fivetran ลงนามในข้อตกลงควบรวมกิจการ นี่คือการ consolidation ที่สำคัญที่สุดใน modern data stack ในรอบหลายปีครับ ถ้าท่านมีสัญญากับ dbt และ Fivetran แยกกันอยู่ ให้เตรียมรับมือกับการเปลี่ยนแปลงด้านราคา packaging และ integration ครับ</p>
-  <p>dbt Core version 1.11 รองรับการทำ basic Iceberg table materialization บน Snowflake สำหรับตารางที่ register ใน AWS Glue catalog ผ่าน catalog-linked databases แล้วครับ หมายเหตุ: incremental materializations ยังไม่รองรับในเวอร์ชันนี้ครับ</p>
-  <p>เมื่อวันที่ 26 มีนาคม มีการเผยแพร่ blueprint สถาปัตยกรรมสำคัญที่แสดงให้เห็นการบรรจบกันของ dbt และ Apache Flink สำหรับ workflow แบบ streaming และ batch รวมกันครับ Apache Iceberg คือ connective tissue ที่เชื่อมทั้งสองโลกเข้าหากันครับ โดย Flink pipeline เขียน governed events ลงใน Iceberg table ใน S3 bucket ของท่านเอง และ table เดียวกันนั้นก็พร้อมให้ Snowflake, BigQuery หรือ Databricks อ่านได้ทันทีโดยไม่ต้องมี ETL step เพิ่มเติมเลยครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> "Data Tax" กำลังจะสิ้นสุดลงครับ บริษัทใน Fortune 500 โดยเฉลี่ยเสีย 2 ถึง 7 ล้านดอลลาร์ต่อปีไปกับค่า redundant data storage และ transfer fees จากการเก็บ data copy แยกกันใน Snowflake, Databricks และ Fabric open format ของ Apache Iceberg แก้ปัญหานี้ได้ครับ นี่คือไตรมาสที่ควรเริ่มวางแผน Iceberg migration ของท่านครับ
+  <!-- SECTION 03 -->
+  <div class="section-card" data-section-name="03 · Business & Financial Signals">
+    <h2>03 · Business &amp; Financial Signals</h2>
+    <p>ข่าวใหญ่เรื่องมูลค่าบริษัทครับ OpenAI ถึงระดับ 840 พันล้านดอลลาร์จากรอบระดมทุนล่าสุดที่มี Amazon, NVIDIA, และ SoftBank ร่วมลงทุนครับ ทำให้ OpenAI กลายเป็นหนึ่งในบริษัทเอกชนที่มีมูลค่าสูงที่สุดในประวัติศาสตร์วงการเทคโนโลยีเลยครับ</p>
+    <p>แต่บรรยากาศนักลงทุนกำลังเปลี่ยนแปลงอย่างมีนัยสำคัญครับ หลังจากที่ผ่านมาหลายปีใช้แนวคิด "ลงทุน AI เพื่อรักษาความสามารถแข่งขัน" ตอนนี้ตลาดเริ่มถามคำถามยากขึ้นว่า เมื่อไหร่การใช้จ่ายนี้จะกลับมาเป็นผลตอบแทนจริงๆ ครับ Amazon คาดว่าจะติดลบในแง่ free cash flow ในปี 2026 นี้เนื่องจากการลงทุน infrastructure ขนาดใหญ่ครับ</p>
+    <p>รายงาน State of Fintech 2026 ของ F-Prime ส่งสัญญาณว่า momentum ของ IPO กำลังกลับมาในวงการ fintech หลังจากหยุดชะงักสองปีครับ พร้อมกับความสนใจจากสถาบันการเงินในด้าน stablecoin infrastructure ที่กำลังเติบโตอย่างรวดเร็ว โดยธนาคารใหญ่ต่างวางตำแหน่งตัวเองเป็นผู้ดูแล reserve asset และ custody ให้กับ stablecoin issuer ครับ</p>
+    <p>โฆษณาที่ขับเคลื่อนด้วย AI คาดว่าจะเติบโต 63 เปอร์เซ็นต์ในปี 2026 แตะ 57 พันล้านดอลลาร์ ซึ่งถือเป็นหนึ่งในช่องทางสร้างรายได้ที่ชัดเจนที่สุดในระยะสั้นสำหรับบริษัท AI platform ครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>CFO ทุกอุตสาหกรรมกำลังถามคำถามยากขึ้นเกี่ยวกับ ROI ของโครงการ AI ครับ ทีมข้อมูลที่สามารถ instrument pipeline ด้วย business KPI เช่น การลดต้นทุน, ผลกระทบต่อรายได้, cycle time จะได้เปรียบมากในรอบวางแผน Q2 ครับ</p>
+    </div>
   </div>
-</div>
 
-<!-- SECTION 06 -->
-<div class="section-card" data-section-name="Databricks Feature Updates" data-section-index="6">
-  <div class="section-label">SECTION 06</div>
-  <h2>🏗️ Databricks Feature Updates — อัปเดตฟีเจอร์ Databricks</h2>
-  <p>เจาะลึก Databricks มากขึ้นอีกนิดนะครับ headline ของเดือนนี้คือการรองรับ Apache Iceberg อย่างสมบูรณ์ใน Unity Catalog ที่เข้าสู่ Public Preview ครับ มีสองความสามารถใหม่ที่เปิดใช้งานได้แล้วครับ</p>
-  <p>ประการแรกคือ Managed Iceberg tables ครับ ใน mode นี้ Unity Catalog เป็นเจ้าของ lifecycle ของตารางทั้งหมดและทำหน้าที่เป็น authoritative catalog ให้บริการผ่าน Unity Catalog's Iceberg REST Catalog API ซึ่งหมายความว่า Iceberg-compatible client แทบทุกตัวไม่ว่าจะเป็น Apache Spark, Apache Flink หรือ Trino สามารถใช้ Unity Catalog เป็น single source of truth ได้แล้วครับ</p>
-  <p>ประการที่สองคือ External Iceberg table federation ผ่าน Lakehouse Federation ครับ ท่านสามารถ query และ govern ตาราง Iceberg ที่จัดการโดย external catalogs อย่าง AWS Glue, Hive Metastores และ Snowflake Horizon Catalog ได้โดยไม่มีรอยต่อจาก governance layer ของ Unity Catalog เลยครับ</p>
-  <p>Predictive Optimization ทำงานโดยอัตโนมัติบน Managed Iceberg tables ครับ โดยรัน advanced operations รวมถึง Liquid Clustering ใน background เพื่อ query performance ที่รวดเร็วและประหยัด storage โดยไม่ต้องมีการ tune ด้วยมือครับ</p>
-  <p>สำหรับลูกค้า Databricks ที่กำลัง run Delta Lake และ Iceberg environment แยกกันอยู่ การอัปเดตสัปดาห์นี้อาจเปิดทางให้ consolidate ได้อย่างมีนัยสำคัญครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> ถ้าองค์กรของท่านลังเลที่จะ adopt Iceberg เพราะกังวลเรื่องความ compatible กับ Unity Catalog อุปสรรคนั้นได้ถูกกำจัดออกไปอย่างสมบูรณ์แล้วครับ ถึงเวลาทบทวน table format strategy ของท่านใน Q2 นี้ได้เลยครับ การรวม Delta Lake และ Iceberg ภายใต้ Unity Catalog คือพัฒนาการที่สำคัญที่สุดของ Databricks platform ในปี 2026 ครับ
+  <!-- SECTION 04 -->
+  <div class="section-card" data-section-name="04 · Geopolitics & Regulation">
+    <h2>04 · Geopolitics &amp; Regulation</h2>
+    <p>วอชิงตันกำลังขันน็อตเรื่องการส่งออกชิป AI ครับ Bureau of Industry and Security หรือ BIS ปรับกรอบการตรวจสอบการส่งออกให้เข้มข้นขึ้น โดยกำหนดให้การส่งออก AI chip ขั้นสูง โดยเฉพาะ H200 และ MI325X หรือที่มีประสิทธิภาพเทียบเท่า ไปยังจีนและมาเก๊า ต้องขออนุญาตเป็นรายๆ ครับ กฎนี้มีผลตั้งแต่ 15 มกราคม 2026 ครับ</p>
+    <p>ทำเนียบขาวยังเพิ่มภาษีนำเข้า 25 เปอร์เซ็นต์สำหรับ semiconductor ที่เกิน threshold ประสิทธิภาพที่กำหนด ทำให้มีทั้งกำแพงการเงินและกฎระเบียบกีดกันการส่งออกชิป AI ขั้นสูงครับ บริษัท AI ใหญ่ของสหรัฐฯ อย่าง Anthropic, OpenAI, และ Microsoft ส่วนใหญ่สนับสนุนมาตรการนี้ในฐานะความจำเป็นด้านความมั่นคงแห่งชาติครับ</p>
+    <p>ในรัฐสภา ร่าง AI OVERWATCH Act ผ่านคณะกรรมการต่างประเทศของสภาผู้แทนราษฎรแล้วครับ กฎหมายนี้จะจัดการส่งออก semiconductor ขั้นสูงโดยเฉพาะ NVIDIA Blackwell chip เหมือนกับการขายอาวุธภายใต้ ITAR ซึ่งห้ามโอนให้กับหน่วยงานต่างชาติที่น่าเป็นห่วงเป็นเวลา 2 ปีครับ</p>
+    <p>แผน AI Action Plan ของทำเนียบขาวมีเป้าหมายส่งออก American AI technology stack ทั้ง hardware, software, โมเดล, และมาตรฐาน ไปยังประเทศพันธมิตรในฐานะความคิดริเริ่มด้านความมั่นคงแห่งชาติครับ และคาดว่าจะมีการอัปเดตนโยบายใน Q2 เกี่ยวกับ federal AI deployment guidelines และกรอบความรับผิดชอบครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>สำหรับนักวิชาชีพด้านข้อมูลในองค์กรข้ามชาติ การ comply กับกฎข้ามพรมแดนด้าน AI กำลังกลายเป็นความเสี่ยงทางธุรกิจที่จับต้องได้ครับ ทีม data governance ต้องให้ความสนใจอย่างจริงจังกับ data residency requirements, การบันทึก provenance ของโมเดล AI, และการ comply กับกฎการส่งออกสำหรับผลิตภัณฑ์ที่ใช้ AI ในปี 2026 ครับ</p>
+    </div>
   </div>
-</div>
 
-<!-- SECTION 07 -->
-<div class="section-card" data-section-name="Power BI & Microsoft Fabric Updates" data-section-index="7">
-  <div class="section-label">SECTION 07</div>
-  <h2>📊 Power BI & Microsoft Fabric Updates — อัปเดตประจำเดือนมีนาคม</h2>
-  <p>มีนาคม 2026 นำมาซึ่งอัปเดตชุดสำคัญสำหรับ Power BI และ Microsoft Fabric ครับ มาดู highlight กันเลยครับ</p>
-  <p>การประกาศที่ใหญ่ที่สุดของ Power BI คือ Translytical Task Flows ที่ถึง General Availability แล้วครับ ฟีเจอร์นี้ช่วยให้ end user สามารถ write-back โดยตรงจาก Power BI report ได้ ไม่ว่าจะเป็นการอัปเดต record, เพิ่ม annotation, ลบรายการ หรือเรียก external API รวมถึง Azure OpenAI โดยไม่ต้องออกจาก report ครับ data destination ที่รองรับคือ Fabric SQL database, Fabric warehouse และ Fabric lakehouse สำหรับ file ครับ ถ้าองค์กรของท่านมี operational use case ที่ analyst ต้องการ act on data ไม่ใช่แค่ดู นี่คือ feature ที่ท่านรอมาตลอดครับ</p>
-  <p>Direct Lake on OneLake ก็ถึง General Availability เช่นกันครับ รองรับ OneLake security, modeling features ที่มากขึ้น และ query performance ที่เร็วขึ้น ใช้ Direct Lake on SQL เมื่อต้องการ security rules ที่กำหนดไว้ที่ SQL analytics endpoint พร้อม delegated identity mode ครับ</p>
-  <p>Copilot ใน Power BI Mobile อยู่ใน preview แล้วครับ ช่วยให้พูดคุยกับ AI ภายใน report บนมือถือได้ Input Slicer visual ใหม่ GA แล้ว ให้ user พิมพ์หรือวางค่า filter โดยตรงแทนการ scroll รายการยาว และ TMDL View on the Web ซึ่งเป็นประสบการณ์ semantic modeling แบบ code-first บน browser กำลังจะมาเร็วๆ นี้ครับ</p>
-  <p>ฝั่ง Fabric platform Fabric CLI version 1.5 คือ highlight ของเดือนครับ Power BI developer สามารถ trigger semantic model refresh, rebind report และ script end-to-end deployment workflow จาก terminal ได้โดยไม่ต้องสลับไปมาใน portal release นี้เพิ่ม deploy command สำหรับ CI/CD, interactive REPL mode, JMESPath filtering, notebook export หลายรูปแบบ, Python 3.13 support และ Fabric item coverage ที่ขยายออกไปครับ</p>
-  <p>OneLake Catalog Search API ช่วยให้ค้นหาข้ามทุก workspace ผ่านโค้ดได้ครับ ส่ง search request ครั้งเดียวก็สามารถค้นหา item ที่ต้องการจาก estate ทั้งหมดที่ท่านเข้าถึงได้ตาม metadata และ permission ครับ และ Purview DSPM for AI ให้ทีม data security มองเห็นและควบคุมความเสี่ยงใน AI prompt และ response ภายใน Fabric environment ครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> Fabric CLI version 1.5 เป็น game-changer สำหรับทีม DataOps ที่จัดการ CI/CD pipeline ครับ การ trigger semantic model refresh และ deployment scripting ผ่าน terminal ทำให้ Power BI artifact กลายเป็น infrastructure-as-code ชั้นหนึ่งได้เลยครับ ถ้าทีมของท่านยัง manage Power BI deployment ผ่าน portal แบบ manual อยู่ workflow ของท่านกำลังจะเปลี่ยนไปครับ
+  <!-- SECTION 05 -->
+  <div class="section-card" data-section-name="05 · Data Engineering & DataOps Spotlight">
+    <h2>05 · Data Engineering &amp; DataOps Spotlight</h2>
+    <p>เรื่อง Apache Iceberg ยังคงเร่งตัวขึ้นเรื่อยๆ เข้าสู่ Q2 ปี 2026 ครับ พัฒนาการที่โดดเด่นที่สุดคือการบรรจบกันของ dbt กับ Apache Flink ที่เผยแพร่เมื่อวันที่ 26 มีนาคมที่ผ่านมาครับ ซึ่งสร้าง workflow แบบรวมศูนย์สำหรับ data engineer ที่ทำงานทั้งบน Snowflake, BigQuery, Databricks, และ Confluent ครับ</p>
+    <p>blueprint ของ dbt กับ Flink ช่วยให้นักพัฒนาเขียน transformation ทั้งแบบ batch และ streaming ในสภาพแวดล้อมการพัฒนาเดียวกันครับ โดยมี Apache Iceberg เป็นตัวเชื่อมกลาง Flink pipeline จะเขียนข้อมูลที่มี governance ลงใน Iceberg table บน object storage แล้ว table เดียวกันนั้นก็พร้อมให้ Snowflake, BigQuery, หรือ Databricks query ได้ทันทีโดยไม่ต้องผ่าน ETL เพิ่มเติมครับ</p>
+    <p>เรื่องนี้สำคัญมากในแง่ต้นทุนครับ การวิเคราะห์อุตสาหกรรมในปี 2026 ชี้ให้เห็นว่าบริษัทใน Fortune 500 โดยเฉลี่ยใช้เงิน 2 ถึง 7 ล้านดอลลาร์ต่อปีกับการเก็บข้อมูลซ้ำซ้อนและค่าโอนข้อมูลข้ามแพลตฟอร์ม ซึ่งเรียกกันว่า data tax ครับ Open Iceberg format กำจัดต้นทุนส่วนนี้ได้ที่ระดับ architecture เลยครับ</p>
+    <p>Databricks ก็ถึงจุดสำคัญกับการประกาศ Full Apache Iceberg Support ใน Unity Catalog เข้าสู่ Public Preview ครับ Managed Iceberg tables อยู่ภายใต้ governance lifecycle ครบวงจรของ Unity Catalog และ serve ผ่าน Iceberg REST Catalog API ที่ engine ที่รองรับ Iceberg ใดๆ ก็ใช้งานได้เลยครับ</p>
+    <p>ส่วน Snowflake March 2026 release นำ Iceberg version 3 เข้า public preview พร้อม deletion vectors สำหรับ write performance ที่เร็วขึ้น, default column values, และ row-level lineage tracking ครับ dbt ยังเปิดเวิร์กชอปฟรี Fast Track to dbt ในวันที่ 7 และ 8 เมษายนนี้ครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>ถ้าองค์กรของท่านยังเก็บข้อมูลซ้ำซ้อนข้ามแพลตฟอร์มระหว่าง Snowflake, Databricks, และ Fabric ในรูปแบบ proprietary อยู่ครับ ทั้งกรณีทางเทคนิคและทางการเงินสำหรับการ migrate มาสู่ Iceberg-first architecture นั้นแข็งแกร่งที่สุดในประวัติศาสตร์แล้วครับ Q2 ปี 2026 คือช่วงเวลาวางแผนที่ต้องลงมือครับ</p>
+    </div>
   </div>
-</div>
 
-<!-- SECTION 08 -->
-<div class="section-card" data-section-name="AI in Financial Services" data-section-index="8">
-  <div class="section-label">SECTION 08</div>
-  <h2>🏦 AI in Financial Services — AI กับโลกบริการทางการเงิน</h2>
-  <p>เราปิดท้ายด้วยสิ่งที่อาจเป็นการเปลี่ยนแปลงทางเทคโนโลยีที่ส่งผลกระทบมากที่สุดสำหรับผู้เชี่ยวชาญด้านบริการทางการเงินครับ นั่นคือการเปลี่ยนจาก AI ที่ช่วยเหลือ มาเป็น AI ที่มีอำนาจดำเนินธุรกรรมอย่างอิสระครับ</p>
-  <p>ในปี 2026 ธนาคารรายใหญ่กำลังเคลื่อนตัวจาก AI chatbot และ analytics dashboard ไปสู่การ deploy autonomous AI agent ที่สามารถวางแผน คิดวิเคราะห์ และดำเนินงานหลายขั้นตอนได้อย่างอิสระภายใต้ guardrail ครับ Goldman Sachs กำลัง deploy autonomous agent ที่ขับเคลื่อนด้วย Anthropic Claude เพื่อจัดการงาน trade accounting หลักและ client onboarding โดยบริษัทอธิบายว่าเป็น digital co-workers ครับ Lloyds Banking Group ประกาศว่าจะ deploy agentic AI ในระดับ enterprise ทั่วองค์กรในปี 2026 และคาดว่าระบบเหล่านี้จะสร้างมูลค่า 100 ล้านปอนด์ในปีนี้ โดยการทำ fraud investigation และ customer complaint แบบอัตโนมัติครับ</p>
-  <p>โอกาสทางตลาดนั้นใหญ่มากครับ McKinsey ประเมินว่า AI อาจเพิ่มมูลค่า 200 ถึง 340,000 ล้านดอลลาร์ต่อปีให้กับธนาคารทั่วโลก การลงทุน AI รวมในภาคธนาคาร ประกันภัย ตลาดทุน และการชำระเงินคาดว่าจะถึง 97,000 ล้านดอลลาร์ภายในปี 2027 และตลาด AI ในภาคบริการทางการเงินโดยรวมคาดว่าจะเติบโตจาก 38,000 ล้านดอลลาร์ในปี 2024 ไปเป็น 190,000 ล้านดอลลาร์ภายในปี 2030 ครับ</p>
-  <p>Use case ที่ส่งผลกระทบสูงที่สุดในปี 2026 ได้แก่ credit risk scoring ที่ใช้ alternative data, real-time payment fraud detection ที่ latency ต่ำกว่า 100 มิลลิวินาที, AI-powered KYC และ AML document verification, personalized financial advice engine และ automated regulatory compliance monitoring ครับ ธนาคารที่ deploy AI ในระดับ scale รายงานว่าลดต้นทุน 20 ถึง 35 เปอร์เซ็นต์ในฟังก์ชันที่ automate ได้ครับ</p>
-  <p>ที่น่าเป็นห่วงครับ ภาคบริการทางการเงินคือ industry ที่ถูกโจมตีด้วย AI-powered cyberattack มากที่สุด คิดเป็น 33 เปอร์เซ็นต์ของ AI-driven incident ทั่วโลกในปี 2025 และ board กำลังต้องการ ROI ที่วัดได้ใน ledger ไม่ใช่แค่ productivity report ครับ</p>
-  <div class="dataops-angle">
-    <strong>📊 DataOps Angle:</strong> ทีม data ในภาคบริการทางการเงินต้องเริ่มสร้าง Responsible AI framework ตั้งแต่ตอนนี้ครับ Agentic system ที่ execute trade และ process KYC ในระดับ scale ต้องการ audit trail ที่แข็งแกร่ง, explainability log และ human-in-the-loop checkpoint ครับ นี่คือ governance infrastructure ที่ทีม DataOps อยู่ในตำแหน่งที่ดีที่สุดในการสร้างครับ และหน้าต่างเวลาที่จะสร้างมันก่อนที่ deployment pressure จะมาถึงกำลังปิดลงแล้วครับ
+  <!-- SECTION 06 -->
+  <div class="section-card" data-section-name="06 · Databricks Feature Updates">
+    <h2>06 · Databricks Feature Updates</h2>
+    <p>เจาะลึก Databricks ในสัปดาห์นี้ครับ ไฮไลท์หลักคือ Full Apache Iceberg Support เข้าสู่ Public Preview ใน Unity Catalog ครับ มีสองฟีเจอร์ใหม่ที่พร้อมใช้งานแล้วครับ</p>
+    <p>อย่างแรกคือ Managed Iceberg Tables ครับ Unity Catalog รับหน้าที่ดูแล lifecycle ของ table ทั้งหมดตั้งแต่สร้าง, optimize, compact, จนถึงลบ และ serve Iceberg metadata ผ่าน Unity Catalog Iceberg REST Catalog API ครับ ซึ่งหมายความว่า Iceberg-compatible client ใดก็ได้ไม่ว่าจะเป็น Apache Spark, Flink, หรือ Trino สามารถชี้ไปที่ Unity Catalog ในฐานะ authoritative metadata source ได้เลยครับ</p>
+    <p>อย่างที่สองคือ External Iceberg Table Federation ผ่าน Lakehouse Federation ครับ ผู้ใช้ Databricks สามารถ query และ govern Iceberg tables ที่ manage โดย external catalog เช่น AWS Glue, Hive Metastores, และ Snowflake Horizon Catalog ได้ทั้งหมดจากภายใน governance layer เดียวของ Unity Catalog ครับ นี่คือ multi-cloud, multi-engine federation จริงๆ ผ่าน control plane เดียวครับ</p>
+    <p>Predictive Optimization ทำงานอัตโนมัติบน Managed Iceberg Tables โดยทำ Liquid Clustering ในพื้นหลังโดยไม่ต้องปรับแต่ง manual หรือตั้งเวลา OPTIMIZE job ครับ ส่วน AI Gateway capabilities ก็กำลังขยายตัวด้วย centralized management, rate limiting, และ observability สำหรับ LLM API calls ทั้งหมดที่ผ่านแพลตฟอร์มครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>Unity Catalog Iceberg REST API คือ technical unlock หลักของ Q2 ครับ Data platform architect ควรทดสอบ cross-engine query performance กับ workload จริงขององค์กรก่อนที่จะ commit production Iceberg tables ใหม่กับ infrastructure นี้ครับ</p>
+    </div>
   </div>
-</div>
 
-<!-- OUTRO -->
-<div class="section-card" data-section-name="บทสรุป — 3 Key Takeaways" data-section-index="9">
-  <div class="section-label">OUTRO</div>
-  <h2>🎯 บทสรุป — 3 Key Takeaways สำหรับ DataOps Leaders</h2>
-  <p>เมื่อเราปิด Q1 2026 ขอทิ้งท้ายด้วยสาม key takeaway สำหรับ DataOps leader ครับ</p>
-  <p>ข้อที่หนึ่งครับ Apache Iceberg v3 อยู่ใน production แล้ว Snowflake และ Databricks ต่างก็บรรลุ milestone สำคัญในเดือนนี้ ถ้าองค์กรของท่านยังคง run redundant data copy ข้ามแพลตฟอร์มอยู่ ยุคของ open table format มาถึงอย่างสมบูรณ์แล้วครับ ประหยัดได้เป็นล้านดอลลาร์ต่อปี เริ่มวางแผน Iceberg migration วันนี้เลยครับ</p>
-  <p>ข้อที่สองครับ นาฬิกา compliance ของ EU AI Act กำลังเดินดังขึ้นเรื่อยๆ วันที่ 2 สิงหาคมห่างออกไปแค่สี่เดือนเท่านั้น ไม่ว่า Digital Omnibus จะผ่านหรือไม่ การสร้าง AI pipeline ที่พร้อมสำหรับ compliance พร้อม logging, explainability และ human oversight คือการตัดสินใจทางสถาปัตยกรรมที่ถูกต้องครับ อย่ารอความชัดเจนจาก regulator ก่อนเริ่มลงมือครับ</p>
-  <p>ข้อที่สามครับ Agentic AI กำลังเปลี่ยนจาก pilot สู่ production ในภาคบริการทางการเงิน Goldman Sachs และ Lloyds กำลัง deploy autonomous agent จริงๆ แล้วตอนนี้ ความต้องการทางสถาปัตยกรรมกำลังเปลี่ยนแปลงครับ ต้องการ audit trail, governance framework และ real-time monitoring infrastructure ทีม data ที่สร้าง infrastructure นี้ใน Q2 จะเป็นทีมที่มีคุณค่าเชิงกลยุทธ์มากที่สุดในองค์กรภายในสิ้นปีครับ</p>
-  <p>นั่นคือ Morning Brief สำหรับวันอังคารที่ 31 มีนาคม 2026 ครับ วันสุดท้ายของ Q1 ผมเป็น AI host ของท่าน ขอบคุณที่รับฟังครับ ขอให้ทุกท่านอยากรู้ อยากเรียน ขับเคลื่อนด้วยข้อมูล และมีวันอังคารที่ยอดเยี่ยมครับ แล้วพบกันใหม่พรุ่งนี้ครับ</p>
-</div>
+  <!-- SECTION 07 -->
+  <div class="section-card" data-section-name="07 · Power BI & Microsoft Fabric Updates">
+    <h2>07 · Power BI &amp; Microsoft Fabric Updates</h2>
+    <p>Microsoft ส่ง update ชุดสำคัญใน Power BI และ Fabric March 2026 ครับ มาดูฟีเจอร์ที่มีผลกระทบมากที่สุดกันครับ</p>
+    <p>ไฮไลท์ใหญ่คือ Translytical Task Flows ครับ ฟีเจอร์นี้ทำให้ผู้ใช้งานสามารถลงมือกระทำโดยตรงภายใน Power BI report ได้เลยครับ ไม่ว่าจะเป็นการอัปเดต record ในฐานข้อมูล, เพิ่มข้อมูลใหม่, ลบรายการ, trigger workflow ในระบบที่เชื่อมต่อ, หรือ call external API รวมถึง Azure OpenAI โดยไม่ต้องออกจาก report ครับ Write-back รองรับ Fabric SQL databases, Fabric warehouses, และ Fabric lakehouses ครับ นี่คือการเปลี่ยนแปลงกระบวนทัศน์ครับ Power BI ไม่ใช่แค่ visualization layer แบบอ่านอย่างเดียวอีกต่อไปแล้วครับ</p>
+    <p>March update ยังนำ design refresh ใหม่มาให้ Power BI Desktop visuals ครับ Input Slicer visual ใหม่ที่ช่วยให้นักวิเคราะห์พิมพ์หรือวางค่า filter ลงไปใน slicer ได้โดยตรง ไม่ต้องเลื่อนหาในรายการยาวๆ อีกแล้วครับ เริ่มตั้งแต่เดือนเมษายน 2026 file picker เก่าใน Desktop ก็จะถูกยกเลิกไปครับ</p>
+    <p>ฝั่ง Microsoft Fabric platform ครับ OneLake Catalog พร้อมใช้งานสำหรับ admin แล้ว ให้ console กลางสำหรับ govern และรักษาความปลอดภัยของ data asset ทั่วทั้ง Fabric estate ครับ Fabric CLI เวอร์ชัน 1.5 ถือเป็น developer productivity milestone สำคัญครับ Power BI developer สามารถ trigger semantic model refresh, rebind report, และ script deployment workflow ครบวงจรจาก terminal ได้เลยครับ โดย release นี้เพิ่ม deploy command สำหรับ CI/CD, interactive REPL mode, JMESPath filtering, notebook export หลายรูปแบบ, Python 3.13 support, และ Fabric item coverage ที่ขยายเพิ่มขึ้นครับ Fabric Extensibility workload management features เปิดตัว 1 เมษายนนี้เลยครับ รวมถึง Manage Workloads tab ใน Admin Portal ครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>Translytical Task Flows และ Fabric CLI 1.5 รวมกันแสดงถึงก้าวสำคัญในการมอง Power BI และ Fabric เป็น DataOps-native platform ครับ การ deploy semantic model จาก terminal ถือว่า treat Power BI artifact เป็น infrastructure-as-code ชั้นหนึ่งเลยครับ ถ้าทีมของท่านยังจัดการ deployment ผ่านหน้าจอ portal อยู่ workflow นี้จะเปลี่ยนไปโดยสิ้นเชิงครับ</p>
+    </div>
+  </div>
 
-<!-- HOSTING GUIDE -->
-<div class="hosting-box">
-  <h3>🚀 วิธีเปิดบน GitHub Pages / Netlify</h3>
-  <p><strong>GitHub Pages:</strong> push ไฟล์นี้เป็น <code>index.html</code> ใน repo → Settings → Pages → Deploy from main branch</p>
-  <p><strong>Netlify:</strong> ลาก folder ไปวางที่ <code>netlify.com/drop</code> หรือ connect GitHub repo</p>
-  <p><strong>URL สาธารณะ:</strong> <code>https://picnicwi.github.io/mymorning</code></p>
-</div>
+  <!-- SECTION 08 -->
+  <div class="section-card" data-section-name="08 · AI in Financial Services">
+    <h2>08 · AI in Financial Services</h2>
+    <p>วงการบริการทางการเงินกำลังเข้าสู่เฟสใหม่ของการนำ AI มาใช้ใน Q2 ปี 2026 ครับ theme ของอุตสาหกรรมที่ถูกพูดถึงชัดเจนในงาน Davos เมื่อต้นปีคือ disciplined AI at scale ครับ ยุคของ pilot โครงการแยกส่วนกำลังจะสิ้นสุดลงครับ สิ่งที่ถูกคาดหวังตอนนี้คือโปรแกรม deployment ระดับองค์กรที่มี capital impact วัดได้จริงครับ</p>
+    <p>Agentic AI คือเทคโนโลยีที่ได้รับความสนใจสูงสุดจากผู้นำธนาคารในขณะนี้ครับ ต่างจาก AI รุ่นก่อนที่ต้องการคำสั่งทีละขั้นตอน agentic AI สามารถวางแผน, ใช้เหตุผล, และดำเนินงานหลายขั้นตอนได้เองอยู่ภายในกรอบที่กำหนดครับ use case ที่กำลังได้รับความนิยม ได้แก่ การ reconcile การซื้อขายอัตโนมัติ, การตรวจสอบเอกสาร KYC และ AML แบบ real-time, การตรวจจับการฉ้อโกงในการชำระเงินที่ latency ต่ำกว่า 100 millisecond, การ scoring ความเสี่ยงด้านเครดิตแบบ personalized ด้วย alternative data, และการตรวจสอบความสอดคล้องทางกฎหมายข้ามเขตอำนาจครับ งานสัมมนาใหญ่วันที่ 15 เมษายนนี้จะรวบรวม practitioner มาแชร์ framework การ implement ครับ</p>
+    <p>เรื่อง stablecoin infrastructure ก็กำลังเร่งตัวพร้อมกันครับ ธนาคารใหญ่กำลังวางตำแหน่งตัวเองเป็นผู้ดูแล reserve asset และให้บริการ custody สำหรับ stablecoin issuer ซึ่งสร้าง service layer ใหม่ที่ทำรายได้ได้ ณ จุดตัดของธนาคารแบบดั้งเดิมและ digital asset ครับ F-Prime ระบุว่านี่คือหนึ่งในการเปลี่ยนแปลง business model ที่สำคัญที่สุดในธนาคารนับตั้งแต่การก้าวขึ้นมาของ mobile payment ครับ</p>
+    <p>ที่น่าสนใจครับ ROI ของ AI ในบริการทางการเงินถูกวัดด้วยตัวเลขทุนจริงมากขึ้น เช่น เงินสดที่ปล่อยออกมาได้จาก working capital optimization, การหยุดรายได้รั่วไหลผ่าน real-time billing reconciliation, และการลดหนี้เสียด้วยโมเดล risk ที่ดีกว่าครับ Board และ CFO ไม่พอใจกับการพูดถึง productivity แบบนามธรรมอีกต่อไปแล้วครับ สถาบันที่ไม่สามารถแสดง capital impact ที่วัดได้จากโปรแกรม AI ภายในสิ้นปี 2026 จะเจอกับแรงกดดันงบประมาณที่หนักมากครับ</p>
+    <div class="dataops-callout">
+      <div class="callout-label">⚡ DataOps Angle</div>
+      <p>Data engineer ในวงการบริการทางการเงินต้องฝัง full lineage, audit trails, และ model governance เข้าไปใน AI pipeline ทุก pipeline ตั้งแต่เริ่มต้นครับ หน่วยงานกำกับดูแลทั่วโลกกำลังตรวจสอบระบบ AI ในการเงินอย่างเข้มงวด และองค์กรที่สามารถแสดง data provenance ครบวงจร ตั้งแต่ input ดิบผ่าน model inference จนถึง output action จะมีความได้เปรียบด้าน compliance ที่จับต้องได้ครับ</p>
+    </div>
+  </div>
 
-</div><!-- /content-wrap -->
+  <!-- OUTRO -->
+  <div class="section-card" data-section-name="3 ประเด็นสำคัญ">
+    <h2>🏁 3 ประเด็นสำคัญประจำวัน</h2>
+    <p>ก่อนปิดท้ายรายการวันนี้ ขอสรุป 3 ประเด็นสำคัญสำหรับผู้นำ DataOps ในวันพุธนี้ครับ</p>
+    <p><strong style="color:var(--cyan);">ประเด็นที่หนึ่ง:</strong> AI agent กำลังก้าวข้ามจากการช่วยเหลือไปสู่การลงมือทำอัตโนมัติครับ คะแนน 75 เปอร์เซ็นต์ของ GPT-5.4 บน OSWorld-V หมายความว่าเรามี AI เชิงพาณิชย์ที่สามารถ execute workflow จริงบนคอมพิวเตอร์ได้แล้วครับ คำถามไม่ใช่ว่า AI agent จะมาแตะ data pipeline ของท่านหรือเปล่า แต่คือท่านมี governance framework พร้อมรองรับเมื่อมันมาถึงหรือยังครับ เริ่มวางโครงร่างสัปดาห์นี้เลยครับ</p>
+    <p><strong style="color:var(--cyan);">ประเด็นที่สอง:</strong> Apache Iceberg คือ open table format มาตรฐานแล้ว และการรวม dbt กับ Flink ทำให้ unified streaming และ batch เป็นความจริงที่ทำได้วันนี้เลยครับ ระหว่าง Unity Catalog REST API milestone ของ Databricks, Iceberg v3 ของ Snowflake, และ Flink integration ของ dbt ไม่มีเหตุผลทางสถาปัตยกรรมที่แข็งแกร่งพอที่จะยังอยู่กับ proprietary table format ใน workload ใหม่อีกต่อไปแล้วครับ Iceberg-first คือ strategy ของ Q2 ครับ</p>
+    <p><strong style="color:var(--cyan);">ประเด็นที่สาม:</strong> ROI accountability มาถึงแล้วสำหรับโปรแกรม AI ในทุกอุตสาหกรรมครับ ไม่ว่าจะเป็น financial services, enterprise SaaS, หรือ retail analytics ตลาดและ board กำลังเรียกร้องให้การลงทุน AI แสดง business value ที่วัดได้ ไม่ใช่แค่ความก้าวหน้าทางเทคนิคครับ ทีมข้อมูลที่ instrument งานของตัวเองด้วย business KPI จะเป็นเสียงที่มีพลังที่สุดในองค์กรในปี 2026 ครับ</p>
+    <p style="color: var(--text-dim); margin-top:16px; font-style: italic;">นั่นคือ Morning Brief ประจำวันพุธที่ 1 เมษายน 2026 วันแรกของ Q2 ครับ ขอบคุณทุกท่านที่รับฟังนะครับ อย่าลืมติดตามข่าวสารอยู่เสมอ ทำงานด้วยข้อมูล แล้วพบกันใหม่พรุ่งนี้ครับ</p>
+  </div>
 
-<!-- STICKY PLAYER -->
+  <!-- Hosting Guide -->
+  <div class="hosting-guide">
+    <h3>🚀 Hosting Guide</h3>
+    <p><strong>GitHub Pages:</strong> Push <code>index.html</code> ไปที่ branch <code>main</code> ของ repo และเปิด Pages ใน Settings → Pages → Branch: main</p>
+    <p><strong>Netlify:</strong> ลาก folder ไปวางที่ <code>netlify.com/drop</code> สำหรับ deployment ทันที</p>
+    <p><strong>Keyboard shortcuts:</strong> <span class="kbd">Space</span> เล่น/หยุด &nbsp; <span class="kbd">→</span> หัวข้อถัดไป &nbsp; <span class="kbd">←</span> หัวข้อก่อนหน้า &nbsp; <span class="kbd">Esc</span> หยุดทั้งหมด</p>
+  </div>
+
+</div><!-- end main-content -->
+
+<!-- Player Bar -->
 <div class="player-bar">
-  <div class="player-inner">
-    <div class="progress-wrap">
-      <span class="time-label" id="currentSection">—</span>
-      <div class="progress-bar" id="progressBar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <span class="time-label" id="totalSections">—</span>
-    </div>
-    <div class="controls-row">
-      <button class="btn-ctrl" id="btnPrev" title="Prev section (←)">⏮</button>
-      <button class="btn-ctrl primary" id="btnPlay" title="Play/Pause (Space)">▶</button>
-      <button class="btn-ctrl" id="btnStop" title="Stop (Esc)">⏹</button>
-      <button class="btn-ctrl" id="btnNext" title="Next section (→)">⏭</button>
-      <button class="speed-btn" id="btnSpeed">1.0×</button>
-      <div class="now-playing">กำลังเล่น: <span id="nowPlayingText">— กด ▶ เพื่อเริ่ม —</span></div>
-    </div>
-    <div class="keyboard-hint">⌨ Space=เล่น/หยุด · →=หัวข้อถัดไป · ←=หัวข้อก่อน · Esc=หยุด</div>
+  <div class="player-progress-wrap" id="progressWrap">
+    <div class="player-progress" id="playerProgress"></div>
   </div>
+  <div class="player-controls">
+    <button onclick="prevSection()" title="หัวข้อก่อนหน้า">⏮ ก่อนหน้า</button>
+    <button onclick="togglePlay()" id="playBtn">▶ เล่น</button>
+    <button onclick="pauseSpeech()" title="หยุดชั่วคราว">⏸ พัก</button>
+    <button onclick="nextSection()" title="หัวข้อถัดไป">⏭ ถัดไป</button>
+    <button onclick="stopSpeech()" title="หยุด">⏹ หยุด</button>
+    <button onclick="cycleSpeed()" id="speedBtn">1.0×</button>
+  </div>
+  <div class="player-section-name" id="sectionName">พร้อมแล้ว · กด เล่น หรือ Space เพื่อเริ่ม</div>
 </div>
 
 <script>
-(function() {
-  const sections = Array.from(document.querySelectorAll('.section-card'));
-  const SPEEDS = [0.8, 1.0, 1.25, 1.5];
-  let speedIdx = 1;
-  let currentIdx = 0;
-  let isPlaying = false;
-  let utterance = null;
-  let voices = [];
-  let selectedVoice = null;
-  let paragraphs = [];
-  let paraIdx = 0;
+const sections = Array.from(document.querySelectorAll('.section-card'));
+const paragraphs = Array.from(document.querySelectorAll('.section-card p'));
+let currentPara = 0;
+let utterance = null;
+let synth = window.speechSynthesis;
+let isPlaying = false;
+let isPaused = false;
+let speed = 1.0;
+const speeds = [0.8, 1.0, 1.25];
+let speedIdx = 1;
+let voices = [];
 
-  const btnPlay = document.getElementById('btnPlay');
-  const btnStop = document.getElementById('btnStop');
-  const btnNext = document.getElementById('btnNext');
-  const btnPrev = document.getElementById('btnPrev');
-  const btnSpeed = document.getElementById('btnSpeed');
-  const nowPlayingText = document.getElementById('nowPlayingText');
-  const currentSectionEl = document.getElementById('currentSection');
-  const totalSectionsEl = document.getElementById('totalSections');
-  const progressFill = document.getElementById('progressFill');
-  const voiceSelect = document.getElementById('voiceSelect');
-  const voiceStatus = document.getElementById('voiceStatus');
+function loadVoices() {
+  voices = synth.getVoices();
+}
+loadVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = loadVoices;
+}
 
-  totalSectionsEl.textContent = sections.length + ' หัวข้อ';
+function getThaiVoice() {
+  // Try preferred Thai male neural voice
+  const preferred = ['th-TH-NiwatNeural', 'Microsoft Niwat', 'th-TH'];
+  for (let name of preferred) {
+    const v = voices.find(v => v.name.includes(name) || v.lang.startsWith(name));
+    if (v) return v;
+  }
+  // fallback: any Thai voice
+  const thai = voices.find(v => v.lang && v.lang.startsWith('th'));
+  return thai || null;
+}
 
-  // Load voices
-  function loadVoices() {
-    voices = window.speechSynthesis.getVoices();
-    const thVoices = voices.filter(v => v.lang.startsWith('th'));
-    const allVoices = [...thVoices, ...voices.filter(v => !v.lang.startsWith('th'))];
-    voiceSelect.innerHTML = '';
-    if (allVoices.length === 0) {
-      voiceSelect.innerHTML = '<option>ไม่พบเสียงในระบบ</option>';
-      voiceStatus.textContent = '⚠ Web Speech API อาจไม่รองรับในบราวเซอร์นี้';
-      return;
+function highlightPara(idx) {
+  paragraphs.forEach(p => p.classList.remove('speaking'));
+  sections.forEach(s => s.classList.remove('speaking'));
+  if (idx >= 0 && idx < paragraphs.length) {
+    const p = paragraphs[idx];
+    p.classList.add('speaking');
+    const sec = p.closest('.section-card');
+    if (sec) {
+      sec.classList.add('speaking');
+      const name = sec.getAttribute('data-section-name');
+      document.getElementById('sectionName').textContent = name || '';
+      sec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    allVoices.forEach((v, i) => {
-      const opt = document.createElement('option');
-      opt.value = i;
-      opt.textContent = v.name + ' (' + v.lang + ')';
-      if (v.name.includes('Niwat') || v.name.includes('th-TH')) opt.selected = true;
-      voiceSelect.appendChild(opt);
-    });
-    // Default: prefer Niwat, then any th-TH, then first
-    selectedVoice = thVoices.find(v => v.name.includes('Niwat'))
-      || thVoices.find(v => v.lang === 'th-TH')
-      || thVoices[0]
-      || voices[0];
-    // Sync select
-    const idx = allVoices.findIndex(v => v.name === (selectedVoice && selectedVoice.name));
-    if (idx >= 0) voiceSelect.selectedIndex = idx;
-    voiceStatus.textContent = selectedVoice ? '✓ ' + selectedVoice.name : '';
+    const total = paragraphs.length;
+    document.getElementById('playerProgress').style.width = ((idx / total) * 100) + '%';
   }
+}
 
-  window.speechSynthesis.onvoiceschanged = loadVoices;
-  loadVoices();
+function speakFrom(idx) {
+  synth.cancel();
+  currentPara = idx;
+  speakNext();
+}
 
-  voiceSelect.addEventListener('change', function() {
-    const allVoices = [...voices.filter(v => v.lang.startsWith('th')), ...voices.filter(v => !v.lang.startsWith('th'))];
-    selectedVoice = allVoices[parseInt(this.value)];
-    voiceStatus.textContent = selectedVoice ? '✓ ' + selectedVoice.name : '';
-  });
-
-  function getParagraphs(sectionEl) {
-    return Array.from(sectionEl.querySelectorAll('p, .dataops-angle'));
-  }
-
-  function clearHighlights() {
-    document.querySelectorAll('.speaking').forEach(el => el.classList.remove('speaking'));
-    sections.forEach(s => s.classList.remove('active'));
-  }
-
-  function updateProgress() {
-    const pct = sections.length > 1 ? (currentIdx / (sections.length - 1)) * 100 : 0;
-    progressFill.style.width = pct + '%';
-    currentSectionEl.textContent = (currentIdx + 1) + ' / ' + sections.length;
-    const name = sections[currentIdx].getAttribute('data-section-name') || '';
-    nowPlayingText.textContent = name;
-  }
-
-  function speakParagraph(el, onEnd) {
-    if (!el) { onEnd && onEnd(); return; }
-    clearHighlights();
-    sections[currentIdx].classList.add('active');
-    el.classList.add('speaking');
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    const text = el.innerText || el.textContent;
-    utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = SPEEDS[speedIdx];
-    utterance.pitch = 1.0;
-    if (selectedVoice) utterance.voice = selectedVoice;
-    utterance.lang = 'th-TH';
-    utterance.onend = function() {
-      el.classList.remove('speaking');
-      onEnd && onEnd();
-    };
-    utterance.onerror = function() {
-      el.classList.remove('speaking');
-      onEnd && onEnd();
-    };
-    window.speechSynthesis.speak(utterance);
-  }
-
-  function playSection(idx) {
-    if (idx < 0 || idx >= sections.length) {
-      stopAll();
-      return;
-    }
-    currentIdx = idx;
-    paragraphs = getParagraphs(sections[currentIdx]);
-    paraIdx = 0;
-    updateProgress();
-    playNextPara();
-  }
-
-  function playNextPara() {
-    if (!isPlaying) return;
-    if (paraIdx >= paragraphs.length) {
-      // Move to next section
-      playSection(currentIdx + 1);
-      return;
-    }
-    const el = paragraphs[paraIdx];
-    paraIdx++;
-    speakParagraph(el, function() {
-      if (isPlaying) playNextPara();
-    });
-  }
-
-  function stopAll() {
-    window.speechSynthesis.cancel();
+function speakNext() {
+  if (currentPara >= paragraphs.length) {
     isPlaying = false;
-    btnPlay.textContent = '▶';
-    btnPlay.classList.remove('primary');
-    clearHighlights();
-    nowPlayingText.textContent = '— หยุดแล้ว —';
+    isPaused = false;
+    document.getElementById('playBtn').textContent = '▶ เล่น';
+    document.getElementById('sectionName').textContent = '✅ จบแล้ว';
+    paragraphs.forEach(p => p.classList.remove('speaking'));
+    sections.forEach(s => s.classList.remove('speaking'));
+    document.getElementById('playerProgress').style.width = '100%';
+    return;
   }
+  const text = paragraphs[currentPara].innerText;
+  utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = speed;
+  utterance.lang = 'th-TH';
+  const v = getThaiVoice();
+  if (v) utterance.voice = v;
+  highlightPara(currentPara);
+  utterance.onend = () => {
+    currentPara++;
+    if (isPlaying) speakNext();
+  };
+  synth.speak(utterance);
+}
 
-  btnPlay.addEventListener('click', function() {
-    if (isPlaying) {
-      window.speechSynthesis.pause();
-      isPlaying = false;
-      btnPlay.textContent = '▶';
-    } else {
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
+function togglePlay() {
+  if (!isPlaying && !isPaused) {
+    isPlaying = true;
+    document.getElementById('playBtn').textContent = '⏸ กำลังเล่น';
+    speakNext();
+  } else if (isPaused) {
+    isPaused = false;
+    isPlaying = true;
+    synth.resume();
+    document.getElementById('playBtn').textContent = '⏸ กำลังเล่น';
+  } else {
+    pauseSpeech();
+  }
+}
+
+function pauseSpeech() {
+  if (isPlaying) {
+    synth.pause();
+    isPlaying = false;
+    isPaused = true;
+    document.getElementById('playBtn').textContent = '▶ ต่อ';
+  }
+}
+
+function stopSpeech() {
+  synth.cancel();
+  isPlaying = false;
+  isPaused = false;
+  currentPara = 0;
+  document.getElementById('playBtn').textContent = '▶ เล่น';
+  document.getElementById('sectionName').textContent = 'หยุดแล้ว';
+  paragraphs.forEach(p => p.classList.remove('speaking'));
+  sections.forEach(s => s.classList.remove('speaking'));
+  document.getElementById('playerProgress').style.width = '0%';
+}
+
+function nextSection() {
+  const cur = paragraphs[currentPara];
+  const curSec = cur ? cur.closest('.section-card') : null;
+  let nextSec = curSec ? curSec.nextElementSibling : sections[0];
+  while (nextSec && !nextSec.classList.contains('section-card')) {
+    nextSec = nextSec.nextElementSibling;
+  }
+  if (nextSec) {
+    const firstP = nextSec.querySelector('p');
+    if (firstP) {
+      const idx = paragraphs.indexOf(firstP);
+      if (idx >= 0) {
+        speakFrom(idx);
         isPlaying = true;
-        btnPlay.textContent = '⏸';
-      } else {
-        isPlaying = true;
-        btnPlay.textContent = '⏸';
-        btnPlay.classList.add('primary');
-        playSection(currentIdx);
+        document.getElementById('playBtn').textContent = '⏸ กำลังเล่น';
       }
     }
-  });
+  }
+}
 
-  btnStop.addEventListener('click', stopAll);
-
-  btnNext.addEventListener('click', function() {
-    window.speechSynthesis.cancel();
-    const next = currentIdx + 1;
-    if (next < sections.length) {
-      if (isPlaying) { playSection(next); }
-      else { currentIdx = next; updateProgress(); }
+function prevSection() {
+  const cur = paragraphs[currentPara];
+  const curSec = cur ? cur.closest('.section-card') : null;
+  let prevSec = curSec ? curSec.previousElementSibling : null;
+  while (prevSec && !prevSec.classList.contains('section-card')) {
+    prevSec = prevSec.previousElementSibling;
+  }
+  if (prevSec) {
+    const firstP = prevSec.querySelector('p');
+    if (firstP) {
+      const idx = paragraphs.indexOf(firstP);
+      if (idx >= 0) {
+        speakFrom(idx);
+        isPlaying = true;
+        document.getElementById('playBtn').textContent = '⏸ กำลังเล่น';
+      }
     }
-  });
+  }
+}
 
-  btnPrev.addEventListener('click', function() {
-    window.speechSynthesis.cancel();
-    const prev = currentIdx - 1;
-    if (prev >= 0) {
-      if (isPlaying) { playSection(prev); }
-      else { currentIdx = prev; updateProgress(); }
-    }
-  });
+function cycleSpeed() {
+  speedIdx = (speedIdx + 1) % speeds.length;
+  speed = speeds[speedIdx];
+  document.getElementById('speedBtn').textContent = speed.toFixed(1) + '×';
+  if (isPlaying) { synth.cancel(); speakNext(); }
+}
 
-  btnSpeed.addEventListener('click', function() {
-    speedIdx = (speedIdx + 1) % SPEEDS.length;
-    btnSpeed.textContent = SPEEDS[speedIdx] + '×';
-    if (utterance) utterance.rate = SPEEDS[speedIdx];
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
-    if (e.code === 'Space') { e.preventDefault(); btnPlay.click(); }
-    else if (e.code === 'ArrowRight') { e.preventDefault(); btnNext.click(); }
-    else if (e.code === 'ArrowLeft') { e.preventDefault(); btnPrev.click(); }
-    else if (e.code === 'Escape') { e.preventDefault(); stopAll(); }
-  });
-
-  // Section click to jump
-  sections.forEach((s, i) => {
-    s.addEventListener('click', function(e) {
-      if (e.target.closest('button, select, a')) return;
-      window.speechSynthesis.cancel();
-      currentIdx = i;
-      if (isPlaying) { playSection(i); }
-      else { updateProgress(); }
-    });
-  });
-
-  updateProgress();
-})();
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+  if (e.code === 'ArrowRight') { e.preventDefault(); nextSection(); }
+  if (e.code === 'ArrowLeft') { e.preventDefault(); prevSection(); }
+  if (e.code === 'Escape') { stopSpeech(); }
+});
 </script>
-
 </body>
 </html>
