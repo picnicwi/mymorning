@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MorningInsight Podcast — 12 เมษายน 2569</title>
+<title>MorningInsight Podcast</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -30,631 +30,363 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 24px 16px 40px;
-    background-image: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(240,165,0,0.08) 0%, transparent 70%);
+    padding: 32px 16px 48px;
+    background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(240,165,0,0.07) 0%, transparent 65%);
   }
 
-  header {
-    text-align: center;
-    margin-bottom: 32px;
-    padding-top: 8px;
-  }
+  header { text-align: center; margin-bottom: 36px; }
 
-  .label {
+  .eyebrow {
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
-  h1 {
-    font-size: clamp(22px, 5vw, 32px);
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1.2;
-  }
+  h1 { font-size: clamp(24px, 5vw, 34px); font-weight: 800; line-height: 1.15; }
+  h1 span { color: var(--accent); }
 
-  .date {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-top: 6px;
-  }
+  .subtitle { font-size: 13px; color: var(--text-dim); margin-top: 8px; }
 
-  /* ── Player Card ── */
-  .player-card {
-    width: 100%;
-    max-width: 520px;
+  /* ── Album art / waveform area ── */
+  .album {
+    width: 200px; height: 200px;
+    border-radius: 20px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px 24px 24px;
-    margin-bottom: 20px;
-  }
-
-  .now-playing-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-  }
-
-  .section-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text);
-    min-height: 24px;
-    margin-bottom: 20px;
-    transition: opacity 0.3s;
-  }
-
-  /* Progress bar */
-  .progress-wrap {
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 32px;
     position: relative;
-    height: 4px;
-    background: var(--surface2);
-    border-radius: 4px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    overflow: visible;
+    overflow: hidden;
   }
 
-  .progress-fill {
-    height: 100%;
+  .album-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 40% 40%, rgba(240,165,0,0.15), transparent 60%),
+                radial-gradient(circle at 70% 70%, rgba(96,165,250,0.08), transparent 50%);
+  }
+
+  .album-icon { position: relative; z-index: 1; }
+  .album-icon svg { width: 72px; height: 72px; }
+
+  /* Animated bars when playing */
+  .bars {
+    display: flex; align-items: flex-end; gap: 4px;
+    height: 40px; position: relative; z-index: 1;
+  }
+
+  .bar {
+    width: 5px; border-radius: 3px;
     background: var(--accent);
-    border-radius: 4px;
-    width: 0%;
-    transition: width 0.4s linear;
-    position: relative;
+    opacity: 0.9;
+    animation: none;
+    height: 6px;
+    transition: height 0.2s;
   }
 
+  .playing .bar:nth-child(1) { animation: bar1 0.8s ease-in-out infinite; }
+  .playing .bar:nth-child(2) { animation: bar2 0.9s ease-in-out infinite 0.1s; }
+  .playing .bar:nth-child(3) { animation: bar3 0.7s ease-in-out infinite 0.2s; }
+  .playing .bar:nth-child(4) { animation: bar1 1.0s ease-in-out infinite 0.05s; }
+  .playing .bar:nth-child(5) { animation: bar2 0.85s ease-in-out infinite 0.15s; }
+  .playing .bar:nth-child(6) { animation: bar3 0.75s ease-in-out infinite 0.25s; }
+  .playing .bar:nth-child(7) { animation: bar1 0.9s ease-in-out infinite 0.1s; }
+
+  @keyframes bar1 { 0%,100%{height:6px} 50%{height:32px} }
+  @keyframes bar2 { 0%,100%{height:14px} 50%{height:24px} }
+  @keyframes bar3 { 0%,100%{height:20px} 50%{height:8px} }
+  @media (prefers-reduced-motion: reduce) { .bar { animation: none !important; } }
+
+  /* ── Player card ── */
+  .player {
+    width: 100%; max-width: 440px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 28px 24px 24px;
+    margin-bottom: 16px;
+  }
+
+  .track-info { margin-bottom: 22px; }
+  .track-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .track-sub { font-size: 13px; color: var(--text-dim); }
+
+  /* Progress */
+  .progress-wrap {
+    height: 5px; background: var(--surface2);
+    border-radius: 5px; margin-bottom: 8px;
+    cursor: pointer; position: relative;
+  }
+  .progress-fill {
+    height: 100%; background: var(--accent);
+    border-radius: 5px; width: 0%;
+    transition: width 0.5s linear;
+    position: relative;
+  }
   .progress-fill::after {
     content: '';
-    position: absolute;
-    right: -5px;
-    top: 50%;
+    position: absolute; right: -5px; top: 50%;
     transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    background: var(--accent);
-    border-radius: 50%;
+    width: 11px; height: 11px;
+    background: var(--accent); border-radius: 50%;
     box-shadow: 0 0 0 3px rgba(240,165,0,0.2);
+    opacity: 0;
+    transition: opacity 0.2s;
   }
+  .progress-wrap:hover .progress-fill::after { opacity: 1; }
 
   .time-row {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-bottom: 28px;
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--text-dim); margin-bottom: 28px;
   }
 
   /* Controls */
   .controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    display: flex; align-items: center;
+    justify-content: center; gap: 16px;
     margin-bottom: 24px;
   }
 
   .btn-play {
-    width: 64px;
-    height: 64px;
+    width: 68px; height: 68px;
     border-radius: 50%;
-    background: var(--accent);
-    border: none;
+    background: var(--accent); border: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 4px 20px rgba(240,165,0,0.3);
+    box-shadow: 0 6px 24px rgba(240,165,0,0.35);
+    flex-shrink: 0;
   }
+  .btn-play:hover { transform: scale(1.06); box-shadow: 0 8px 28px rgba(240,165,0,0.45); }
+  .btn-play:active { transform: scale(0.96); }
+  .btn-play svg { fill: #0b0f1a; width: 30px; height: 30px; }
 
-  .btn-play:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(240,165,0,0.4); }
-  .btn-play:active { transform: scale(0.97); }
-
-  .btn-play svg { fill: #0b0f1a; width: 28px; height: 28px; }
-
-  .btn-skip {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
+  .btn-icon {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--surface2); border: 1px solid var(--border);
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.15s;
-    color: var(--text-dim);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s; color: var(--text-dim);
+    flex-shrink: 0;
   }
-  .btn-skip:hover { background: rgba(240,165,0,0.1); color: var(--accent); }
-  .btn-skip svg { width: 20px; height: 20px; fill: currentColor; }
+  .btn-icon:hover { background: var(--accent-dim); color: var(--accent); border-color: rgba(240,165,0,0.3); }
+  .btn-icon svg { width: 20px; height: 20px; fill: currentColor; }
 
-  /* Speed control */
+  /* Speed */
   .speed-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    display: flex; align-items: center;
+    justify-content: center; gap: 6px; flex-wrap: wrap;
   }
-
-  .speed-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-right: 4px;
-  }
-
+  .speed-label { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-right: 2px; }
   .speed-btn {
-    padding: 5px 12px;
-    border-radius: 20px;
+    padding: 5px 13px; border-radius: 20px;
     border: 1px solid var(--border);
     background: var(--surface2);
     color: var(--text-dim);
-    font-family: var(--mono);
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.15s;
+    font-family: var(--mono); font-size: 12px;
+    cursor: pointer; transition: all 0.15s;
   }
-
   .speed-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .speed-btn.active {
-    background: var(--accent-dim);
-    border-color: var(--accent);
-    color: var(--accent);
-    font-weight: 600;
-  }
+  .speed-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); font-weight: 600; }
 
-  /* Section progress dots */
-  .sections-nav {
-    width: 100%;
-    max-width: 520px;
-    margin-bottom: 20px;
-  }
-
-  .sections-nav-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 10px;
-  }
-
-  .section-dots {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .section-dot {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--text-dim);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .section-dot.active {
-    background: var(--accent-dim);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .section-dot.done {
-    opacity: 0.5;
-    text-decoration: line-through;
-  }
-
-  .dot-indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-  }
-
-  /* Script card */
-  .script-card {
-    width: 100%;
-    max-width: 520px;
+  /* Error / loading states */
+  .info-card {
+    width: 100%; max-width: 440px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 20px;
-    max-height: 280px;
-    overflow-y: auto;
+    padding: 18px 20px;
+    font-size: 13px; color: var(--text-dim);
+    line-height: 1.7;
   }
 
-  .script-card::-webkit-scrollbar { width: 4px; }
-  .script-card::-webkit-scrollbar-track { background: transparent; }
-  .script-card::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-
-  .script-label {
+  .info-card.error { border-color: rgba(248,113,113,0.25); }
+  .info-card strong { color: var(--text); font-weight: 600; }
+  .info-card code {
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 12px;
+    background: var(--surface2);
+    padding: 2px 6px; border-radius: 4px;
+    font-size: 12px; color: var(--accent);
   }
 
-  .script-text {
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--text-dim);
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 12px; font-family: var(--mono);
+    margin-bottom: 24px;
   }
+  .badge.ready { background: rgba(52,211,153,0.1); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
+  .badge.playing { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(240,165,0,0.25); }
+  .badge.error { background: rgba(248,113,113,0.1); color: #f87171; border: 1px solid rgba(248,113,113,0.2); }
 
-  .script-text .highlight {
-    color: var(--text);
-    background: var(--accent-dim);
-    border-radius: 3px;
-    padding: 0 2px;
-  }
-
-  /* Status badge */
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-family: var(--mono);
-    margin-bottom: 20px;
-  }
-
-  .status-badge.ready { background: rgba(52,211,153,0.1); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
-  .status-badge.playing { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(240,165,0,0.2); }
-  .status-badge.unsupported { background: rgba(248,113,113,0.1); color: #f87171; border: 1px solid rgba(248,113,113,0.2); }
-
-  .pulse { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 1.5s ease-in-out infinite; }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-  @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
-
-  .no-support-msg { display: none; text-align: center; padding: 16px; color: var(--text-dim); font-size: 14px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .pulse { animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="label">MorningInsight Podcast</div>
-  <h1>สรุปข่าว AI & Tech</h1>
-  <div class="date">วันอาทิตย์ที่ 12 เมษายน 2569 · ภาษาไทย</div>
+  <div class="eyebrow">MorningInsight Podcast</div>
+  <h1>สรุปข่าว <span>AI & Tech</span></h1>
+  <div class="subtitle" id="dateLabel">วันอาทิตย์ที่ 12 เมษายน 2569 · เสียงชาย · ภาษาไทย</div>
 </header>
 
-<div id="statusBadge" class="status-badge ready">
-  <span class="dot-indicator"></span>
-  พร้อมเล่น · กด Play เพื่อฟัง
+<!-- Animated album art -->
+<div class="album" id="albumArt">
+  <div class="album-bg"></div>
+  <div class="bars" id="bars">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    <div class="bar"></div>
+  </div>
 </div>
 
-<div class="no-support-msg" id="noSupportMsg">
-  ⚠️ เบราว์เซอร์นี้ไม่รองรับ Text-to-Speech กรุณาใช้ Chrome หรือ Safari
+<div class="badge ready" id="badge">
+  <span class="dot"></span> พร้อมเล่น
 </div>
 
 <!-- Player -->
-<div class="player-card">
-  <div class="now-playing-label">กำลังเล่น</div>
-  <div class="section-title" id="sectionTitle">บทนำ — MorningInsight Podcast</div>
+<div class="player">
+  <div class="track-info">
+    <div class="track-title">MorningInsight Daily Briefing</div>
+    <div class="track-sub">th-TH-NiwatNeural · เสียงชาย ระดับมืออาชีพ</div>
+  </div>
 
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-fill" id="progressFill"></div>
   </div>
   <div class="time-row">
-    <span id="timeElapsed">0:00</span>
-    <span id="timeTotal">~7:00</span>
+    <span id="timeNow">0:00</span>
+    <span id="timeDur">--:--</span>
   </div>
 
   <div class="controls">
-    <button class="btn-skip" id="btnPrev" title="ส่วนก่อนหน้า">
-      <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+    <button class="btn-icon" id="btnBack" title="ย้อนกลับ 15 วินาที">
+      <svg viewBox="0 0 24 24"><path d="M12.5 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3zm-1-3L8 3l3.5 3V0z"/></svg>
     </button>
-    <button class="btn-play" id="btnPlay" title="เล่น/หยุด">
+    <button class="btn-play" id="btnPlay">
       <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       <svg id="iconPause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
     </button>
-    <button class="btn-skip" id="btnNext" title="ส่วนถัดไป">
-      <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm2.5-6 8.5 6V6z"/></svg>
+    <button class="btn-icon" id="btnFwd" title="ข้ามไปข้างหน้า 30 วินาที">
+      <svg viewBox="0 0 24 24"><path d="M11.5 3a9 9 0 1 1-9 9h2a7 7 0 1 0 7-7V3zm1-3L16 3l-3.5 3V0z"/></svg>
     </button>
   </div>
 
   <div class="speed-row">
     <span class="speed-label">ความเร็ว</span>
-    <button class="speed-btn" data-speed="0.8">0.8×</button>
-    <button class="speed-btn active" data-speed="1">1×</button>
-    <button class="speed-btn" data-speed="1.2">1.2×</button>
-    <button class="speed-btn" data-speed="1.5">1.5×</button>
-    <button class="speed-btn" data-speed="2">2×</button>
+    <button class="speed-btn" data-rate="0.8">0.8×</button>
+    <button class="speed-btn active" data-rate="1">1×</button>
+    <button class="speed-btn" data-rate="1.2">1.2×</button>
+    <button class="speed-btn" data-rate="1.5">1.5×</button>
+    <button class="speed-btn" data-rate="2">2×</button>
   </div>
 </div>
 
-<!-- Section nav -->
-<div class="sections-nav">
-  <div class="sections-nav-label">หัวข้อ</div>
-  <div class="section-dots" id="sectionDots"></div>
-</div>
+<!-- Hidden audio element -->
+<audio id="audio" preload="auto">
+  <source src="podcast.mp3" type="audio/mpeg">
+</audio>
 
-<!-- Script display -->
-<div class="script-card">
-  <div class="script-label">สคริปต์</div>
-  <div class="script-text" id="scriptDisplay">กด Play เพื่อเริ่มฟัง MorningInsight Podcast ภาษาไทย</div>
+<!-- Error/info card shown if MP3 missing -->
+<div class="info-card error" id="errorCard" style="display:none">
+  <strong>ไม่พบไฟล์เสียง (podcast.mp3)</strong><br><br>
+  ไฟล์ podcast.mp3 ยังไม่ถูกสร้าง กรุณารัน push script บน Mac ของคุณ:<br><br>
+  <code>bash ~/Documents/Claude/Projects/MorningInsight/push-to-github.sh</code><br><br>
+  Script จะสร้างเสียงอัตโนมัติด้วย edge-tts (NiwatNeural) และ push ขึ้น GitHub
 </div>
 
 <script>
-// ──────────────────────────────────────────
-// PODCAST SCRIPT — April 12, 2026
-// ──────────────────────────────────────────
-const sections = [
-  {
-    title: "บทนำ",
-    text: `สวัสดีตอนเช้าครับ ยินดีต้อนรับสู่ MorningInsight พอดแคสต์สรุปข่าว AI และเทคโนโลยี ประจำวันที่สิบสองเมษายน สองพันห้าร้อยหกสิบเก้า วันนี้เรามีเรื่องราวที่น่าสนใจจากห้าหัวข้อหลัก ได้แก่ ความก้าวหน้าของ AI และ Generative AI เทรนด์อุตสาหกรรมเทคโนโลยี การนำ AI ไปใช้ในธนาคารและการเงิน อัปเดตจาก Databricks และ Microsoft Fabric รวมถึงข่าวล่าสุดจาก Microsoft AI และ Copilot ไปฟังพร้อมกันเลยครับ`
-  },
-  {
-    title: "AI & Generative AI",
-    text: `หัวข้อแรก AI และ Generative AI ครับ มีสี่ข่าวสำคัญที่ต้องรู้วันนี้
+const audio = document.getElementById('audio');
+const btnPlay = document.getElementById('btnPlay');
+const iconPlay = document.getElementById('iconPlay');
+const iconPause = document.getElementById('iconPause');
+const progressFill = document.getElementById('progressFill');
+const timeNow = document.getElementById('timeNow');
+const timeDur = document.getElementById('timeDur');
+const badge = document.getElementById('badge');
+const bars = document.getElementById('bars');
+const errorCard = document.getElementById('errorCard');
 
-ข่าวแรก นักวิจัยเปิดเผยเทคโนโลยีใหม่ที่ทำให้ AI ประหยัดพลังงานได้มากถึงหนึ่งร้อยเท่า โดยยังรักษาความแม่นยำไว้ได้เหมือนเดิม ความสำคัญคือ ถ้าต้นทุนพลังงานลดลงได้ขนาดนี้ เราจะสามารถนำ AI ไปใช้งานได้กว้างขึ้นมากในทุกสภาพแวดล้อม
-
-ข่าวที่สอง Meta เปิดตัวโมเดล AI ใหม่ชื่อ Muse Spark และประกาศลงทุนด้าน AI สูงถึงหนึ่งร้อยสิบห้าถึงหนึ่งร้อยสามสิบห้าพันล้านดอลลาร์ในปีนี้ เกือบสองเท่าของปีที่แล้ว แสดงว่าการแข่งขันใน Big Tech ยังเข้มข้นมาก
-
-ข่าวที่สาม จากการศึกษาที่ทดสอบกับคนมากกว่าหนึ่งแสนคน พบว่า Generative AI สามารถทำได้ดีกว่าคนทั่วไปในแบบทดสอบความคิดสร้างสรรค์หลายประเภท เป็นสัญญาณชัดว่า AI กำลังเปลี่ยนจากเครื่องมือเป็นคู่ทำงาน
-
-และข่าวสุดท้ายในหมวดนี้ โมเดลประเภท Reasoning อย่าง OpenAI o3 และ Claude กำลังเป็นที่นิยมมากขึ้น เพราะสามารถวิเคราะห์ปัญหาทีละขั้นตอนได้ ทำให้น่าเชื่อถือและอธิบายการตัดสินใจได้ชัดเจนกว่าเดิม`
-  },
-  {
-    title: "เทรนด์อุตสาหกรรมเทค",
-    text: `หัวข้อที่สอง เทรนด์อุตสาหกรรมเทคโนโลยีครับ
-
-ปี สองพันยี่สิบหก นี้ถือเป็นจุดเปลี่ยนสำคัญของ AI ในองค์กร เราเห็นชัดว่าบริษัทใหญ่เริ่มเปลี่ยนจากการทดลองใช้ AI ไปสู่การนำไปใช้งานจริงในระดับองค์กร พร้อม governance ที่ชัดเจน และ ROI ที่วัดได้จริง
-
-ที่น่าสนใจมากคือ เกือบหนึ่งในสามของบริษัทขนาดใหญ่วางแผนจะมอบหมายงานจริงให้ AI ทำภายในสิ้นปีนี้ ตัวอย่างเด่นคือ AI ของ Klarna ที่ทำงานเทียบเท่าพนักงานเจ็ดร้อยคน ด้วย SLA ที่วัดได้จริง
-
-ด้านการลงทุน Morgan Stanley ประเมินว่าจะมีเงินลงทุนด้าน AI กว่าสามล้านล้านดอลลาร์ทั่วโลกภายในปี สองพันยี่สิบแปด และที่น่าตื่นเต้นคือ ยังมีเงินอีกกว่าแปดสิบเปอร์เซ็นต์ที่ยังไม่ได้ใช้ หมายความว่า AI ยังไปได้อีกไกลมาก
-
-สุดท้าย Physical AI กำลังออกจากห้องแล็บสู่โลกจริง หุ่นยนต์ Atlas ของ Boston Dynamics ร่วมกับ Google DeepMind เริ่มใช้งานได้จริงแล้ว`
-  },
-  {
-    title: "Banking & Financial Services",
-    text: `หัวข้อที่สาม ข่าวสำคัญสำหรับอุตสาหกรรมธนาคารและการเงินครับ
-
-เจ็ดสิบเปอร์เซ็นต์ของผู้เชี่ยวชาญในธนาคารมองว่า Agentic AI คือสิ่งที่จะเปลี่ยนเกมครั้งใหญ่ ธนาคารกำลังเปลี่ยนจาก pilot project ไปสู่การ deploy AI อัตโนมัติในระดับ production จริงๆ พร้อม governance ที่เข้มแข็ง
-
-ในด้านมูลค่าทางเศรษฐกิจ Generative AI สามารถสร้างมูลค่าให้อุตสาหกรรมธนาคารระดับโลกได้สองร้อยถึงสามร้อยสี่สิบพันล้านดอลลาร์ต่อปี คาดว่า productivity ของ investment bank จะเพิ่มขึ้นยี่สิบเจ็ดเปอร์เซ็นต์ และ front office จะดีขึ้นยี่สิบเจ็ดถึงสามสิบห้าเปอร์เซ็นต์ภายในปีนี้
-
-อย่างไรก็ดี ยังมีความเสี่ยงเรื่อง governance ขณะที่สามสิบกว่าเปอร์เซ็นต์ของสถาบันการเงินใช้งาน AI จริงแล้ว แต่มีเพียงสิบสองเปอร์เซ็นต์เท่านั้นที่มีกลยุทธ์ AI ที่ชัดเจนและมีทรัพยากรพร้อม ช่องว่างนี้คือความเสี่ยงที่ต้องแก้ไขด่วน`
-  },
-  {
-    title: "Databricks & Microsoft Fabric",
-    text: `หัวข้อที่สี่ อัปเดต Data Platform จาก Databricks และ Microsoft Fabric ครับ
-
-Databricks เปลี่ยนชื่อ Databricks Assistant เป็น Genie Code พร้อม agentic capabilities ที่ครบถ้วน ตอนนี้ Genie Code สามารถทำงานหลายขั้นตอนโดยอัตโนมัติ ทั้งด้าน data science, data engineering และ dashboard โดยไม่ต้องมีคนช่วย ซึ่งช่วยเร่งความเร็วในการทำ analytics ได้มาก
-
-Lakebase ก็อัปเดตให้ auto-scale ได้อัตโนมัติ ปิดตัวเองเมื่อไม่ใช้งานเพื่อประหยัดค่าใช้จ่าย และสำรองข้อมูลได้ทันที นอกจากนี้ Governed Tags ก็พร้อมใช้งานแล้ว ช่วยจัดการ metadata อย่างมีระบบมากขึ้น
-
-ด้าน Microsoft Fabric ตอนนี้รองรับ CI/CD ที่ครบกว่าเดิม จัดการ configuration แยกตาม environment ได้อัตโนมัติ ไม่ว่าจะเป็น dev, test หรือ production ซึ่งเหมาะมากสำหรับทีม data engineering ที่ต้องการ workflow แบบ enterprise`
-  },
-  {
-    title: "Microsoft AI & Copilot",
-    text: `หัวข้อสุดท้าย อัปเดตจาก Microsoft AI และ Copilot ครับ
-
-Microsoft 365 Copilot กำลังพัฒนาจาก chat assistant ธรรมดาไปสู่ AI ที่ทำงานแทนเราได้จริง ใน Word, Excel และ PowerPoint ตอนนี้ Copilot สามารถแก้ไขเอกสารหลายขั้นตอนโดยอัตโนมัติ พร้อมอธิบายเหตุผลทุกการตัดสินใจ ทำให้ทำงานได้เร็วขึ้นและมีคุณภาพดีขึ้น
-
-Copilot Chat ยังสามารถสรุปการประชุมได้ทั้งแบบข้อความและวิดีโอ เลือกตัดช่วงสำคัญมาให้ดูได้เลย ไม่ต้องนั่งดูการประชุมทั้งหมด นอกจากนี้ยังรับรู้ inbox และปฏิทินของเราเพื่อช่วยงานได้ตลอดวัน
-
-และสำหรับคนที่ไม่ชอบให้ระบบบังคับ Windows 11 update ล่าสุดทำให้ Copilot เป็น optional แทนที่จะบังคับเปิด ฝ่าย IT ก็ควบคุมได้มากขึ้น ซึ่งช่วยลดแรงต้านจากพนักงานและทำให้การ adopt ราบรื่นกว่าเดิม`
-  },
-  {
-    title: "สรุปและสิ่งที่ต้องจับตา",
-    text: `ก่อนจบ ขอสรุปห้าสิ่งที่ต้องจับตามองในสัปดาห์นี้ครับ
-
-หนึ่ง เทคโนโลยีประหยัดพลังงาน AI แบบใหม่ที่อาจเปลี่ยนโครงสร้างต้นทุนทั้งอุตสาหกรรม
-
-สอง Agentic AI กำลังกลายเป็น infrastructure หลักขององค์กร ไม่ใช่แค่ของทดลองอีกต่อไป
-
-สาม ธนาคารและสถาบันการเงินกำลังแข่งกัน deploy AI แต่ต้องไม่ลืมเรื่อง governance ซึ่งยังเป็นจุดอ่อนสำคัญ
-
-สี่ Databricks และ Microsoft Fabric กำลังแข่งกันเป็น AI data platform ชั้นนำขององค์กรระดับโลก
-
-และห้า Microsoft Copilot กำลังพัฒนาเป็น AI operating layer ระดับองค์กรอย่างจริงจัง ไม่ใช่แค่ chatbot
-
-นั่นคือ MorningInsight Podcast ประจำวันนี้ครับ ขอบคุณมากที่รับฟัง มีวันที่ดี และขับรถปลอดภัยนะครับ พบกันพรุ่งนี้เช้า`
-  }
-];
-
-// ──────────────────────────────────────────
-// State
-// ──────────────────────────────────────────
-let currentSection = 0;
-let isPlaying = false;
-let currentSpeed = 1;
-let utterance = null;
-let startTime = null;
-let elapsed = 0;
-let timerInterval = null;
-const ESTIMATED_TOTAL = 7 * 60; // ~7 min
-
-// ──────────────────────────────────────────
-// Init
-// ──────────────────────────────────────────
-const supported = 'speechSynthesis' in window;
-if (!supported) {
-  document.getElementById('noSupportMsg').style.display = 'block';
-  document.getElementById('btnPlay').disabled = true;
-  document.getElementById('statusBadge').className = 'status-badge unsupported';
-  document.getElementById('statusBadge').innerHTML = '<span>⚠️</span> เบราว์เซอร์ไม่รองรับ';
+function fmt(s) {
+  if (!s || isNaN(s)) return '--:--';
+  const m = Math.floor(s / 60);
+  return m + ':' + String(Math.floor(s % 60)).padStart(2,'0');
 }
 
-// Build section dots
-const dotsContainer = document.getElementById('sectionDots');
-sections.forEach((s, i) => {
-  const dot = document.createElement('button');
-  dot.className = 'section-dot' + (i === 0 ? ' active' : '');
-  dot.innerHTML = `<span class="dot-indicator"></span>${s.title}`;
-  dot.addEventListener('click', () => jumpToSection(i));
-  dotsContainer.appendChild(dot);
+// Check if MP3 exists
+audio.addEventListener('error', () => {
+  errorCard.style.display = 'block';
+  badge.className = 'badge error';
+  badge.innerHTML = '<span class="dot"></span> ไม่พบไฟล์เสียง';
+  btnPlay.disabled = true;
+  btnPlay.style.opacity = '0.4';
 });
 
-// ──────────────────────────────────────────
-// Core player logic
-// ──────────────────────────────────────────
-function speak(sectionIdx) {
-  if (!supported) return;
-  window.speechSynthesis.cancel();
-
-  currentSection = sectionIdx;
-  const sec = sections[sectionIdx];
-  utterance = new SpeechSynthesisUtterance(sec.text);
-  utterance.lang = 'th-TH';
-  utterance.rate = currentSpeed;
-  utterance.pitch = 1;
-
-  // Try to pick a Thai voice
-  const voices = window.speechSynthesis.getVoices();
-  const thaiVoice = voices.find(v => v.lang === 'th-TH' || v.lang === 'th') || null;
-  if (thaiVoice) utterance.voice = thaiVoice;
-
-  utterance.onstart = () => {
-    isPlaying = true;
-    updateUI();
-    startTimer();
-  };
-
-  utterance.onend = () => {
-    if (currentSection < sections.length - 1) {
-      speak(currentSection + 1);
-    } else {
-      isPlaying = false;
-      updateUI();
-      stopTimer();
-    }
-  };
-
-  utterance.onerror = () => {
-    isPlaying = false;
-    updateUI();
-    stopTimer();
-  };
-
-  updateSectionDisplay(sectionIdx);
-  window.speechSynthesis.speak(utterance);
-}
-
-function jumpToSection(idx) {
-  if (isPlaying) {
-    window.speechSynthesis.cancel();
-  }
-  currentSection = idx;
-  updateSectionDisplay(idx);
-  if (isPlaying) {
-    speak(idx);
-  } else {
-    document.getElementById('scriptDisplay').textContent = sections[idx].text;
-  }
-}
-
-function updateSectionDisplay(idx) {
-  document.getElementById('sectionTitle').textContent = sections[idx].title;
-  document.getElementById('scriptDisplay').textContent = sections[idx].text;
-
-  // Scroll script into view
-  document.getElementById('scriptDisplay').parentElement.scrollTop = 0;
-
-  // Update dots
-  document.querySelectorAll('.section-dot').forEach((dot, i) => {
-    dot.className = 'section-dot';
-    if (i === idx) dot.classList.add('active');
-    else if (i < idx) dot.classList.add('done');
-  });
-}
-
-function updateUI() {
-  const playIcon = document.getElementById('iconPlay');
-  const pauseIcon = document.getElementById('iconPause');
-  const badge = document.getElementById('statusBadge');
-
-  if (isPlaying) {
-    playIcon.style.display = 'none';
-    pauseIcon.style.display = '';
-    badge.className = 'status-badge playing';
-    badge.innerHTML = '<span class="pulse"></span> กำลังเล่น...';
-  } else {
-    playIcon.style.display = '';
-    pauseIcon.style.display = 'none';
-    badge.className = 'status-badge ready';
-    badge.innerHTML = '<span class="dot-indicator"></span> พร้อมเล่น · กด Play เพื่อฟัง';
-  }
-}
-
-// Timer
-function startTimer() {
-  startTime = Date.now() - elapsed * 1000;
-  timerInterval = setInterval(() => {
-    elapsed = (Date.now() - startTime) / 1000;
-    const mins = Math.floor(elapsed / 60);
-    const secs = Math.floor(elapsed % 60).toString().padStart(2, '0');
-    document.getElementById('timeElapsed').textContent = `${mins}:${secs}`;
-    const pct = Math.min((elapsed / ESTIMATED_TOTAL) * 100, 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-  }, 500);
-}
-
-function stopTimer() {
-  clearInterval(timerInterval);
-}
-
-// ──────────────────────────────────────────
-// Button handlers
-// ──────────────────────────────────────────
-document.getElementById('btnPlay').addEventListener('click', () => {
-  if (!supported) return;
-  if (isPlaying) {
-    window.speechSynthesis.cancel();
-    isPlaying = false;
-    updateUI();
-    stopTimer();
-  } else {
-    speak(currentSection);
-  }
+audio.addEventListener('loadedmetadata', () => {
+  timeDur.textContent = fmt(audio.duration);
 });
 
-document.getElementById('btnNext').addEventListener('click', () => {
-  if (currentSection < sections.length - 1) jumpToSection(currentSection + 1);
-  if (isPlaying) speak(currentSection);
+audio.addEventListener('timeupdate', () => {
+  const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+  progressFill.style.width = pct + '%';
+  timeNow.textContent = fmt(audio.currentTime);
 });
 
-document.getElementById('btnPrev').addEventListener('click', () => {
-  if (currentSection > 0) jumpToSection(currentSection - 1);
-  if (isPlaying) speak(currentSection);
+audio.addEventListener('ended', () => {
+  setPlaying(false);
+});
+
+function setPlaying(playing) {
+  if (playing) {
+    iconPlay.style.display = 'none';
+    iconPause.style.display = '';
+    badge.className = 'badge playing';
+    badge.innerHTML = '<span class="dot pulse"></span> กำลังเล่น...';
+    bars.classList.add('playing');
+  } else {
+    iconPlay.style.display = '';
+    iconPause.style.display = 'none';
+    badge.className = 'badge ready';
+    badge.innerHTML = '<span class="dot"></span> หยุดชั่วคราว';
+    bars.classList.remove('playing');
+  }
+}
+
+btnPlay.addEventListener('click', () => {
+  if (audio.paused) { audio.play(); setPlaying(true); }
+  else { audio.pause(); setPlaying(false); }
+});
+
+document.getElementById('btnBack').addEventListener('click', () => {
+  audio.currentTime = Math.max(0, audio.currentTime - 15);
+});
+document.getElementById('btnFwd').addEventListener('click', () => {
+  audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 30);
+});
+
+// Click on progress bar to seek
+document.getElementById('progressWrap').addEventListener('click', (e) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+  const ratio = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = ratio * (audio.duration || 0);
 });
 
 // Speed buttons
 document.querySelectorAll('.speed-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    currentSpeed = parseFloat(btn.dataset.speed);
+    audio.playbackRate = parseFloat(btn.dataset.rate);
     document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    if (isPlaying) {
-      window.speechSynthesis.cancel();
-      speak(currentSection);
-    }
   });
 });
 
-// Load voices (some browsers load them async)
-window.speechSynthesis.onvoiceschanged = () => {};
+// Auto-play on load (works on desktop, mobile requires user gesture)
+audio.load();
 </script>
 </body>
 </html>
