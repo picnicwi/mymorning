@@ -3,7 +3,20 @@
 # Runs on Mac: generates podcast.mp3 via edge-tts then pushes everything to GitHub
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TOKEN="YOUR_TOKEN_HERE"
+# Token is read from environment variable GITHUB_TOKEN (never hardcode here)
+# Set it in your shell before running: export GITHUB_TOKEN="ghp_..."
+# Or store it in ~/.morninginsight_token (gitignored) and it will be loaded below.
+if [ -z "$GITHUB_TOKEN" ]; then
+  if [ -f "$HOME/.morninginsight_token" ]; then
+    GITHUB_TOKEN="$(cat "$HOME/.morninginsight_token")"
+  else
+    echo "❌ GITHUB_TOKEN is not set."
+    echo "   Run: export GITHUB_TOKEN='your_token_here'"
+    echo "   Or save token to: ~/.morninginsight_token"
+    exit 1
+  fi
+fi
+TOKEN="$GITHUB_TOKEN"
 REPO="picnicwi/mymorning"
 BRANCH="main"
 USER_NAME="picnicwi"
