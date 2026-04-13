@@ -1,0 +1,15 @@
+# GitHub Auto-Push Configuration
+# =================================
+# ⚠️  กรุณาอย่า share ไฟล์นี้กับใคร / Do NOT share this file
+#
+# วิธีสร้าง token ใหม่ / How to create a new token:
+#   1. ไปที่ github.com → Settings → Developer settings
+#   2. Personal access tokens → Tokens (classic)
+#   3. Generate new token → เลือก scope: repo
+#   4. วาง token ด้านล่างนี้ / Paste token below
+
+GITHUB_TOKEN=YOUR_TOKEN_HERE
+GITHUB_REPO=picnicwi/mymorning
+GITHUB_BRANCH=main
+GITHUB_USER=picnicwi
+GITHUB_EMAIL=bizzpicnic@gmail.com
