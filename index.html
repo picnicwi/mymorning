@@ -3,56 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MorningInsight — AI & Tech Digest</title>
+<title>MorningInsight — AI &amp; Tech Digest 2026-04-13</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ============ THEME: Midnight Editorial ============ */
   :root {
-    --font-body: 'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
     --font-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
-    --bg: #0f1729;
-    --surface: #162040;
-    --surface2: #1d2b52;
-    --surface-elevated: #243362;
-    --border: rgba(200, 180, 140, 0.08);
-    --border-bright: rgba(200, 180, 140, 0.16);
-    --text: #e8e4d8;
-    --text-dim: #9a9484;
-    --accent: #d4a73a;
-    --accent-dim: rgba(212, 167, 58, 0.1);
-    --code-bg: #0a0f1e;
-    --code-text: #d4d0c4;
-    --green: #4ade80;
-    --green-dim: rgba(74, 222, 128, 0.1);
-    --red: #f87171;
-    --red-dim: rgba(248, 113, 113, 0.1);
-    --blue: #60a5fa;
-    --blue-dim: rgba(96, 165, 250, 0.1);
-  }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #faf8f2;
-      --surface: #ffffff;
-      --surface2: #f5f0e6;
-      --surface-elevated: #fffdf5;
-      --border: rgba(30, 30, 50, 0.08);
-      --border-bright: rgba(30, 30, 50, 0.16);
-      --text: #1a1814;
-      --text-dim: #7a7468;
-      --accent: #b8860b;
-      --accent-dim: rgba(184, 134, 11, 0.08);
-      --code-bg: #2a2520;
-      --code-text: #e8e4d8;
-      --green: #16a34a;
-      --green-dim: rgba(22, 163, 74, 0.08);
-      --red: #dc2626;
-      --red-dim: rgba(220, 38, 38, 0.08);
-      --blue: #2563eb;
-      --blue-dim: rgba(37, 99, 235, 0.08);
-    }
+    --bg: #0d1520;
+    --surface: #132035;
+    --surface2: #1a2a45;
+    --surface-elevated: #213356;
+    --border: rgba(212, 175, 90, 0.08);
+    --border-bright: rgba(212, 175, 90, 0.18);
+    --text: #e6e2d8;
+    --text-dim: #8a8578;
+    --accent: #d4af5a;
+    --accent-dim: rgba(212, 175, 90, 0.1);
+    --accent-glow: rgba(212, 175, 90, 0.06);
+    --gold-line: rgba(212, 175, 90, 0.35);
+    --green: #52c97a;
+    --green-dim: rgba(82, 201, 122, 0.1);
+    --red: #f07070;
+    --red-dim: rgba(240, 112, 112, 0.1);
+    --blue: #5ba8e8;
+    --blue-dim: rgba(91, 168, 232, 0.1);
+    --amber: #e8a83a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -84,10 +62,10 @@
     padding: clamp(40px, 6vh, 80px) clamp(40px, 8vw, 120px);
     isolation: isolate;
     opacity: 0;
-    transform: translateY(40px) scale(0.98);
+    transform: translateY(32px) scale(0.99);
     transition:
-      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .slide.visible {
@@ -97,19 +75,19 @@
 
   .slide .reveal {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
     transition:
-      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .slide.visible .reveal { opacity: 1; transform: none; }
-  .slide.visible .reveal:nth-child(1) { transition-delay: 0.1s; }
-  .slide.visible .reveal:nth-child(2) { transition-delay: 0.2s; }
-  .slide.visible .reveal:nth-child(3) { transition-delay: 0.3s; }
-  .slide.visible .reveal:nth-child(4) { transition-delay: 0.4s; }
-  .slide.visible .reveal:nth-child(5) { transition-delay: 0.5s; }
-  .slide.visible .reveal:nth-child(6) { transition-delay: 0.6s; }
+  .slide.visible .reveal:nth-child(1) { transition-delay: 0.08s; }
+  .slide.visible .reveal:nth-child(2) { transition-delay: 0.16s; }
+  .slide.visible .reveal:nth-child(3) { transition-delay: 0.24s; }
+  .slide.visible .reveal:nth-child(4) { transition-delay: 0.32s; }
+  .slide.visible .reveal:nth-child(5) { transition-delay: 0.40s; }
+  .slide.visible .reveal:nth-child(6) { transition-delay: 0.48s; }
 
   @media (prefers-reduced-motion: reduce) {
     .slide, .slide .reveal {
@@ -121,22 +99,25 @@
 
   /* ============ NAV CHROME ============ */
   .deck-progress {
-    position: fixed; top: 0; left: 0; height: 3px;
-    background: var(--accent); z-index: 100;
-    transition: width 0.3s ease; pointer-events: none;
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--amber));
+    z-index: 100;
+    transition: width 0.3s ease;
+    pointer-events: none;
   }
 
   .deck-dots {
-    position: fixed; right: clamp(12px, 2vw, 24px); top: 50%;
+    position: fixed; right: clamp(12px, 2vw, 20px); top: 50%;
     transform: translateY(-50%); display: flex; flex-direction: column;
-    gap: 8px; z-index: 100; padding: 8px;
-    background: color-mix(in srgb, var(--bg) 60%, transparent 40%);
+    gap: 7px; z-index: 100; padding: 8px 6px;
+    background: rgba(13, 21, 32, 0.65);
     border-radius: 20px;
-    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--border);
   }
 
   .deck-dot {
-    width: 8px; height: 8px; border-radius: 50%;
+    width: 7px; height: 7px; border-radius: 50%;
     background: var(--text-dim); opacity: 0.3; border: none; padding: 0;
     cursor: pointer; transition: opacity 0.2s ease, transform 0.2s ease;
   }
@@ -144,48 +125,54 @@
   .deck-dot.active { opacity: 1; transform: scale(1.5); background: var(--accent); }
 
   .deck-counter {
-    position: fixed; bottom: clamp(12px, 2vh, 24px); right: clamp(12px, 2vw, 24px);
-    font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);
+    position: fixed; bottom: clamp(14px, 2vh, 22px); right: clamp(14px, 2vw, 28px);
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);
     z-index: 100; font-variant-numeric: tabular-nums;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
-  .deck-hints {
-    position: fixed; bottom: clamp(12px, 2vh, 24px); left: 50%;
-    transform: translateX(-50%); font-family: var(--font-mono);
-    font-size: 11px; color: var(--text-dim); opacity: 0.6; z-index: 100;
-    transition: opacity 0.5s ease; white-space: nowrap;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  .deck-nav {
+    position: fixed; bottom: clamp(14px, 2vh, 22px); left: 50%;
+    transform: translateX(-50%); display: flex; gap: 8px;
+    z-index: 100;
   }
-  .deck-hints.faded { opacity: 0; pointer-events: none; }
 
-  /* ============ SHARED SLIDE ELEMENTS ============ */
+  .deck-btn {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--text-dim); background: rgba(13, 21, 32, 0.7);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 5px 12px; cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .deck-btn:hover { color: var(--accent); border-color: var(--gold-line); }
+
+  /* ============ TYPOGRAPHY ============ */
   .slide__display {
-    font-size: clamp(48px, 10vw, 120px);
-    font-weight: 400;
+    font-size: clamp(46px, 9.5vw, 112px);
+    font-weight: 800;
     letter-spacing: -2px;
     line-height: 0.95;
     text-wrap: balance;
   }
 
   .slide__heading {
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: 400;
+    font-size: clamp(24px, 4.5vw, 44px);
+    font-weight: 700;
     letter-spacing: -0.5px;
-    line-height: 1.15;
+    line-height: 1.1;
     text-wrap: balance;
   }
 
   .slide__body {
-    font-size: clamp(16px, 2.2vw, 22px);
-    line-height: 1.6;
+    font-size: clamp(14px, 1.9vw, 20px);
+    line-height: 1.65;
     color: var(--text-dim);
-    text-wrap: pretty;
+    font-weight: 400;
   }
 
   .slide__subtitle {
     font-family: var(--font-mono);
-    font-size: clamp(12px, 1.5vw, 18px);
+    font-size: clamp(11px, 1.4vw, 16px);
     color: var(--text-dim);
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -193,580 +180,876 @@
 
   .slide__label {
     font-family: var(--font-mono);
-    font-size: clamp(10px, 1.2vw, 13px);
+    font-size: clamp(9px, 1.1vw, 12px);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.8px;
     color: var(--accent);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   /* ============ SLIDE TYPE: TITLE ============ */
   .slide--title {
     justify-content: center;
+    align-items: flex-start;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(212,175,90,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(91,168,232,0.04) 0%, transparent 50%),
+      var(--bg);
+  }
+
+  .slide--title .title-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
     align-items: center;
-    text-align: center;
-    background-image: radial-gradient(ellipse at 50% 30%, var(--accent-dim) 0%, transparent 50%);
+    width: 100%;
+    max-width: 1400px;
+  }
+
+  .slide--title .title-left { display: flex; flex-direction: column; gap: 20px; }
+  .slide--title .title-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-left: 1px solid var(--border-bright);
+    padding-left: clamp(24px, 4vw, 60px);
   }
 
   .slide--title .slide__display { color: var(--accent); }
-  .slide--title .slide__subtitle { margin-top: 24px; }
 
-  /* ============ SLIDE TYPE: DIVIDER ============ */
-  .slide--divider { justify-content: center; }
-
-  .slide--divider .slide__number {
-    font-size: clamp(100px, 22vw, 260px);
-    font-weight: 200;
-    line-height: 0.85;
-    opacity: 0.06;
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -55%);
-    pointer-events: none;
-    font-variant-numeric: tabular-nums;
-    color: var(--accent);
-  }
-
-  .slide--divider .slide__heading { position: relative; z-index: 1; }
-
-  /* ============ SLIDE TYPE: CONTENT ============ */
-  .slide--content .slide__inner {
+  .title-meta-row {
     display: flex;
-    flex-direction: column;
-    gap: clamp(24px, 4vw, 60px);
-    width: 100%;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
-  .slide__card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: clamp(24px, 4vh, 40px);
-    margin-bottom: 12px;
-  }
-
-  .slide__card-title {
-    font-size: clamp(18px, 2.5vw, 24px);
+  .title-tag {
+    font-family: var(--font-mono);
+    font-size: clamp(9px, 1vw, 11px);
     font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-
-  .slide__card-meta {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-  }
-
-  .slide__card-content {
-    font-size: clamp(14px, 1.8vw, 18px);
-    line-height: 1.5;
-    color: var(--text-dim);
-  }
-
-  .slide__card-insight {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-    font-style: italic;
-    color: var(--text-dim);
-    font-size: clamp(13px, 1.6vw, 16px);
-  }
-
-  /* ============ SLIDE TYPE: SPLIT ============ */
-  .slide--split { padding: 0; }
-
-  .slide--split .slide__panels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 100%;
-  }
-
-  .slide--split .slide__panel {
-    padding: clamp(40px, 6vh, 80px) clamp(32px, 4vw, 60px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .slide--split .slide__panel--primary { background: var(--surface); }
-  .slide--split .slide__panel--secondary {
-    background: var(--surface2);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .slide__highlights {
-    list-style: none;
-    padding: 0;
-  }
-
-  .slide__highlights li {
-    padding: 12px 0;
-    font-size: clamp(14px, 1.8vw, 20px);
-    line-height: 1.5;
-    color: var(--text-dim);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .slide__highlights li:last-child { border-bottom: none; }
-  .slide__highlights li::before { content: '→ '; color: var(--accent); font-weight: 600; }
-
-  /* ============ SLIDE TYPE: DASHBOARD ============ */
-  .slide--dashboard { padding: clamp(24px, 4vh, 48px) clamp(24px, 4vw, 60px); }
-
-  .slide--dashboard .slide__heading { margin-bottom: clamp(20px, 3vh, 40px); }
-
-  .slide__kpis {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 20vw, 220px), 1fr));
-    gap: clamp(12px, 2vw, 24px);
-  }
-
-  .slide__kpi {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: clamp(16px, 3vh, 32px) clamp(16px, 2vw, 24px);
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .slide__kpi-val {
-    font-size: clamp(28px, 4vw, 48px);
-    font-weight: 400;
-    letter-spacing: -1px;
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .slide__kpi-label {
-    font-family: var(--font-mono);
-    font-size: clamp(9px, 1.2vw, 13px);
-    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--text-dim);
-    margin-top: 8px;
+    border: 1px solid var(--border-bright);
+    padding: 4px 10px;
+    border-radius: 4px;
   }
 
-  /* Navigation buttons */
-  .deck-nav {
-    position: fixed;
-    bottom: clamp(12px, 2vh, 24px);
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 100;
-  }
-
-  .deck-nav button {
-    background: color-mix(in srgb, var(--surface) 80%, transparent 20%);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
+  .title-toc-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    gap: 12px;
+    font-size: clamp(13px, 1.6vw, 16px);
+    color: var(--text-dim);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
   }
-
-  .deck-nav button:hover {
-    background: color-mix(in srgb, var(--surface) 100%, transparent 0%);
+  .title-toc-item:last-child { border-bottom: none; }
+  .title-toc-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--accent);
-    border-color: var(--accent);
+    min-width: 24px;
   }
 
-  @media (max-width: 768px) {
-    .deck-nav { left: auto; right: clamp(12px, 2vw, 24px); transform: none; }
+  /* ============ SLIDE TYPE: DIVIDER ============ */
+  .slide--divider {
+    justify-content: center;
+    align-items: flex-start;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, var(--accent-glow) 0%, transparent 60%),
+      var(--bg);
+  }
+
+  .slide--divider .div-number {
+    font-size: clamp(120px, 26vw, 300px);
+    font-weight: 800;
+    line-height: 0.85;
+    opacity: 0.04;
+    position: absolute;
+    top: 50%; right: 8vw;
+    transform: translateY(-55%);
+    pointer-events: none;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    letter-spacing: -8px;
+  }
+
+  .slide--divider .div-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 700px;
+  }
+
+  .slide--divider .div-bar {
+    width: 48px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+
+  /* ============ NEWS CARD LAYOUT ============ */
+  .news-grid {
+    display: grid;
+    gap: clamp(12px, 2vw, 20px);
+    width: 100%;
+  }
+
+  .news-grid--2 { grid-template-columns: 1fr 1fr; }
+  .news-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .news-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: clamp(14px, 2.2vw, 22px);
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+  }
+
+  .news-card--hero {
+    background: var(--surface2);
+    border-color: var(--border-bright);
+  }
+
+  .news-card__source {
+    font-family: var(--font-mono);
+    font-size: clamp(9px, 1vw, 11px);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+  }
+
+  .news-card__headline {
+    font-size: clamp(13px, 1.7vw, 17px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+    overflow-wrap: break-word;
+  }
+
+  .news-card__summary {
+    font-size: clamp(11px, 1.35vw, 14px);
+    line-height: 1.6;
+    color: var(--text-dim);
+    overflow-wrap: break-word;
+  }
+
+  .news-card__why {
+    font-size: clamp(10px, 1.25vw, 13px);
+    line-height: 1.5;
+    color: var(--amber);
+    font-weight: 500;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    margin-top: auto;
+    overflow-wrap: break-word;
+  }
+
+  .news-card__why::before {
+    content: 'WHY IT MATTERS — ';
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ============ STAT CARDS ============ */
+  .stat-row {
+    display: flex;
+    gap: clamp(12px, 2vw, 20px);
+    flex-wrap: wrap;
+    margin-bottom: clamp(10px, 1.8vh, 18px);
+  }
+
+  .stat-card {
+    background: var(--surface2);
+    border: 1px solid var(--border-bright);
+    border-radius: 8px;
+    padding: clamp(12px, 1.8vw, 16px) clamp(16px, 2.2vw, 22px);
+    min-width: 0;
+    flex: 1;
+  }
+
+  .stat-card__num {
+    font-size: clamp(26px, 4vw, 48px);
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  .stat-card__label {
+    font-family: var(--font-mono);
+    font-size: clamp(9px, 1vw, 11px);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ============ SUMMARY SLIDE ============ */
+  .watch-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .watch-item {
+    display: flex;
+    gap: clamp(12px, 2vw, 20px);
+    align-items: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: clamp(10px, 1.6vh, 16px) clamp(14px, 2.2vw, 20px);
+    min-width: 0;
+  }
+
+  .watch-item__num {
+    font-family: var(--font-mono);
+    font-size: clamp(18px, 2.8vw, 30px);
+    font-weight: 600;
+    color: var(--accent);
+    opacity: 0.4;
+    min-width: 32px;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .watch-item__content { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .watch-item__title { font-size: clamp(13px, 1.6vw, 16px); font-weight: 700; overflow-wrap: break-word; }
+  .watch-item__desc { font-size: clamp(11px, 1.25vw, 13px); color: var(--text-dim); line-height: 1.5; overflow-wrap: break-word; }
+
+  /* ============ DECORATIVE ============ */
+  .slide__bg-line {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid;
+  }
+
+  .badge--gold { color: var(--accent); border-color: var(--gold-line); background: var(--accent-dim); }
+
+  .slide-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: clamp(10px, 1.8vh, 18px);
   }
 </style>
 </head>
 <body>
-<div class="deck-progress"></div>
-<div class="deck-dots"></div>
-<div class="deck-counter"></div>
-<div class="deck-hints">Press arrow keys or click buttons to navigate</div>
-<div class="deck">
-  <!-- SLIDE 1: TITLE -->
-  <div class="slide slide--title">
-    <div class="slide__display reveal">MorningInsight</div>
-    <div class="slide__heading reveal" style="color: var(--text-dim); margin-top: 8px;">AI & Tech Digest</div>
-    <div class="slide__subtitle reveal" style="margin-top: 32px;">April 12, 2026</div>
-    <div class="slide__body reveal" style="margin-top: 48px; max-width: 600px; margin-left: auto; margin-right: auto;">Your daily briefing on artificial intelligence, enterprise platforms, and fintech innovation</div>
-  </div>
 
-  <!-- SLIDE 2: AI & GENERATIVE AI DIVIDER -->
-  <div class="slide slide--divider">
-    <div class="slide__number">1</div>
-    <div class="slide__heading reveal">AI & Generative AI</div>
-    <div class="slide__body reveal" style="margin-top: 24px;">Model launches, research breakthroughs, capability updates</div>
-  </div>
-
-  <!-- SLIDE 3: AI & GenAI - Content 1 -->
-  <div class="slide slide--content">
-    <div class="slide__inner">
-      <div class="reveal">
-        <div class="slide__heading">Energy-Efficient AI Breakthrough</div>
-        <div class="slide__card">
-          <div class="slide__card-meta">Research Finding</div>
-          <div class="slide__card-content">Researchers have unveiled a radically more efficient approach that could slash AI energy use by up to 100x while actually improving accuracy. This addresses one of the industry's most pressing concerns: the computational cost and environmental impact of large-scale AI systems.</div>
-          <div class="slide__card-insight">Why it matters: Efficiency innovations unlock affordable AI deployment across resource-constrained environments and reduce operational costs at scale.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Model Release</div>
-          <div class="slide__card-title">Meta Debuts Muse Spark AI Model</div>
-          <div class="slide__card-content">Meta is launching its first major AI model since hiring Scale AI's Alexandr Wang nine months ago. The company plans to spend $115-135 billion on AI capital expenditures in 2026—nearly double last year's investment.</div>
-          <div class="slide__card-insight">Why it matters: Major tech investment in AI infrastructure signals industry confidence and acceleration in competitive model development.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 4: AI & GenAI - Content 2 -->
-  <div class="slide slide--content">
-    <div class="slide__inner">
-      <div class="reveal">
-        <div class="slide__heading">AI Reasoning & Creativity Milestones</div>
-        <div class="slide__card">
-          <div class="slide__card-meta">Capability Study</div>
-          <div class="slide__card-title">Generative AI Beats Humans in Creativity Tests</div>
-          <div class="slide__card-content">A massive new study comparing over 100,000 people with today's most advanced AI systems shows that generative AI can now beat the average human on certain creativity tests, marking a significant milestone in AI capabilities.</div>
-          <div class="slide__card-insight">Why it matters: Creative capability benchmarking shifts perception from AI as tool to AI as peer in certain domains.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Model Architecture</div>
-          <div class="slide__card-title">Reasoning Models Gaining Traction</div>
-          <div class="slide__card-content">Reasoning models like OpenAI's o3 and Claude use chain-of-thought processing to decompose problems, consider multiple approaches, and verify their work. These systems represent a fundamental shift in how AI tackles complex tasks.</div>
-          <div class="slide__card-insight">Why it matters: Reasoning-first architecture improves reliability and explainability in critical applications.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 5: TECH INDUSTRY DIVIDER -->
-  <div class="slide slide--divider">
-    <div class="slide__number">2</div>
-    <div class="slide__heading reveal">Tech Industry Trends</div>
-    <div class="slide__body reveal" style="margin-top: 24px;">Big tech moves, platform shifts, enterprise adoption momentum</div>
-  </div>
-
-  <!-- SLIDE 6: TECH TRENDS - Content 1 -->
-  <div class="slide slide--content">
-    <div class="slide__inner">
-      <div class="reveal">
-        <div class="slide__heading">From Experiment to Execution</div>
-        <div class="slide__card">
-          <div class="slide__card-meta">Industry Transition</div>
-          <div class="slide__card-title">Enterprise AI Moves Beyond Pilots</div>
-          <div class="slide__card-content">2026 marks the moment when Generative AI shifts from experimentation to execution. Organizations are transitioning from individual-based GenAI implementation to enterprise-level deployment with clear governance and measurable ROI targets.</div>
-          <div class="slide__card-insight">Why it matters: Maturation of AI adoption strategies accelerates business value realization and reduces implementation risk.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Emerging Pattern</div>
-          <div class="slide__card-title">AI Workers & Agentic Systems Rise</div>
-          <div class="slide__card-content">Nearly one-third of enterprises will assign formal roles to AI workers by end of 2026. Klarna's AI customer service agent already handles tasks equivalent to 700+ human agents with measurable SLAs and performance metrics.</div>
-          <div class="slide__card-insight">Why it matters: Autonomous AI agents becoming core operational infrastructure, not supplementary tools.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 7: TECH TRENDS - Content 2 -->
-  <div class="slide slide--content">
-    <div class="slide__inner">
-      <div class="reveal">
-        <div class="slide__heading">Infrastructure & Capability Evolution</div>
-        <div class="slide__card">
-          <div class="slide__card-meta">Investment Analysis</div>
-          <div class="slide__card-title">$3 Trillion AI Infrastructure Wave</div>
-          <div class="slide__card-content">Morgan Stanley Research estimates nearly $3 trillion of AI-related infrastructure investment will flow through the global economy by 2028, with over 80% of that spending still ahead of us.</div>
-          <div class="slide__card-insight">Why it matters: Unprecedented capital allocation signals sustained long-term AI investment cycle and market confidence.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Technology Stack</div>
-          <div class="slide__card-title">Multimodal & Physical AI Advancing</div>
-          <div class="slide__card-content">Physical AI and world models are defining the next phase of multimodal progress. Boston Dynamics' electric Atlas and partnerships with Google DeepMind show robots moving from research labs into real deployments.</div>
-          <div class="slide__card-insight">Why it matters: AI extending beyond text/images into physical world interaction unlocks entirely new application categories.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 8: BANKING & FINTECH DIVIDER -->
-  <div class="slide slide--divider">
-    <div class="slide__number">3</div>
-    <div class="slide__heading reveal">Banking & Financial Services</div>
-    <div class="slide__body reveal" style="margin-top: 24px;">AI adoption in fintech, banking automation, risk and fraud AI</div>
-  </div>
-
-  <!-- SLIDE 9: BANKING & FINTECH - Content -->
-  <div class="slide slide--content">
-    <div class="slide__inner">
-      <div class="reveal">
-        <div class="slide__heading">Agentic AI Transforms Banking</div>
-        <div class="slide__card">
-          <div class="slide__card-meta">Market Shift</div>
-          <div class="slide__card-title">From AI-Enabled to AI-Executed</div>
-          <div class="slide__card-content">70% of banking professionals see agentic AI as a game-changer. Banks are moving from pilot projects to deploying production-scale, autonomous, and carefully governed AI agents that transform customer engagement and decision-making.</div>
-          <div class="slide__card-insight">Why it matters: Operational autonomy in banking accelerates and de-risks transformation at institutional scale.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Economic Impact</div>
-          <div class="slide__card-title">$200B-$340B Annual Value Unlock</div>
-          <div class="slide__card-content">Generative AI could add $200-340 billion annually to the global banking industry, primarily through efficiency gains. AI is expected to boost investment bank productivity by 27% and improve front-office operations by 27-35% by 2026.</div>
-          <div class="slide__card-insight">Why it matters: Quantified economic impact justifies aggressive AI investment and accelerates deployment timelines across institutions.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Implementation Challenge</div>
-          <div class="slide__card-title">Governance Gap Remains</div>
-          <div class="slide__card-content">While 31.8% of institutions have deployed AI/ML to production, only 12.2% report a "well-defined and resourced" AI/ML strategy. Banks may be moving quickly to embed agentic AI at the expense of clear governance.</div>
-          <div class="slide__card-insight">Why it matters: Governance maturity lags deployment velocity, creating compliance and operational risk that requires urgent attention.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 10: DATA PLATFORMS DIVIDER -->
-  <div class="slide slide--divider">
-    <div class="slide__number">4</div>
-    <div class="slide__heading reveal">Data Platforms</div>
-    <div class="slide__body reveal" style="margin-top: 24px;">Databricks and Microsoft Fabric news and feature updates</div>
-  </div>
-
-  <!-- SLIDE 11: DATA PLATFORMS - Content -->
-  <div class="slide slide--content">
-    <div class="slide__inner">
-      <div class="reveal">
-        <div class="slide__heading">Databricks Advances Agentic Capabilities</div>
-        <div class="slide__card">
-          <div class="slide__card-meta">Product Release</div>
-          <div class="slide__card-title">Genie Code Agent Mode Generally Available</div>
-          <div class="slide__card-content">Databricks renamed Databricks Assistant to Genie Code with expanded agentic capabilities. Genie Code Agent mode is now generally available for autonomous, multi-step data tasks across data science, engineering, and dashboard authoring.</div>
-          <div class="slide__card-insight">Why it matters: AI-driven data operations reduce manual overhead and accelerate analytics velocity for technical teams.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Infrastructure</div>
-          <div class="slide__card-title">Lakebase Autoscaling & Governance</div>
-          <div class="slide__card-content">New Lakebase instances now default to Autoscaling projects with automatic scaling, scale-to-zero, branching, and instant restore capabilities. Governed Tags are now generally available for controlled metadata management in Unity Catalog.</div>
-          <div class="slide__card-insight">Why it matters: Cost optimization and governance-by-default reduces operational complexity and improves data security posture.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Enterprise Features</div>
-          <div class="slide__card-title">Microsoft Fabric Advanced CI/CD</div>
-          <div class="slide__card-content">Microsoft Fabric now supports reading items from Variable Library with workspace-specific configuration auto-resolution across dev, test, and production environments. Branched workspaces and selective branching simplify team development workflows.</div>
-          <div class="slide__card-insight">Why it matters: Enhanced DevOps capabilities bring enterprise-grade release management to analytical platform engineering.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 12: MICROSOFT AI DIVIDER -->
-  <div class="slide slide--divider">
-    <div class="slide__number">5</div>
-    <div class="slide__heading reveal">Microsoft AI & Copilot</div>
-    <div class="slide__body reveal" style="margin-top: 24px;">Copilot, Azure AI, and Microsoft 365 releases</div>
-  </div>
-
-  <!-- SLIDE 13: MICROSOFT AI - Content -->
-  <div class="slide slide--content">
-    <div class="slide__inner">
-      <div class="reveal">
-        <div class="slide__heading">Copilot Evolution & Integration</div>
-        <div class="slide__card">
-          <div class="slide__card-meta">Product Update</div>
-          <div class="slide__card-title">Agent-Style Multi-Step Edits</div>
-          <div class="slide__card-content">Microsoft 365 Copilot is evolving from chat assistant into an operational AI layer. Agent mode in Word, Excel, and PowerPoint now enables autonomous multi-step edits with reasoning—the system can now make changes while explaining its logic.</div>
-          <div class="slide__card-insight">Why it matters: Autonomous editing with reasoning improves document quality and reduces manual iteration cycles.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Feature Release</div>
-          <div class="slide__card-title">Meeting Video Recaps & Enhanced Awareness</div>
-          <div class="slide__card-content">Copilot Chat now delivers video recaps alongside written summaries of meetings, combining key takeaways with short relevant video clips. Inbox and calendar awareness enable context-aware assistance throughout the workday.</div>
-          <div class="slide__card-insight">Why it matters: Multimodal recaps improve information retention and accelerate decision-making from meeting insights.</div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="slide__card">
-          <div class="slide__card-meta">Windows Update</div>
-          <div class="slide__card-title">Copilot Now Optional in Windows 11</div>
-          <div class="slide__card-content">The 2026 Windows 11 update makes Copilot optional rather than a forced default component. Users and IT departments now have control over whether Copilot is active in their operating system.</div>
-          <div class="slide__card-insight">Why it matters: User choice and IT control improve adoption acceptance and reduce forced AI integration friction.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 14: SUMMARY / WHAT TO WATCH -->
-  <div class="slide slide--split">
-    <div class="slide__panels">
-      <div class="slide__panel slide__panel--primary">
-        <div class="reveal">
-          <div class="slide__heading">Top 5 — What to Watch</div>
-          <div style="margin-top: 32px;">
-            <ul class="slide__highlights">
-              <li class="reveal" style="transition-delay: 0.1s;">Energy-efficient AI breakthroughs (100x reduction) enabling affordable deployment at scale</li>
-              <li class="reveal" style="transition-delay: 0.2s;">Agentic AI systems moving from experimental pilots to production governance at scale across enterprises</li>
-              <li class="reveal" style="transition-delay: 0.3s;">Banking sector deploying autonomous AI agents with accountability, driving $200B+ annual value unlock</li>
-              <li class="reveal" style="transition-delay: 0.4s;">Data platforms advancing autonomy with Genie Code agents and Microsoft Fabric DevOps maturity</li>
-              <li class="reveal" style="transition-delay: 0.5s;">Microsoft Copilot evolving from chat into operational decision-making layer across Microsoft 365</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="slide__panel slide__panel--secondary">
-        <div class="reveal" style="padding: 0;">
-          <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 20px;">Story Summary</div>
-          <div style="font-size: 16px; line-height: 1.6; color: var(--text-dim);">
-            <p style="margin-bottom: 16px;">2026 is the inflection point where AI shifts from experiment to execution. Efficiency innovations, reasoning-first architectures, and autonomous agents are becoming operational infrastructure rather than differentiators.</p>
-            <p style="margin-bottom: 16px;">Banking leads adoption with clear economic drivers. Governance gaps remain the constraint, not capability.</p>
-            <p>Enterprise platforms are racing to embed AI autonomy while simplifying the developer experience. Winner: organizations that combine capability with governance discipline.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- ============ NAV CHROME ============ -->
+<div class="deck-progress" id="deckProgress"></div>
+<nav class="deck-dots" id="deckDots" aria-label="Slide navigation"></nav>
+<div class="deck-counter" id="deckCounter">1 / 20</div>
 <div class="deck-nav">
-  <button id="prevBtn" title="Previous slide">←</button>
-  <button id="nextBtn" title="Next slide">→</button>
+  <button class="deck-btn" id="btnPrev">← prev</button>
+  <button class="deck-btn" id="btnNext">next →</button>
 </div>
+
+<!-- ============ DECK ============ -->
+<div class="deck" id="deck">
+
+  <!-- ===== SLIDE 01: TITLE ===== -->
+  <section class="slide slide--title" data-slide="0">
+    <div class="title-grid">
+      <div class="title-left">
+        <div class="reveal">
+          <div class="slide__label">Daily Intelligence Briefing</div>
+          <div class="slide__display">Morning<br>Insight</div>
+        </div>
+        <div class="reveal">
+          <div class="slide__subtitle">AI &amp; Tech Digest</div>
+        </div>
+        <div class="reveal title-meta-row">
+          <span class="title-tag">2026-04-13</span>
+          <span class="title-tag">Monday</span>
+          <span class="title-tag">8 Topics · 20 Slides</span>
+        </div>
+        <div class="reveal">
+          <p class="slide__body" style="max-width: 480px; margin-top: 8px;">
+            Curated intelligence on AI, Generative AI, big tech, banking innovation, data platforms, and Microsoft AI — sourced from the last 24–48 hours.
+          </p>
+        </div>
+      </div>
+      <div class="title-right">
+        <div class="reveal">
+          <div class="slide__label" style="margin-bottom: 16px;">This Edition</div>
+        </div>
+        <div class="title-toc-item reveal"><span class="title-toc-num">01</span> AI &amp; Generative AI</div>
+        <div class="title-toc-item reveal"><span class="title-toc-num">02</span> Tech Industry Trends</div>
+        <div class="title-toc-item reveal"><span class="title-toc-num">03</span> Banking &amp; Financial Services</div>
+        <div class="title-toc-item reveal"><span class="title-toc-num">04</span> Data Platforms</div>
+        <div class="title-toc-item reveal"><span class="title-toc-num">05</span> Microsoft AI</div>
+        <div class="title-toc-item reveal" style="color: var(--accent);"><span class="title-toc-num">—</span> What to Watch</div>
+      </div>
+    </div>
+    <svg class="slide__bg-line" style="right:0;bottom:0;width:38%;height:38%;opacity:0.025;" viewBox="0 0 400 400" fill="none">
+      <circle cx="300" cy="300" r="280" stroke="#D4AF5A" stroke-width="1"/>
+      <circle cx="300" cy="300" r="200" stroke="#D4AF5A" stroke-width="1"/>
+      <circle cx="300" cy="300" r="120" stroke="#D4AF5A" stroke-width="1"/>
+    </svg>
+  </section>
+
+  <!-- ===== SLIDE 02: DIVIDER — AI & Generative AI ===== -->
+  <section class="slide slide--divider" data-slide="1">
+    <span class="div-number">01</span>
+    <div class="div-inner">
+      <div class="reveal div-bar"></div>
+      <div class="reveal slide__label">Section 01</div>
+      <div class="reveal slide__heading" style="color: var(--accent); font-size: clamp(32px,6vw,64px); font-weight:800;">AI &amp;<br>Generative AI</div>
+      <div class="reveal slide__body" style="max-width:520px; margin-top: 8px;">
+        Model launches, research breakthroughs, capability updates, and the competitive race toward efficient, multi-modal intelligence.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 03: Meta Muse Spark + NVIDIA ===== -->
+  <section class="slide" data-slide="2" style="background: radial-gradient(ellipse 70% 50% at 85% 20%, rgba(212,175,90,0.05) 0%, transparent 55%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">AI &amp; Generative AI — Model Race</div>
+      <div class="slide__heading">Big Tech Doubles Down on Efficiency</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">CNBC · Meta · April 2026</div>
+        <div class="news-card__headline">Meta Debuts Muse Spark — First Major Model Post-Scale AI Deal</div>
+        <div class="news-card__summary">Meta introduced Muse Spark following the hiring of Scale AI's Alexandr Wang. The compact models match older Llama 4 variant capabilities while requiring an order of magnitude less compute — signalling a decisive shift toward efficiency over raw scale in the model arms race.</div>
+        <div class="news-card__why">Competition is shifting from parameter count to compute-per-capability ratios, a metric that directly favours enterprise deployment economics and on-premise deployments.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Latest AI News · NVIDIA</div>
+        <div class="news-card__headline">NVIDIA "Vera Rubin" AI Platform Unveiled at CES 2026</div>
+        <div class="news-card__summary">NVIDIA presented its flagship "Vera Rubin" AI platform featuring radical improvements in processing power and memory bandwidth. The architecture is designed to accommodate next-generation model workloads demanding higher throughput with reduced latency at scale.</div>
+        <div class="news-card__why">New silicon architectures set the ceiling for what AI deployments become possible — Vera Rubin will likely shape enterprise infrastructure roadmaps through 2027.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 04: Energy Breakthrough + Creativity Parity ===== -->
+  <section class="slide" data-slide="3" style="background: radial-gradient(ellipse 60% 50% at 15% 70%, rgba(91,168,232,0.04) 0%, transparent 55%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">AI &amp; Generative AI — Research Breakthroughs</div>
+      <div class="slide__heading">100x Efficiency Gain &amp; Human-Level Creativity</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">ScienceDaily · April 5, 2026</div>
+        <div class="news-card__headline">AI Breakthrough Cuts Energy Use 100x While Improving Accuracy</div>
+        <div class="news-card__summary">Researchers unveiled a hybrid approach combining neural networks with symbolic reasoning, achieving 100x energy reduction alongside improved accuracy. The system enables AI agents to reason logically rather than relying on brute-force statistical inference — a paradigm shift in AI architecture design.</div>
+        <div class="news-card__why">A 100x energy efficiency gain fundamentally changes AI economics, enabling deployment in edge, mobile, and resource-constrained financial environments where today's models are prohibitively expensive.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">AI Weekly · Research Study</div>
+        <div class="news-card__headline">Generative AI Surpasses Average Human on Creativity Benchmarks</div>
+        <div class="news-card__summary">A major study of over 100,000 participants versus advanced AI systems shows generative AI can now beat the average human on standardised creativity tests. The research quantifies a capability that was previously considered uniquely human and commercially unassailable.</div>
+        <div class="news-card__why">Creative parity shifts AI from augmentation tool to potential substitute, accelerating boardroom discussions around knowledge worker automation in marketing, strategy, and advisory roles.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 05: Enterprise AI Workers + Domain Models ===== -->
+  <section class="slide" data-slide="4" style="background: var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">AI &amp; Generative AI — Enterprise Adoption</div>
+      <div class="slide__heading">AI Workers Enter the Org Chart</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card">
+        <div class="news-card__source">TechTarget · BCG · 2026</div>
+        <div class="news-card__headline">One-Third of Enterprises to Assign Formal Roles to AI Workers by End 2026</div>
+        <div class="news-card__summary">Nearly 31% of enterprises will formalise AI worker roles by year-end. Klarna's AI customer service agent handles work equivalent to 700+ human agents. However, BCG research flags that 70% of AI failures stem from missing context and inadequate process design — not model quality or capability gaps.</div>
+        <div class="news-card__why">Formalising AI worker roles in org structures marks the transition from pilot projects to operational infrastructure — a pivotal moment for HR, legal, compliance, and risk management functions.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Ciklum · MIT Sloan Review</div>
+        <div class="news-card__headline">Domain-Specific and Multimodal Models Gain Enterprise Traction in 2026</div>
+        <div class="news-card__summary">Industry-specific GenAI models trained on proprietary domain data are emerging across professional disciplines with superior performance. Multimodal systems now interpret language, vision, and action simultaneously — moving AI toward perception-level reasoning suitable for complex enterprise workflows.</div>
+        <div class="news-card__why">Specialised models significantly lower hallucination rates in regulated domains, directly relevant to compliance, audit, credit decisioning, and financial advisory use cases.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 06: DIVIDER — Tech Industry Trends ===== -->
+  <section class="slide slide--divider" data-slide="5">
+    <span class="div-number">02</span>
+    <div class="div-inner">
+      <div class="reveal div-bar"></div>
+      <div class="reveal slide__label">Section 02</div>
+      <div class="reveal slide__heading" style="color: var(--accent); font-size: clamp(32px,6vw,64px); font-weight:800;">Tech Industry<br>Trends</div>
+      <div class="reveal slide__body" style="max-width:520px; margin-top: 8px;">
+        Big tech strategic moves, platform paradigm shifts, enterprise adoption patterns, and the emerging AI infrastructure economy.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 07: Pragmatism + Agents as Coworkers ===== -->
+  <section class="slide" data-slide="6" style="background: radial-gradient(ellipse 70% 50% at 90% 30%, rgba(212,175,90,0.04) 0%, transparent 55%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Tech Trends — Enterprise Posture</div>
+      <div class="slide__heading">From Hype Cycle to Production Discipline</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">TechCrunch · Microsoft News</div>
+        <div class="news-card__headline">Enterprise AI Pivots to Pragmatic, Secure, ROI-Driven Deployment</div>
+        <div class="news-card__summary">AI is transitioning from exploratory experiments to private, governed deployments with measurable ROI requirements. Prompt injection attacks and data sovereignty have moved from theoretical risk to non-negotiable production prerequisites. Enterprises now demand explainability alongside raw performance.</div>
+        <div class="news-card__why">The pragmatism pivot means AI procurement now mirrors enterprise software evaluation — security posture and governance frameworks become primary selection criteria over raw benchmark performance.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">MIT Technology Review · Microsoft</div>
+        <div class="news-card__headline">AI Agents Emerge as Digital Coworkers — Not Just Productivity Tools</div>
+        <div class="news-card__summary">2026 marks the definitional shift: AI agents are becoming digital coworkers helping small teams execute campaigns, analysis, and operations previously requiring large departments. Organisations report launching global marketing campaigns in days — rather than quarters — using agent orchestration platforms.</div>
+        <div class="news-card__why">AI-as-coworker reframes headcount planning, restructures project timelines, and creates new competitive moats for organisations that build agentic capabilities ahead of peers.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 08: $3T Infrastructure + World Models ===== -->
+  <section class="slide" data-slide="7" style="background: var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Tech Trends — Capital &amp; Research Frontiers</div>
+      <div class="slide__heading">Trillion-Dollar Infrastructure Bets &amp; Physical AI</div>
+    </div>
+    <div class="stat-row reveal">
+      <div class="stat-card">
+        <div class="stat-card__num">$3T</div>
+        <div class="stat-card__label">AI Infrastructure Investment Projected by 2028 (Morgan Stanley)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__num">44%</div>
+        <div class="stat-card__label">Tech Leaders Citing AI Ethics as Top Hiring Skill for 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__num">54%</div>
+        <div class="stat-card__label">Cybersecurity Teams Hit by AI-Targeted Attacks in Past 12 Months</div>
+      </div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card">
+        <div class="news-card__source">Morgan Stanley · Institutional Research</div>
+        <div class="news-card__headline">Morgan Stanley Projects $3 Trillion AI Infrastructure Wave by 2028</div>
+        <div class="news-card__summary">Morgan Stanley estimates nearly $3 trillion in AI-related infrastructure investment will flow through the global economy within two years, covering data centres, energy infrastructure, silicon supply chains, and AI-native software platforms at unprecedented scale.</div>
+        <div class="news-card__why">Capital allocation at this magnitude signals AI has crossed from enterprise software to critical infrastructure — comparable to the build-out of cloud computing in the early 2010s.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">IBM Think · MIT Technology Review</div>
+        <div class="news-card__headline">World Models and Physical AI Move from Research to Production</div>
+        <div class="news-card__summary">Google DeepMind's Genie builds real-time interactive 3D world models while humanoid robots demonstrated at CES 2026 signal physical AI entering operational deployment. Scientific AI is now actively joining discovery processes in physics, chemistry, and biology — generating hypotheses and controlling experiments autonomously.</div>
+        <div class="news-card__why">Physical AI entering production expands the automation addressable market from digital workflows into manufacturing, logistics, field operations, and scientific R&amp;D.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 09: DIVIDER — Banking & Financial Services ===== -->
+  <section class="slide slide--divider" data-slide="8">
+    <span class="div-number">03</span>
+    <div class="div-inner">
+      <div class="reveal div-bar"></div>
+      <div class="reveal slide__label">Section 03</div>
+      <div class="reveal slide__heading" style="color: var(--accent); font-size: clamp(32px,6vw,64px); font-weight:800;">Banking &amp;<br>Financial Services</div>
+      <div class="reveal slide__body" style="max-width:520px; margin-top: 8px;">
+        AI adoption in fintech, banking automation, agentic finance, fraud AI, market projections, and the governance challenges of regulated AI deployment.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 10: Banks Moving to Production ===== -->
+  <section class="slide" data-slide="9" style="background: radial-gradient(ellipse 65% 55% at 20% 30%, rgba(82,201,122,0.04) 0%, transparent 55%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Banking &amp; Finance — Deployment Status</div>
+      <div class="slide__heading">Pilots End. Production Begins.</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">Cognizant · Oracle Financial Services</div>
+        <div class="news-card__headline">Financial Institutions Execute Production-Scale AI with Governed Autonomous Agents</div>
+        <div class="news-card__summary">After years of testing, financial institutions are deploying production-scale AI with carefully governed autonomous agents transforming customer engagement, credit decisioning, and back-office operations. Oracle Financial Services reports institutions scaling AI across core banking functions with embedded compliance guardrails.</div>
+        <div class="news-card__why">The move from pilot to production marks an irreversible competitive threshold — banks deploying now build data and model advantages that latecomers cannot quickly close.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Wolters Kluwer · Compliance Survey</div>
+        <div class="news-card__headline">31.8% of Financial Institutions Live in Production — Only 12.2% Have a Defined Strategy</div>
+        <div class="news-card__summary">Wolters Kluwer's survey reveals 31.8% of financial institutions have AI/ML deployed in production, yet only 12.2% report a well-defined and fully resourced AI strategy. The gap between deployment velocity and governance readiness represents a significant and growing regulatory exposure.</div>
+        <div class="news-card__why">Deploying without a defined strategy creates model risk management, audit, and explainability vulnerabilities that regulators are actively scrutinising in 2026.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 11: Agentic AI + Productivity Stats ===== -->
+  <section class="slide" data-slide="10" style="background: var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Banking &amp; Finance — Economic Impact</div>
+      <div class="slide__heading">Agentic Finance: The Numbers That Matter</div>
+    </div>
+    <div class="stat-row reveal">
+      <div class="stat-card">
+        <div class="stat-card__num">70%</div>
+        <div class="stat-card__label">Banking Executives View Agentic AI as Transformational</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__num">27%</div>
+        <div class="stat-card__label">Projected Productivity Gain — Investment Banking</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__num">$340B</div>
+        <div class="stat-card__label">Annual Value Add to Global Banking (Upper Estimate)</div>
+      </div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card">
+        <div class="news-card__source">Oracle Financial · KMS Technology</div>
+        <div class="news-card__headline">70% of Banking Professionals Now View Agentic AI as Transformational</div>
+        <div class="news-card__summary">A survey by Oracle Financial Services shows 70% of banking professionals classify agentic AI as transformational — not incremental. The consensus marks a shift from AI-enabled to AI-executed banking across underwriting, risk assessment, and customer operations at scale.</div>
+        <div class="news-card__why">C-suite consensus on agentic AI's importance accelerates investment timelines and changes vendor selection criteria from feature comparison to agent orchestration capability.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">FinTech Magazine · M2P Fintech</div>
+        <div class="news-card__headline">AI to Add $200–$340B Annually and Trim Bank Operating Costs by 20%</div>
+        <div class="news-card__summary">AI is projected to boost front-office productivity 27–35%, increase investment banking efficiency by 27%, and reduce operating costs by up to 20%. Autonomous agents now handle underwriting, real-time fraud detection, and personalised financial advisory at enterprise scale. Global AI in fintech market expected to reach $20.6B in 2026.</div>
+        <div class="news-card__why">These figures reframe AI from cost centre to revenue driver — directly challenging traditional technology ROI frameworks and accelerating C-suite investment cases.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 12: Patents + Governance Challenges ===== -->
+  <section class="slide" data-slide="11" style="background: radial-gradient(ellipse 55% 45% at 85% 70%, rgba(212,175,90,0.04) 0%, transparent 55%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Banking &amp; Finance — Innovation &amp; Risk</div>
+      <div class="slide__heading">Innovation Surge Meets Governance Gap</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">TechCapitalHub · Mastercard · April 2026</div>
+        <div class="news-card__headline">AI Patent Filings in Finance Surge 250% Over Five Years</div>
+        <div class="news-card__summary">AI-related patent filings in finance surged 250%+ over five years, reflecting intense proprietary R&amp;D investment. Mastercard launched its own generative AI engine trained on decades of transaction data — outperforming standard ML in identifying legitimate-but-rare transactions in testing. Payment companies are racing to build proprietary foundation models.</div>
+        <div class="news-card__why">Proprietary AI models built on exclusive transaction data create durable competitive advantages that commodity models cannot replicate — watch for consolidation around data-rich incumbents.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Wolters Kluwer · CIO Dive</div>
+        <div class="news-card__headline">Legacy Systems and Compliance Demands Continue to Throttle AI Potential</div>
+        <div class="news-card__summary">Despite rapid adoption momentum, AI in banking remains "throttled by brittle data foundations, mounting compliance demands, outdated legacy systems, and internal resistance." Regulators identify explainability, transparency, and bias management as the most acute governance concerns heading through 2026.</div>
+        <div class="news-card__why">Infrastructure modernisation — not model sophistication — is now the primary bottleneck for banks attempting to capture the full economic upside of AI investment.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 13: DIVIDER — Data Platforms ===== -->
+  <section class="slide slide--divider" data-slide="12">
+    <span class="div-number">04</span>
+    <div class="div-inner">
+      <div class="reveal div-bar"></div>
+      <div class="reveal slide__label">Section 04</div>
+      <div class="reveal slide__heading" style="color: var(--accent); font-size: clamp(32px,6vw,64px); font-weight:800;">Data<br>Platforms</div>
+      <div class="reveal slide__body" style="max-width:520px; margin-top: 8px;">
+        Databricks and Microsoft Fabric — the latest feature releases, agentic data capabilities, and real-time intelligence platform updates.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 14: Databricks ===== -->
+  <section class="slide" data-slide="13" style="background: radial-gradient(ellipse 70% 50% at 80% 20%, rgba(91,168,232,0.05) 0%, transparent 55%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Data Platforms — Databricks</div>
+      <div class="slide__heading">Databricks: Autonomous Data Operations Reach GA</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">Databricks Release Notes · March 2026</div>
+        <div class="news-card__headline">Genie Code Agent Mode GA — Autonomous Multi-Step Data Tasks Without Manual Intervention</div>
+        <div class="news-card__summary">Databricks announced general availability of Genie Code Agent mode, enabling autonomous and multi-step data engineering operations. Databricks Runtime 18.1 also reached GA, providing the updated execution infrastructure to support the expanded agentic data capabilities at production scale.</div>
+        <div class="news-card__why">Genie GA signals Databricks' commitment to autonomous data engineering — enabling data teams to delegate complex pipeline work to AI agents rather than manually coding each transformation step.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Databricks · Lakebase · Lakeflow</div>
+        <div class="news-card__headline">Lakebase Autoscaling Default + Workday HCM Connector Beta</div>
+        <div class="news-card__summary">Lakebase instances now default to autoscaling with scale-to-zero, workspace branching, and instant restore — significantly reducing operational overhead. The managed Workday HCM connector in Lakeflow Connect enables direct HR data ingestion. Governed Tags and Sample Data Explorer are approaching GA in late March.</div>
+        <div class="news-card__why">Autoscaling-by-default and enterprise HR connectivity lower the barrier to unified data governance across operational and analytical workloads in a single lakehouse.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 15: Microsoft Fabric ===== -->
+  <section class="slide" data-slide="14" style="background: var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Data Platforms — Microsoft Fabric</div>
+      <div class="slide__heading">Fabric March 2026: Scale, Speed &amp; Real-Time Intelligence</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">Microsoft Fabric Blog · March 2026</div>
+        <div class="news-card__headline">High Concurrency Notebooks (50 Sessions), Enterprise JDBC GA, OneLake Catalog Search API</div>
+        <div class="news-card__summary">Fabric's March 2026 update raises High Concurrency notebook sessions to 50 simultaneously, ships the Enterprise JDBC Driver for Spark SQL in GA, and introduces branched workspace improvements for simplified team collaboration. The OneLake Catalog Search API now enables cross-workspace asset discovery from a single API call — critical for large enterprise data meshes.</div>
+        <div class="news-card__why">Increased concurrency and cross-workspace search directly reduce bottlenecks for enterprise data teams operating large-scale Fabric deployments, improving platform economics per seat.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Fabric Eventstream · Q1 2026 Edition</div>
+        <div class="news-card__headline">Eventstream Overhaul: Broader Connectivity, Richer Processing, Secure Networking</div>
+        <div class="news-card__summary">Q1 2026 Eventstream updates deliver expanded connector ecosystem, richer real-time stream processing, and secure enterprise-grade networking. Fabric identity limits increased tenfold from 1,000 to 10,000. Notebook Get Data features shipped in January–February, and Real-Time Intelligence capabilities continue expanding rapidly.</div>
+        <div class="news-card__why">Fabric is consolidating as the end-to-end real-time analytics platform for enterprises, reducing the need for standalone streaming middleware stacks and simplifying the modern data architecture.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 16: DIVIDER — Microsoft AI ===== -->
+  <section class="slide slide--divider" data-slide="15">
+    <span class="div-number">05</span>
+    <div class="div-inner">
+      <div class="reveal div-bar"></div>
+      <div class="reveal slide__label">Section 05</div>
+      <div class="reveal slide__heading" style="color: var(--accent); font-size: clamp(32px,6vw,64px); font-weight:800;">Microsoft<br>AI</div>
+      <div class="reveal slide__body" style="max-width:520px; margin-top: 8px;">
+        Copilot Wave 3, Azure AI, and Microsoft 365 — feature releases transforming how enterprise users work with intelligent autonomous agents.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 17: Copilot Wave 3 ===== -->
+  <section class="slide" data-slide="16" style="background: radial-gradient(ellipse 70% 50% at 15% 25%, rgba(91,168,232,0.05) 0%, transparent 55%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Microsoft AI — Copilot Evolution</div>
+      <div class="slide__heading">Wave 3: From Chat Assistant to Autonomous Agent Layer</div>
+    </div>
+    <div class="news-grid news-grid--2 reveal">
+      <div class="news-card news-card--hero">
+        <div class="news-card__source">Microsoft Learn · M365 Copilot Release Notes</div>
+        <div class="news-card__headline">Agent Mode Lands in Word, Excel, and PowerPoint — Multi-Step Autonomous Edits</div>
+        <div class="news-card__summary">Microsoft 365 Copilot Wave 3 transforms Copilot from chat assistant to operational AI layer. Agent mode in Word, Excel, and PowerPoint enables autonomous, multi-step document operations. New features include inbox and calendar awareness, meeting video recaps, and full local device support for Excel modifications across Windows and Mac.</div>
+        <div class="news-card__why">Agent mode in core productivity apps fundamentally changes how knowledge workers spend their day — automating document workflows that previously required hours of manual intervention per person.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Microsoft Partner Center · April 2026</div>
+        <div class="news-card__headline">M365 E7 Frontier Suite Launches May 1 — Bundles Copilot + Agent 365 + Entra</div>
+        <div class="news-card__summary">Beginning May 1, 2026, the Microsoft 365 E7 Frontier Suite arrives in Cloud Solution Provider channels, bundling M365 E5, Microsoft Entra Suite, Microsoft 365 Copilot, and the new Microsoft Agent 365 into a single comprehensive enterprise offering — creating a unified AI, identity, and security stack.</div>
+        <div class="news-card__why">The E7 bundle institutionalises agentic AI as a default enterprise capability rather than an optional add-on, accelerating Copilot penetration across large organisations purchasing renewals.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 18: Microsoft AI Strategy ===== -->
+  <section class="slide" data-slide="17" style="background: var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Microsoft AI — Platform Strategy</div>
+      <div class="slide__heading">Security-First AI and the SLM Orchestration Era</div>
+    </div>
+    <div class="news-grid news-grid--3 reveal">
+      <div class="news-card">
+        <div class="news-card__source">Microsoft Security · Azure AI</div>
+        <div class="news-card__headline">Prompt Injection &amp; Data Sovereignty Become Core Enterprise AI Requirements</div>
+        <div class="news-card__summary">Microsoft identifies prompt injection attacks and data sovereignty as non-negotiable production requirements. Azure AI's private deployment options now rank as the primary selection criteria for financial services and government sector AI engagements — above benchmark performance.</div>
+        <div class="news-card__why">Security-certified AI becomes competitive differentiation — not just a compliance checkbox — for enterprise AI vendors targeting regulated industries including banking.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Azure AI Platform · 2026</div>
+        <div class="news-card__headline">Model Orchestration: Fine-Tuned SLMs Delegate to Larger Models When Needed</div>
+        <div class="news-card__summary">Azure's 2026 AI platform emphasises cooperative model routing — fine-tuned small language models (SLMs) handle standard tasks and delegate to larger foundation models for complex reasoning. This SLM-first architecture delivers significant cost and latency improvements while maintaining performance parity for enterprise task types.</div>
+        <div class="news-card__why">SLM orchestration makes enterprise AI economics sustainable at scale, directly addressing the cost concerns that slowed broad production adoption in 2024–2025.</div>
+      </div>
+      <div class="news-card">
+        <div class="news-card__source">Microsoft News · AI Trends</div>
+        <div class="news-card__headline">AI Enables Small Teams to Operate at Global Scale</div>
+        <div class="news-card__summary">Microsoft's 2026 documentation cites examples of lean teams using Copilot agent orchestration to launch global campaigns in days. The force-multiplier positioning gives lean organisations capabilities previously accessible only to enterprises with large headcounts and dedicated specialist teams.</div>
+        <div class="news-card__why">The force-multiplier narrative creates a compelling ROI case for SME and mid-market segments beyond the traditional enterprise buyer — expanding Microsoft's addressable market.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 19: WHAT TO WATCH ===== -->
+  <section class="slide" data-slide="18" style="background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(212,175,90,0.06) 0%, transparent 60%), var(--bg);">
+    <div class="slide-header reveal">
+      <div class="slide__label">Summary — 2026-04-13</div>
+      <div class="slide__heading">Top 5: What to Watch</div>
+    </div>
+    <ul class="watch-list reveal">
+      <li class="watch-item">
+        <span class="watch-item__num">01</span>
+        <div class="watch-item__content">
+          <div class="watch-item__title">Efficiency Over Scale — The New AI Competitiveness Metric</div>
+          <div class="watch-item__desc">Meta's Muse Spark and 100x energy research signal compute-per-capability — not raw parameter count — will define AI leadership. Watch cloud pricing models and on-premise deployment economics shift accordingly through H2 2026.</div>
+        </div>
+      </li>
+      <li class="watch-item">
+        <span class="watch-item__num">02</span>
+        <div class="watch-item__content">
+          <div class="watch-item__title">Banking AI Governance Gap: 31.8% Deployed, Only 12.2% Strategically Governed</div>
+          <div class="watch-item__desc">The gulf between AI deployment and AI strategy in financial services is a regulatory time-bomb. Expect enforcement action targeting explainability and bias management for the ungoverned majority of institutions deploying without defined model risk frameworks.</div>
+        </div>
+      </li>
+      <li class="watch-item">
+        <span class="watch-item__num">03</span>
+        <div class="watch-item__content">
+          <div class="watch-item__title">Microsoft Copilot Wave 3 + E7 Bundle Changes Enterprise AI Economics on May 1</div>
+          <div class="watch-item__desc">Agent mode across M365 apps combined with the E7 Frontier Suite launching May 1 makes agentic AI a default enterprise capability — shifting IT conversations from "should we buy AI?" to "how do we govern AI we already have?"</div>
+        </div>
+      </li>
+      <li class="watch-item">
+        <span class="watch-item__num">04</span>
+        <div class="watch-item__content">
+          <div class="watch-item__title">Databricks Genie GA: Data Platforms Evolve Into Agentic Infrastructure</div>
+          <div class="watch-item__desc">With Genie Code Agent mode in GA and Lakebase autoscaling by default, the data lakehouse is evolving from a storage and query layer into an autonomous operations environment — narrowing the gap between data engineering and AI execution.</div>
+        </div>
+      </li>
+      <li class="watch-item">
+        <span class="watch-item__num">05</span>
+        <div class="watch-item__content">
+          <div class="watch-item__title">$3 Trillion Infrastructure Bet: AI Crosses Into Critical Infrastructure Status</div>
+          <div class="watch-item__desc">Morgan Stanley's $3T by 2028 projection signals AI has crossed the threshold from enterprise software to critical infrastructure — reshaping vendor ecosystems, energy grid investment, and geopolitical technology strategy at sovereign scale.</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== SLIDE 20: END CARD ===== -->
+  <section class="slide slide--divider" data-slide="19" style="align-items: center; text-align: center; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212,175,90,0.07) 0%, transparent 60%), var(--bg);">
+    <div style="display:flex; flex-direction:column; gap:20px; align-items:center;">
+      <div class="reveal slide__label">MorningInsight</div>
+      <div class="reveal slide__display" style="color: var(--accent); font-size: clamp(40px,7vw,80px);">Stay Ahead.<br>Stay Informed.</div>
+      <div class="reveal slide__body" style="max-width:480px;">
+        Curated daily intelligence on AI &amp; Tech for financial industry leaders.<br>
+        Next edition: <span style="color:var(--accent); font-family: var(--font-mono);">2026-04-14</span>
+      </div>
+      <div class="reveal" style="margin-top: 12px;">
+        <span class="badge badge--gold">github.com/picnicwi/mymorning</span>
+      </div>
+    </div>
+    <svg class="slide__bg-line" style="left:0;top:0;width:100%;height:100%;opacity:0.025;" viewBox="0 0 1000 600" fill="none">
+      <circle cx="500" cy="300" r="450" stroke="#D4AF5A" stroke-width="0.5"/>
+      <circle cx="500" cy="300" r="350" stroke="#D4AF5A" stroke-width="0.5"/>
+      <circle cx="500" cy="300" r="250" stroke="#D4AF5A" stroke-width="0.5"/>
+      <circle cx="500" cy="300" r="150" stroke="#D4AF5A" stroke-width="0.5"/>
+    </svg>
+  </section>
+
+</div><!-- /.deck -->
 
 <script>
-  class SlideEngine {
-    constructor() {
-      this.deck = document.querySelector('.deck');
-      this.slides = Array.from(document.querySelectorAll('.slide'));
-      this.currentIndex = 0;
-      this.totalSlides = this.slides.length;
-      this.dots = document.querySelector('.deck-dots');
-      this.counter = document.querySelector('.deck-counter');
-      this.progress = document.querySelector('.deck-progress');
-      this.hints = document.querySelector('.deck-hints');
-      this.navButtons = {
-        prev: document.getElementById('prevBtn'),
-        next: document.getElementById('nextBtn'),
-      };
+(function() {
+  const deck = document.getElementById('deck');
+  const progress = document.getElementById('deckProgress');
+  const counter = document.getElementById('deckCounter');
+  const dotsContainer = document.getElementById('deckDots');
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
 
-      this.init();
-    }
+  const slides = Array.from(deck.querySelectorAll('.slide'));
+  const total = slides.length;
+  let current = 0;
 
-    init() {
-      this.createDots();
-      this.updateUI();
-      this.attachListeners();
-      this.showFirstSlide();
-    }
+  // Build nav dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'deck-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
 
-    createDots() {
-      this.slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'deck-dot';
-        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        dot.addEventListener('click', () => this.goTo(i));
-        this.dots.appendChild(dot);
-      });
-    }
+  const dots = Array.from(dotsContainer.querySelectorAll('.deck-dot'));
 
-    attachListeners() {
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') this.next();
-        if (e.key === 'ArrowLeft') this.prev();
-      });
-
-      this.navButtons.next.addEventListener('click', () => this.next());
-      this.navButtons.prev.addEventListener('click', () => this.prev());
-
-      this.deck.addEventListener('wheel', (e) => {
-        if (e.deltaY > 0) this.next();
-        if (e.deltaY < 0) this.prev();
-      }, { passive: true });
-
-      let hideHintsTimeout;
-      document.addEventListener('keydown', () => {
-        this.hints.classList.remove('faded');
-        clearTimeout(hideHintsTimeout);
-        hideHintsTimeout = setTimeout(() => this.hints.classList.add('faded'), 2000);
-      });
-    }
-
-    showFirstSlide() {
-      this.slides[0].classList.add('visible');
-    }
-
-    updateUI() {
-      const allDots = Array.from(document.querySelectorAll('.deck-dot'));
-      allDots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === this.currentIndex);
-      });
-
-      this.counter.textContent = `${this.currentIndex + 1} / ${this.totalSlides}`;
-      const progressWidth = ((this.currentIndex + 1) / this.totalSlides) * 100;
-      this.progress.style.width = progressWidth + '%';
-
-      this.navButtons.prev.disabled = this.currentIndex === 0;
-      this.navButtons.next.disabled = this.currentIndex === this.totalSlides - 1;
-    }
-
-    goTo(index) {
-      if (index < 0 || index >= this.totalSlides) return;
-
-      this.slides[this.currentIndex].classList.remove('visible');
-      this.currentIndex = index;
-      this.slides[this.currentIndex].classList.add('visible');
-      this.updateUI();
-
-      this.deck.scrollTo({
-        top: this.slides[this.currentIndex].offsetTop,
-        behavior: 'smooth',
-      });
-    }
-
-    next() {
-      if (this.currentIndex < this.totalSlides - 1) {
-        this.goTo(this.currentIndex + 1);
-      }
-    }
-
-    prev() {
-      if (this.currentIndex > 0) {
-        this.goTo(this.currentIndex - 1);
-      }
-    }
+  function updateChrome(idx) {
+    current = idx;
+    const pct = total > 1 ? (idx / (total - 1)) * 100 : 100;
+    progress.style.width = pct + '%';
+    counter.textContent = (idx + 1) + ' / ' + total;
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
   }
 
-  new SlideEngine();
+  function revealSlide(idx) {
+    slides[idx].classList.add('visible');
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total) return;
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // IntersectionObserver for slide visibility + reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        const idx = slides.indexOf(entry.target);
+        revealSlide(idx);
+        updateChrome(idx);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // Immediately reveal first slide
+  revealSlide(0);
+  updateChrome(0);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(e.key)) {
+      e.preventDefault();
+      goTo(current + 1);
+    } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+      e.preventDefault();
+      goTo(current - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault(); goTo(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); goTo(total - 1);
+    }
+  });
+
+  // Button navigation
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+
+  // Touch swipe navigation
+  let touchStartY = 0;
+  deck.addEventListener('touchstart', e => {
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+  deck.addEventListener('touchend', e => {
+    const dy = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(dy) > 50) goTo(current + (dy > 0 ? 1 : -1));
+  }, { passive: true });
+
+  // Wheel navigation (debounced)
+  let wheelTimer;
+  deck.addEventListener('wheel', e => {
+    if (e.target.closest('.news-card, .watch-list, .stat-card')) return;
+    e.preventDefault();
+    clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(() => {
+      goTo(current + (e.deltaY > 0 ? 1 : -1));
+    }, 60);
+  }, { passive: false });
+
+})();
 </script>
 </body>
 </html>
