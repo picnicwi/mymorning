@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MorningInsight — AI &amp; Tech Daily Digest · April 20, 2026</title>
+<title>MorningInsight — AI &amp; Tech Daily Digest · April 22, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -22,121 +22,110 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html, body {
-    width: 100%; height: 100%;
+    width: 100vw; height: 100vh;
+    overflow: hidden;
     background: var(--bg);
     color: var(--text);
     font-family: var(--body);
-    overflow: hidden;
   }
 
-  /* ── Slide engine: display-based, never opacity ── */
+  /* ── SLIDE SHOW/HIDE ENGINE ── */
   .slide {
     display: none;
     width: 100vw;
     height: calc(100vh - 56px);
     flex-direction: column;
+    background: var(--bg);
     position: relative;
     overflow: hidden;
   }
   .slide.active { display: flex; }
 
-  /* ── Nav bar ── */
-  #nav {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 56px;
-    background: #0e0e12;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32px;
-    z-index: 100;
-  }
-  #nav button {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 12px;
-    padding: 6px 18px;
-    cursor: pointer;
-    letter-spacing: 0.08em;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  #nav button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-  #nav button:disabled { opacity: 0.25; cursor: default; }
-  #counter {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  /* ════════════════════════════════
-     TITLE SLIDE
-  ════════════════════════════════ */
+  /* ── TITLE SLIDE ── */
   .s-title {
     border-top: 3px solid var(--accent);
     justify-content: center;
     align-items: flex-start;
-    padding: 72px 88px 80px;
+    padding: 64px 96px 80px;
+    gap: 0;
   }
   .s-title .brand {
     font-family: var(--mono);
     font-size: 13px;
     color: var(--accent);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
   .s-title h1 {
-    font-size: clamp(52px, 6vw, 88px);
     font-weight: 900;
+    font-size: clamp(48px, 6vw, 80px);
     line-height: 1.0;
     letter-spacing: -0.03em;
     color: var(--text);
-    margin-bottom: 28px;
-  }
-  .s-title h1 em {
-    font-style: normal;
-    color: var(--accent);
+    max-width: 780px;
   }
   .s-title .tagline {
-    font-size: 16px;
+    margin-top: 20px;
+    font-size: 17px;
     color: var(--muted);
-    font-weight: 400;
-    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+    font-weight: 300;
   }
-  .s-title .date-line {
+  .s-title .date-stamp {
+    margin-top: 8px;
     font-family: var(--mono);
     font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 64px;
+    color: var(--accent);
+    opacity: 0.85;
   }
   .s-title .pills {
+    margin-top: 48px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
   .pill {
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
     font-family: var(--mono);
     font-size: 11px;
     color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 5px 14px;
-    border-radius: 100px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    background: var(--card);
+  }
+  .s-title .story-count {
+    position: absolute;
+    right: 96px;
+    bottom: 80px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .s-title .big-ghost {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 320px;
+    font-weight: 900;
+    color: var(--text);
+    opacity: 0.02;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.05em;
   }
 
-  /* ════════════════════════════════
-     SECTION DIVIDER
-  ════════════════════════════════ */
+  /* ── SECTION DIVIDER ── */
   .s-divider {
-    border-left: 4px solid var(--accent);
     justify-content: center;
-    padding: 0 88px;
+    align-items: flex-start;
+    padding: 64px 96px;
+    border-left: 4px solid var(--accent);
     position: relative;
     overflow: hidden;
   }
@@ -144,71 +133,72 @@
     font-family: var(--mono);
     font-size: 11px;
     color: var(--accent);
-    letter-spacing: 0.25em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .s-divider h2 {
-    font-size: clamp(36px, 4.5vw, 64px);
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-size: clamp(40px, 5.5vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     color: var(--text);
-    margin-bottom: 20px;
-    max-width: 720px;
+    max-width: 700px;
   }
-  .s-divider .desc {
+  .s-divider .sec-desc {
+    margin-top: 18px;
     font-size: 16px;
     color: var(--muted);
-    max-width: 560px;
-    line-height: 1.6;
+    max-width: 540px;
+    line-height: 1.65;
+    font-weight: 300;
   }
   .s-divider::after {
     content: attr(data-num);
     position: absolute;
-    right: 72px;
-    bottom: -24px;
-    font-size: 240px;
+    right: 48px;
+    bottom: -20px;
+    font-size: 220px;
     font-weight: 900;
     color: var(--text);
-    opacity: 0.025;
+    opacity: 0.03;
     line-height: 1;
     font-family: var(--body);
     pointer-events: none;
     user-select: none;
   }
 
-  /* ════════════════════════════════
-     CONTENT SLIDE
-  ════════════════════════════════ */
+  /* ── CONTENT SLIDE ── */
   .s-content {
-    flex-direction: row !important;
+    flex-direction: row;
   }
   .s-content .sidebar {
     width: 220px;
-    flex-shrink: 0;
+    min-width: 220px;
     background: var(--card);
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    padding: 48px 0 40px;
+    padding: 40px 24px;
+    position: relative;
+    overflow: hidden;
   }
   .s-content .sidebar .cat-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
     font-family: var(--mono);
     font-size: 11px;
     color: var(--accent);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    flex: 1;
+    line-height: 1;
   }
-  .s-content .sidebar .story-count {
+  .s-content .sidebar .story-num {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
+    letter-spacing: 0.08em;
   }
   .s-content .body {
     flex: 1;
@@ -218,138 +208,193 @@
     justify-content: center;
     overflow-y: auto;
   }
-  .s-content .source {
+  .s-content .source-tag {
     font-family: var(--mono);
     font-size: 12px;
     color: var(--accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .s-content .source-tag::before {
+    content: '— ';
   }
   .s-content h3 {
-    font-size: clamp(22px, 2.8vw, 38px);
-    font-weight: 800;
-    line-height: 1.15;
+    font-weight: 700;
+    font-size: clamp(22px, 2.8vw, 34px);
+    line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--text);
-    margin-bottom: 22px;
-    max-width: 760px;
+    margin-bottom: 20px;
+    max-width: 700px;
   }
   .s-content .summary {
     font-size: 15px;
     color: var(--muted);
     line-height: 1.75;
-    max-width: 720px;
-    margin-bottom: 28px;
+    max-width: 680px;
+    margin-bottom: 24px;
+    font-weight: 400;
   }
   .why-block {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
     gap: 16px;
+    padding: 18px 20px;
     background: rgba(200, 164, 90, 0.06);
-    border: 1px solid rgba(200, 164, 90, 0.18);
-    border-radius: 6px;
-    padding: 16px 20px;
-    max-width: 720px;
+    border-left: 2px solid var(--accent);
+    max-width: 680px;
+    border-radius: 0 4px 4px 0;
   }
-  .why-block .why-label {
+  .why-label {
     font-family: var(--mono);
     font-size: 10px;
     color: var(--accent);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     white-space: nowrap;
     padding-top: 2px;
+    min-width: 110px;
   }
-  .why-block .why-text {
+  .why-text {
     font-size: 14px;
-    color: #a09aae;
+    color: var(--muted);
     line-height: 1.65;
     font-style: italic;
   }
 
-  /* ════════════════════════════════
-     CLOSING SLIDE
-  ════════════════════════════════ */
+  /* ── CLOSING SLIDE ── */
   .s-closing {
-    flex-direction: row !important;
+    flex-direction: row;
   }
   .s-closing .left-panel {
     width: 340px;
-    flex-shrink: 0;
-    padding: 72px 56px;
+    min-width: 340px;
+    padding: 64px 48px;
+    border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px solid var(--border);
+    background: var(--card);
   }
   .s-closing .left-panel h2 {
-    font-size: 48px;
     font-weight: 900;
-    line-height: 1.05;
+    font-size: 48px;
+    line-height: 1.1;
     letter-spacing: -0.03em;
-    margin-bottom: 20px;
   }
   .s-closing .left-panel h2 em {
-    font-style: normal;
     color: var(--accent);
-    display: block;
+    font-style: normal;
   }
-  .s-closing .left-panel .sub {
+  .s-closing .left-panel .subtitle {
+    margin-top: 16px;
     font-size: 14px;
     color: var(--muted);
-    line-height: 1.6;
     font-family: var(--mono);
+    line-height: 1.6;
   }
   .s-closing .right-panel {
     flex: 1;
-    padding: 56px 72px;
+    padding: 48px 64px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 0;
     overflow-y: auto;
   }
   .watch-item {
     display: flex;
-    align-items: flex-start;
+    flex-direction: row;
     gap: 20px;
-    padding: 18px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--border);
   }
-  .watch-item:last-child { border-bottom: none; }
+  .watch-item:first-child { border-top: 1px solid var(--border); }
   .watch-num {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 13px;
     color: var(--accent);
-    letter-spacing: 0.1em;
-    width: 28px;
-    flex-shrink: 0;
+    min-width: 28px;
     padding-top: 2px;
   }
-  .watch-body { flex: 1; }
+  .watch-content {}
   .watch-lead {
     font-weight: 700;
     font-size: 15px;
     color: var(--text);
     margin-bottom: 4px;
   }
-  .watch-exp {
+  .watch-explain {
     font-size: 13px;
     color: var(--muted);
     line-height: 1.6;
+  }
+
+  /* ── NAV BAR ── */
+  #nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background: #0e0e11;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 100;
+  }
+  #nav button {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 7px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  #nav button:hover:not(:disabled) {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  #nav button:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+  #counter {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  #progress {
+    position: fixed;
+    bottom: 56px;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+    z-index: 101;
   }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 01 — TITLE
-══════════════════════════════════════════ -->
+<div id="progress"></div>
+
+<!-- ═══════════════════════════════════════════════
+     SLIDE 1 — TITLE
+═══════════════════════════════════════════════ -->
 <div class="slide s-title active">
   <div class="brand">MorningInsight</div>
-  <h1>AI &amp; Tech /<br><em>Daily Digest</em></h1>
-  <p class="tagline">Intelligence briefing for financial industry leaders</p>
-  <p class="date-line">Monday, April 20, 2026 &nbsp;·&nbsp; 16 stories across 5 sections</p>
+  <h1>AI &amp; Tech<br>Daily Digest</h1>
+  <p class="tagline">Curated intelligence on AI, Big Data &amp; Financial Technology</p>
+  <p class="date-stamp">Wednesday, April 22, 2026</p>
   <div class="pills">
     <span class="pill">AI &amp; GenAI</span>
     <span class="pill">Tech Trends</span>
@@ -357,407 +402,409 @@
     <span class="pill">Data Platforms</span>
     <span class="pill">Microsoft AI</span>
   </div>
+  <div class="story-count">16 stories · 5 sections</div>
+  <div class="big-ghost">MI</div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 02 — DIVIDER: AI & GENERATIVE AI
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 2 — DIVIDER: AI & GENAI
+═══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="01">
-  <span class="sec-label">Section 01 of 05</span>
+  <div class="sec-label">Section 01 of 05</div>
   <h2>AI &amp; Generative AI</h2>
-  <p class="desc">Rankings shift, valuations soar, and the gap between AI leaders and laggards widens — the competitive landscape is moving fast.</p>
+  <p class="sec-desc">Open-weight frontier models, autonomous research systems, and the widening divide between AI leaders and laggards — the week's defining moves in the AI race.</p>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 03 — AI STORY 01
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 3 — AI/GENAI Story 01
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
-    <span class="cat-label">AI &amp; Generative AI</span>
-    <span class="story-count">01 / 04</span>
+    <span class="cat-label">AI &amp; GenAI</span>
+    <span class="story-num">01 / 04</span>
   </div>
   <div class="body">
-    <div class="source">— Stanford / IEEE</div>
-    <h3>Anthropic Leads Global AI Model Rankings as Competition Intensifies</h3>
-    <p class="summary">Stanford's 2026 AI Index and IEEE Spectrum report that Anthropic now leads global AI model rankings as of March 2026, trailed closely by xAI, Google, and OpenAI. Chinese models such as DeepSeek and Alibaba lag only modestly behind. The best models are competing on cost, reliability, and real-world usefulness rather than raw benchmark scores.</p>
+    <div class="source-tag">Open Source</div>
+    <h3>DeepSeek V4 Released with Full Open Weights Under Apache 2.0</h3>
+    <p class="summary">DeepSeek V4, a one-trillion-parameter Mixture-of-Experts model, was released with fully open weights under the Apache 2.0 license. The model achieves performance competitive with US frontier models while costing only an estimated $5.2 million to train — a fraction of Western counterparts. This marks a significant moment for open-source AI and global model competition.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">The tightening of the leaderboard signals that AI capability is commoditizing rapidly, raising pressure on enterprises to differentiate through implementation quality rather than model choice alone.</span>
+      <span class="why-text">Ultra-low training cost plus frontier-level performance challenges the assumption that cutting-edge AI requires massive capital, reshaping competitive dynamics for enterprises evaluating AI providers.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 04 — AI STORY 02
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 4 — AI/GENAI Story 02
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
-    <span class="cat-label">AI &amp; Generative AI</span>
-    <span class="story-count">02 / 04</span>
+    <span class="cat-label">AI &amp; GenAI</span>
+    <span class="story-num">02 / 04</span>
   </div>
   <div class="body">
-    <div class="source">— CNBC</div>
-    <h3>Cursor AI in Talks to Raise $2B at $50B+ Valuation</h3>
-    <p class="summary">AI coding assistant startup Cursor is in talks to raise a $2 billion fundraising round at a valuation exceeding $50 billion, according to CNBC. The raise reflects surging enterprise demand for AI-powered developer tools. Cursor has grown rapidly as businesses seek to accelerate software development cycles.</p>
+    <div class="source-tag">Stanford HAI</div>
+    <h3>Stanford AI Index 2026: Economic Gains Concentrated in Top 20% of AI-Adopting Companies</h3>
+    <p class="summary">The Stanford AI Index 2026 report reveals that three-quarters of AI's economic gains are being captured by just 20% of companies, with leading firms focused on growth strategies rather than productivity alone. The report also highlights a decisive shift toward agentic workflows, with every major model release in 2026 emphasising agentic capabilities.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">A $50B valuation for a coding assistant underscores how AI-native developer tooling has become a top enterprise investment priority in 2026.</span>
+      <span class="why-text">The widening gap between AI leaders and laggards signals urgency for enterprises still in pilot mode — the window to build compounding AI advantages is narrowing.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 05 — AI STORY 03
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 5 — AI/GENAI Story 03
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
-    <span class="cat-label">AI &amp; Generative AI</span>
-    <span class="story-count">03 / 04</span>
+    <span class="cat-label">AI &amp; GenAI</span>
+    <span class="story-num">03 / 04</span>
   </div>
   <div class="body">
-    <div class="source">— PwC</div>
-    <h3>PwC: Top 20% of Companies Capture 75% of AI Economic Gains</h3>
-    <p class="summary">PwC's 2026 AI Performance Study finds that a small group of companies is pulling sharply ahead in generating real financial returns from artificial intelligence, with the leading 20% capturing roughly three-quarters of AI's economic gains. These leading companies are focused on growth strategies, not just productivity improvements. The gap between AI leaders and laggards is widening at an accelerating pace.</p>
+    <div class="source-tag">Safety Alert</div>
+    <h3>Anthropic Restricts Mythos 5 Preview After Model Exploits 80%+ of Software Vulnerabilities</h3>
+    <p class="summary">Anthropic limited access to its Claude Mythos 5 Preview model after discovering it could identify and exploit tens of thousands of software vulnerabilities, successfully reproducing and exploiting them in over 80% of cases. The 10-trillion-parameter model was pulled from broad access pending safety review. The incident highlights the dual-use risk inherent in highly capable frontier models.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">For financial services firms, this study is a stark signal that late AI adoption carries significant competitive risk, not just missed efficiency gains.</span>
+      <span class="why-text">This is a landmark safety event: the first frontier model restricted post-launch due to offensive cyber capability, likely influencing upcoming AI governance and procurement policies in regulated industries.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 06 — AI STORY 04
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 6 — AI/GENAI Story 04
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
-    <span class="cat-label">AI &amp; Generative AI</span>
-    <span class="story-count">04 / 04</span>
+    <span class="cat-label">AI &amp; GenAI</span>
+    <span class="story-num">04 / 04</span>
   </div>
   <div class="body">
-    <div class="source">— Nature</div>
-    <h3>Human Scientists Still Outperform Best AI Agents on Complex Research Tasks</h3>
-    <p class="summary">A new study published in Nature shows that human scientists continue to trounce the best AI agents on complex, multi-step research tasks. While AI excels at narrow, well-defined sub-tasks, it struggles with the iterative judgment and creative problem-solving central to scientific discovery. Researchers note the gap is narrowing but remains substantial in open-ended domains.</p>
+    <div class="source-tag">Research AI</div>
+    <h3>AI Scientist-v2 Has Paper Accepted at Major Conference — Fully Autonomously Written</h3>
+    <p class="summary">AI Scientist-v2 introduces a workshop-level automated scientific discovery system capable of autonomously proposing hypotheses, running experiments, analysing data, and writing peer-reviewed papers. A paper fully generated by this system was recently accepted at a major academic conference. The system signals a new era of AI-augmented (and AI-driven) research output.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">This finding tempers expectations for fully autonomous AI research agents, suggesting human-AI collaboration will remain the dominant paradigm in knowledge-intensive industries for the near term.</span>
+      <span class="why-text">Autonomous scientific discovery AI achieving peer-review acceptance is a qualitative leap that will accelerate R&amp;D timelines across pharma, materials science, and financial modelling.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 07 — DIVIDER: TECH TRENDS
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 7 — DIVIDER: TECH TRENDS
+═══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="02">
-  <span class="sec-label">Section 02 of 05</span>
+  <div class="sec-label">Section 02 of 05</div>
   <h2>Tech Industry Trends</h2>
-  <p class="desc">Agentic coding goes mainstream, next-gen GPUs land, and enterprise AI licensing enters a new era of outcome-based pricing.</p>
+  <p class="sec-desc">NVIDIA's next-generation AI platform, OpenAI's pivot to an operating-layer model, and the enterprise shift from AI pilots to full production deployments.</p>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 08 — TECH STORY 01
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 8 — TECH TRENDS Story 01
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Tech Trends</span>
-    <span class="story-count">01 / 03</span>
+    <span class="story-num">01 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Digital Strategy AI</div>
-    <h3>OpenAI Codex Surpasses 3 Million Weekly Active Users</h3>
-    <p class="summary">OpenAI's Codex, launched as a research preview in May 2025, has grown to more than 3 million weekly active users as of March 2026, up from 2 million just weeks prior. Codex is a full-stack software engineering agent capable of autonomously writing features, fixing bugs, running tests, and reviewing entire codebases. OpenAI is explicitly positioning it as an integrated AI operating layer rather than a standalone tool.</p>
+    <div class="source-tag">NVIDIA</div>
+    <h3>NVIDIA Unveils 'Vera Rubin' AI Platform for Trillion-Parameter Model Era</h3>
+    <p class="summary">NVIDIA unveiled its flagship AI platform codenamed 'Vera Rubin' at CES 2026, succeeding the Blackwell architecture with radical improvements in processing power and memory bandwidth. The platform is specifically engineered to handle the massive scaling requirements of trillion-parameter models. At GTC 2026, agentic AI frameworks drew the largest attendance as Fortune 500 companies announced production deployments across manufacturing, logistics, and finance.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Rapid adoption of autonomous coding agents is reshaping software engineering workflows at enterprise scale, with implications for developer productivity benchmarks and headcount planning.</span>
+      <span class="why-text">Vera Rubin sets the hardware baseline for the next generation of enterprise AI infrastructure investment decisions — organisations planning 2026–2027 AI buildouts should factor this into procurement cycles.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 09 — TECH STORY 02
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 9 — TECH TRENDS Story 02
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Tech Trends</span>
-    <span class="story-count">02 / 03</span>
+    <span class="story-num">02 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— NVIDIA / PYMNTS</div>
-    <h3>NVIDIA Unveils 'Vera Rubin' AI Platform with H300 GPUs at GTC 2026</h3>
-    <p class="summary">NVIDIA revealed its next-generation AI infrastructure platform, codenamed 'Vera Rubin,' featuring the new H300 GPUs with radical improvements in processing power and memory bandwidth. The platform is specifically engineered to handle the massive scaling requirements of trillion-parameter models. It follows the Blackwell architecture and was announced during GTC 2026.</p>
+    <div class="source-tag">OpenAI</div>
+    <h3>OpenAI Codex SuperApp Hits 3M Weekly Active Users, Pivots to AI Operating Layer</h3>
+    <p class="summary">OpenAI is explicitly transitioning from a portfolio of standalone tools to an integrated AI operating layer. By March 2026, Codex reached over 3 million weekly active users, up from 2 million just weeks prior. OpenAI is also projecting $2.5 billion in advertising revenue in 2026 and up to $100 billion annually by 2030 as it expands its platform ambitions.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Next-generation GPU infrastructure sets the hardware ceiling for enterprise AI deployments; firms planning large-scale model inference or training should factor Vera Rubin's capabilities into 2027 infrastructure roadmaps.</span>
+      <span class="why-text">OpenAI's shift to a platform/OS model — combined with ad monetisation — signals it is competing directly with Google and Microsoft for enterprise workflow ownership, not just AI API market share.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 10 — TECH STORY 03
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 10 — TECH TRENDS Story 03
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Tech Trends</span>
-    <span class="story-count">03 / 03</span>
+    <span class="story-num">03 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— The New Stack / Constellation</div>
-    <h3>AI Merges with Platform Engineering as Agentic Enterprise Licenses Emerge</h3>
-    <p class="summary">Industry analysts report that in 2026, AI is merging with platform engineering — moving from individual usage to coordinating entire workflows across departments. Salesforce has pioneered the Agentic Enterprise License Agreement (AELA), offering a flat fee with shared risk for customers ready to scale agentic AI. Enterprise technology forecasts identify this workflow orchestration shift as the defining trend of 2026.</p>
+    <div class="source-tag">Enterprise Tech</div>
+    <h3>AI Merging with Platform Engineering: Enterprises Move Beyond Pilots to Production</h3>
+    <p class="summary">According to Deloitte's 2026 State of AI in the Enterprise report and analyst coverage from The New Stack, AI is fundamentally merging with platform engineering in 2026. The focus has shifted from individual AI usage to team and workflow orchestration — coordinating entire workflows, connecting data across departments, and moving projects from idea to completion at scale.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Agentic licensing models signal a fundamental change in how enterprises will procure and price AI capabilities, shifting from per-seat to outcome-based models.</span>
+      <span class="why-text">Enterprises still treating AI as point-tool deployments risk falling behind; the competitive frontier is now about embedding AI into operational platforms and workflows end-to-end.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      SLIDE 11 — DIVIDER: BANKING & FINSERV
-══════════════════════════════════════════ -->
+═══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="03">
-  <span class="sec-label">Section 03 of 05</span>
+  <div class="sec-label">Section 03 of 05</div>
   <h2>Banking &amp; Financial Services</h2>
-  <p class="desc">GenAI crosses the tipping point in banking — adoption jumps from 8% to 58%, investment surges, and regulators signal a green light.</p>
+  <p class="sec-desc">GenAI adoption has crossed the tipping point in banking — 78% penetration, $340B value potential, and agentic AI driving 20% operational efficiency gains.</p>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 12 — BANKING STORY 01
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 12 — BANKING Story 01
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Banking &amp; FinServ</span>
-    <span class="story-count">01 / 03</span>
+    <span class="story-num">01 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Finastra / Fintech Global</div>
-    <h3>58% of Banks Have Fully Implemented GenAI in at Least One Core Function</h3>
-    <p class="summary">New industry data shows 58% of banking organizations have fully implemented generative AI in at least one business function as of 2026, compared to 45% in 2023 and just 8% in 2024. Banks are integrating large language models into underwriting automation, risk analytics, fraud detection, KYC processes, and real-time customer assistance via intelligent chat and voice interfaces. Governance and integration standards are now being mandated at the core process level, not just run as pilots.</p>
+    <div class="source-tag">FinTech Global</div>
+    <h3>78% of Banks Now Tactically Adopting GenAI — Up from Just 8% in 2024</h3>
+    <p class="summary">New data shows 78% of banks are now adopting generative AI tactically, a dramatic jump from only 8% in 2024. 58% of banking organisations have fully implemented GenAI in at least one function. Key use cases include fraud detection, KYC automation, real-time customer assistance, and AI-centric credit and risk frameworks. 78% of banks investing in AI have seen positive ROI within 18 months.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">The jump from 8% to 58% tactical adoption in two years signals that GenAI has crossed the tipping point from experimentation to operational deployment across the banking sector.</span>
+      <span class="why-text">The tipping point has passed — GenAI is no longer an emerging experiment in banking but a standard operational capability, making non-adoption a competitive liability.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 13 — BANKING STORY 02
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 13 — BANKING Story 02
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Banking &amp; FinServ</span>
-    <span class="story-count">02 / 03</span>
+    <span class="story-num">02 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— FinTech Magazine</div>
-    <h3>82% of Banking Risk Leaders Expect AI Investment to Grow Over 25% in Next Three Years</h3>
-    <p class="summary">A survey of banking compliance and risk leaders finds 82% expect their AI investment to grow by more than 25% over the next two to three years, with a further 10% anticipating more modest growth. Banks are linking generative AI directly to core banking platforms and unified data stores to improve accuracy, speed, and consistency of AI outputs. Agentic AI remains at an earlier adoption stage but is firmly on the roadmap.</p>
+    <div class="source-tag">Backbase</div>
+    <h3>Agentic AI in Finance Set to Drive 20% Operational Efficiency Gains in 2026</h3>
+    <p class="summary">Research published in early 2026 indicates agentic AI — AI that autonomously executes multi-step tasks — will drive a 20% increase in operational efficiency for banks deploying it this year. Banks leveraging AI also earn a 15% greater market share compared to peers. 82% of banking compliance and risk leaders expect AI investment to grow by more than 25% over the next two to three years.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Sustained double-digit AI investment growth in risk and compliance functions will accelerate vendor consolidation and raise the bar for technology partners serving financial institutions.</span>
+      <span class="why-text">As agentic AI moves from proof-of-concept to production in financial services, institutions that have already established strong data governance and AI infrastructure will realise outsized gains.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 14 — BANKING STORY 03
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 14 — BANKING Story 03
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Banking &amp; FinServ</span>
-    <span class="story-count">03 / 03</span>
+    <span class="story-num">03 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— FDIC</div>
-    <h3>FDIC Speech Highlights How Regulators Are Keeping Pace with AI-Driven Innovation</h3>
-    <p class="summary">An FDIC speech titled 'Innovation at the Speed of Markets' outlines how regulators are evolving frameworks to keep pace with rapid AI and fintech adoption in banking. The FDIC emphasized the need for adaptive supervision approaches as banks deploy AI in credit decisioning, fraud, and customer-facing functions. The regulator signaled openness to innovation while stressing the importance of consumer protection guardrails.</p>
+    <div class="source-tag">McKinsey</div>
+    <h3>McKinsey: Banking Sector Poised for $200B–$340B Annual Value from GenAI</h3>
+    <p class="summary">The McKinsey Global Institute estimates generative AI could generate $2.6 trillion to $4.4 trillion in annual value across 63 use cases globally, with banking among the largest beneficiaries at $200 billion to $340 billion annually — equivalent to 9–15% of operating profits. FDIC also addressed innovation pace, noting regulators are actively developing frameworks to keep pace with AI-driven financial technology.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Regulatory clarity from the FDIC on AI in banking reduces implementation uncertainty and is a green light for financial institutions that have been waiting on compliance guidance before expanding AI programs.</span>
+      <span class="why-text">The scale of value at stake means AI strategy is now a board-level financial performance issue, not just a technology initiative.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      SLIDE 15 — DIVIDER: DATA PLATFORMS
-══════════════════════════════════════════ -->
+═══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="04">
-  <span class="sec-label">Section 04 of 05</span>
+  <div class="sec-label">Section 04 of 05</div>
   <h2>Data Platforms</h2>
-  <p class="desc">Databricks ships a Postgres built for AI agents, Microsoft unifies its data estate, and OneLake-Unity Catalog interop removes a major enterprise silo.</p>
+  <p class="sec-desc">FabCon 2026 redefined the lakehouse landscape — Databricks Lakebase, Microsoft Fabric interoperability, and the convergence of analytical and operational data for AI workloads.</p>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 16 — DATA STORY 01
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 16 — DATA PLATFORMS Story 01
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Data Platforms</span>
-    <span class="story-count">01 / 03</span>
+    <span class="story-num">01 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Databricks Blog</div>
-    <h3>Databricks Lakebase Goes GA at FabCon 2026 — A Postgres Database Built for AI Agents</h3>
-    <p class="summary">At FabCon 2026, Azure Databricks announced the general availability of Lakebase — a managed, serverless Postgres service built directly into the lakehouse, designed to serve as the transactional system of record for AI agents. Additional announcements included Genie Code for agentic data engineering, Lakeflow Connect Free Tier, and new integrations with Excel and Microsoft Teams. The platform extends Azure Databricks into Microsoft 365 so governed data and AI insights are available where users already work.</p>
+    <div class="source-tag">Databricks</div>
+    <h3>Azure Databricks Unveils Lakebase and Lakeflow at FabCon 2026</h3>
+    <p class="summary">At FabCon 2026, Azure Databricks announced Lakebase — a managed, serverless Postgres service built directly into the lakehouse, designed as the transactional system of record for AI agents. Databricks also launched Lakeflow for pipeline orchestration and extended its platform into Microsoft 365 so governed data and AI insights are available where users already work.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Lakebase bridges the gap between analytical lakehouses and transactional databases within a single governed platform — a critical building block for production-grade agentic AI applications.</span>
+      <span class="why-text">Lakebase positions Databricks as the transactional backbone for AI agent architectures, closing the gap between analytical lakehouses and operational databases that has long been a pain point for enterprise AI deployments.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 17 — DATA STORY 02
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 17 — DATA PLATFORMS Story 02
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Data Platforms</span>
-    <span class="story-count">02 / 03</span>
+    <span class="story-num">02 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Microsoft Fabric Blog</div>
-    <h3>Microsoft and Databricks Advance OneLake Interoperability with Unity Catalog Integration</h3>
-    <p class="summary">Microsoft and Databricks announced that native reading from OneLake through Azure Databricks Unity Catalog is now in public preview. Both companies are making the case that transactional and analytical data should live under the same governance, access model, and platform. The collaboration reflects a broader industry shift toward unified data platforms optimized for AI workloads.</p>
+    <div class="source-tag">Microsoft Fabric</div>
+    <h3>Microsoft Fabric and Databricks Advance OneLake Interoperability to Public Preview</h3>
+    <p class="summary">Microsoft announced that native reading from OneLake through Azure Databricks Unity Catalog is now in public preview, and interoperability with Snowflake has reached general availability. FabCon 2026 announcements collectively signal the end of siloed data tooling, with Microsoft pushing Fabric as a unified analytics platform that spans SQL, Spark, and AI workloads under one governance layer.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">OneLake-Unity Catalog interoperability removes a major data silo between Microsoft Fabric and Databricks environments, simplifying governance for enterprises running both platforms.</span>
+      <span class="why-text">Organisations running mixed Databricks and Microsoft Fabric environments can now unify their data estates more cleanly — reducing data duplication costs and accelerating time-to-insight for AI use cases.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 18 — DATA STORY 03
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 18 — DATA PLATFORMS Story 03
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Data Platforms</span>
-    <span class="story-count">03 / 03</span>
+    <span class="story-num">03 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Azure Blog</div>
-    <h3>FabCon 2026: Microsoft Unifies Databases and Fabric on a Single Data Platform</h3>
-    <p class="summary">Microsoft used FabCon and SQLCon 2026 to announce a strategic push to unify its databases and Microsoft Fabric under a single integrated data platform. The Register reported Microsoft is positioning Fabric as a 'multi-database wrangling hub,' consolidating formerly separate SQL, analytics, and AI data services. Microsoft also acquired Osmos, an AI-driven data engineering platform, folding its capabilities into Fabric's OneLake architecture.</p>
+    <div class="source-tag">The Register</div>
+    <h3>Microsoft Fabric Positions as Multi-Database Hub Across Enterprise Data Estates</h3>
+    <p class="summary">Microsoft's March 2026 Fabric update confirmed its ambition to act as a multi-database wrangling hub, integrating heterogeneous data sources under Fabric's unified platform. The FabCon and SQLCon 2026 event reinforced the strategy of unifying databases and Fabric on a single data platform, with announcements covering real-time intelligence, AI analytics, and expanded connector ecosystems.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Consolidating SQL, analytics, and AI data services into Fabric reduces integration complexity for enterprise data teams and strengthens Microsoft's competitive position against Snowflake and Databricks.</span>
+      <span class="why-text">For data teams managing fragmented estates across on-prem SQL, cloud warehouses, and lakehouses, Fabric's hub model offers a consolidation path that reduces vendor sprawl while keeping AI workloads close to governed data.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      SLIDE 19 — DIVIDER: MICROSOFT AI
-══════════════════════════════════════════ -->
+═══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="05">
-  <span class="sec-label">Section 05 of 05</span>
+  <div class="sec-label">Section 05 of 05</div>
   <h2>Microsoft AI</h2>
-  <p class="desc">Azure AI Foundry rebrands, Claude lands in the Microsoft ecosystem, a new vector-native database ships, and the model catalog expands globally.</p>
+  <p class="sec-desc">Azure AI Foundry's April 2026 release: enterprise-grade speech models, open multilingual embeddings, agentic workflows, and the rapid consolidation of Microsoft's AI platform stack.</p>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 20 — MICROSOFT STORY 01
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 20 — MICROSOFT AI Story 01
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Microsoft AI</span>
-    <span class="story-count">01 / 03</span>
+    <span class="story-num">01 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Azure / TechRepublic</div>
-    <h3>Azure AI Foundry Rebranded to Microsoft Foundry; Anthropic Claude Models Now Available</h3>
-    <p class="summary">Microsoft has rebranded Azure AI Foundry to Microsoft Foundry as part of its strategy to make agentic AI a standard layer across cloud, productivity, and security platforms. Anthropic's Claude models are now available within Microsoft Foundry alongside existing OpenAI GPT models, giving enterprise customers broader model choice. New offerings including Foundry IQ and Fabric IQ simplify connecting different systems and data sources.</p>
+    <div class="source-tag">MS Foundry</div>
+    <h3>Microsoft Foundry Launches MAI-Transcribe-1: Enterprise Speech AI at 50% Lower GPU Cost</h3>
+    <p class="summary">Microsoft released MAI-Transcribe-1 in public preview — its first-generation enterprise speech recognition model achieving a 3.9% average Word Error Rate on the FLEURS benchmark across 25 languages, at approximately 50% lower GPU cost than leading alternatives. The April 2026 Foundry update also introduced MAI-Voice-1, a speech generation model capable of producing 60 seconds of expressive audio in under one second on a single GPU.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Adding Claude to Microsoft Foundry gives enterprises a credible alternative to GPT-4 within the Azure ecosystem, and signals Microsoft's commitment to a multi-model strategy for its AI platform.</span>
+      <span class="why-text">Cost-competitive, multilingual speech AI from Microsoft lowers the barrier for banks and enterprises to deploy voice interfaces and call centre automation at scale without prohibitive inference costs.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 21 — MICROSOFT STORY 02
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 21 — MICROSOFT AI Story 02
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Microsoft AI</span>
-    <span class="story-count">02 / 03</span>
+    <span class="story-num">02 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Azure Updates</div>
-    <h3>Azure HorizonDB Launched with Built-In Vector Indexing for AI Workloads</h3>
-    <p class="summary">Microsoft introduced Azure HorizonDB, a new AI-optimized database with built-in vector indexing as part of its April 2026 Azure platform updates. The database is designed to natively support the retrieval-augmented generation (RAG) and embedding workflows central to modern AI applications. This complements Microsoft's broader 2026 strategy of embedding AI capabilities deeper into Azure infrastructure.</p>
+    <div class="source-tag">Azure Foundry</div>
+    <h3>Azure AI Foundry April 2026: Agentic Workflows, LangGraph, and FLUX Model Deployment</h3>
+    <p class="summary">Microsoft's Azure AI Foundry April 2026 release notes highlight Agentic Workflows with Task Adherence now in preview, agent development support via LangGraph, FLUX image model deployment, and auto-upgrade of Azure OpenAI resources to Foundry. Grok 4.2 was added to the model catalogue alongside new fine-tuning capabilities and Fireworks model integration.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Native vector indexing in a managed Azure database reduces the need for separate vector database services, simplifying AI application architectures for enterprises building on Azure.</span>
+      <span class="why-text">Azure Foundry is rapidly becoming Microsoft's primary interface for enterprise AI orchestration — the LangGraph and agentic workflow additions make it easier for developers to build multi-step AI pipelines without leaving the Azure ecosystem.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SLIDE 22 — MICROSOFT STORY 03
-══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     SLIDE 22 — MICROSOFT AI Story 03
+═══════════════════════════════════════════════ -->
 <div class="slide s-content">
   <div class="sidebar">
     <span class="cat-label">Microsoft AI</span>
-    <span class="story-count">03 / 03</span>
+    <span class="story-num">03 / 03</span>
   </div>
   <div class="body">
-    <div class="source">— Azure Charts</div>
-    <h3>Grok 4.2 and New MAI Models Now Available on Microsoft Foundry</h3>
-    <p class="summary">Microsoft's April 2026 Azure update batch includes the addition of Grok 4.2 and new MAI (Microsoft AI) models to the Microsoft Foundry model catalog. Genie geographic expansion now covers Japan and Korea, with Azure Databricks Genie no longer requiring cross-region processing for workspaces in those Azure geographies. Additional updates include AKS observability improvements and networking enhancements.</p>
+    <div class="source-tag">MS Foundry</div>
+    <h3>Microsoft Foundry Introduces harrier-oss-v1 Open Multilingual Embedding Models</h3>
+    <p class="summary">Microsoft introduced harrier-oss-v1, a new family of open-source multilingual text embedding models using a decoder-only architecture with last-token pooling to produce dense text embeddings. The models support retrieval, clustering, semantic similarity, and classification tasks across multiple languages, and are available through Azure AI Foundry.</p>
     <div class="why-block">
       <span class="why-label">Why it matters</span>
-      <span class="why-text">Expanding the Foundry model catalog with Grok 4.2 and regional Genie availability accelerates enterprise AI adoption in Asia-Pacific markets and broadens model selection for global Azure customers.</span>
+      <span class="why-text">High-quality open-source multilingual embeddings from Microsoft give enterprises a cost-effective, governable option for building RAG pipelines and semantic search across global data without dependency on proprietary embedding APIs.</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      SLIDE 23 — CLOSING: WHAT TO WATCH
-══════════════════════════════════════════ -->
+═══════════════════════════════════════════════ -->
 <div class="slide s-closing">
   <div class="left-panel">
     <h2>What to<br><em>Watch</em></h2>
-    <p class="sub">April 20, 2026<br>Top 5 signals from today's briefing</p>
+    <p class="subtitle">Five signals shaping<br>the week ahead<br><br>April 22, 2026</p>
   </div>
   <div class="right-panel">
     <div class="watch-item">
       <span class="watch-num">01</span>
-      <div class="watch-body">
-        <div class="watch-lead">Banking AI adoption has crossed the tipping point.</div>
-        <div class="watch-exp">With 58% of banks now running GenAI in production and 82% of risk leaders planning 25%+ investment growth, the window for low-cost AI experimentation is closing — operational scale is the new baseline.</div>
+      <div class="watch-content">
+        <div class="watch-lead">AI Safety Governance Acceleration</div>
+        <div class="watch-explain">The Anthropic Mythos 5 restriction — the first frontier model pulled post-launch for offensive cyber capability — will likely trigger new AI procurement and governance frameworks in regulated industries within weeks.</div>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">02</span>
-      <div class="watch-body">
-        <div class="watch-lead">PwC's 20/75 rule is a board-level alarm.</div>
-        <div class="watch-exp">The finding that 20% of companies capture 75% of AI economic value is a direct signal that AI strategy now drives financial performance — laggards in financial services face compounding competitive disadvantage.</div>
+      <div class="watch-content">
+        <div class="watch-lead">Banking GenAI Tipping Point Impact</div>
+        <div class="watch-explain">With 78% of banks now tactically adopting GenAI (up from 8% in 2024), watch for the first wave of institutions announcing measurable ROI from production deployments in fraud detection and KYC automation.</div>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">03</span>
-      <div class="watch-body">
-        <div class="watch-lead">Microsoft Foundry goes multi-model — revisit vendor lock-in assumptions.</div>
-        <div class="watch-exp">Claude joining GPT-4 on Microsoft Foundry signals a shift toward model-agnostic enterprise AI infrastructure; Azure customers should reassess single-model strategies in their 2026–2027 roadmaps.</div>
+      <div class="watch-content">
+        <div class="watch-lead">Open-Weight Model Competitive Pressure</div>
+        <div class="watch-explain">DeepSeek V4's $5.2M training cost for a trillion-parameter model will intensify pressure on US frontier providers to justify premium pricing — expect enterprise AI contract renegotiations and vendor re-evaluations.</div>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">04</span>
-      <div class="watch-body">
-        <div class="watch-lead">FDIC regulatory clarity is a green light for banks that paused AI programs.</div>
-        <div class="watch-exp">The FDIC's 'Innovation at the Speed of Markets' speech removes a key compliance blocker — expect accelerated AI deployment in credit decisioning, fraud detection, and KYC through Q3 2026.</div>
+      <div class="watch-content">
+        <div class="watch-lead">Agentic AI in Production Finance</div>
+        <div class="watch-explain">The McKinsey $200B–$340B banking value estimate combined with the 20% efficiency gain projection will accelerate C-suite investment decisions — Q2 2026 is likely to see major agentic AI deployment announcements from Tier 1 banks.</div>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">05</span>
-      <div class="watch-body">
-        <div class="watch-lead">Agentic licensing is the next enterprise AI procurement frontier.</div>
-        <div class="watch-exp">Salesforce's outcome-based AELA model is a preview of how AI will be priced across the enterprise stack — procurement teams should begin evaluating vendor contracts before per-seat pricing is phased out.</div>
+      <div class="watch-content">
+        <div class="watch-lead">Enterprise Data Platform Consolidation</div>
+        <div class="watch-explain">FabCon 2026's Databricks–Microsoft Fabric interoperability announcements signal the end of siloed data stacks; enterprises will face strategic decisions about consolidating around one platform or managing a governed multi-platform ecosystem.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════
      NAVIGATION BAR
-══════════════════════════════════════════ -->
+═══════════════════════════════════════════════ -->
 <div id="nav">
   <button id="prev" onclick="go(-1)" disabled>&#8592; Prev</button>
   <span id="counter">1 / 23</span>
@@ -770,6 +817,7 @@
   let cur = 0;
 
   document.getElementById('counter').textContent = '1 / ' + total;
+  updateProgress();
 
   function go(dir) {
     slides[cur].classList.remove('active');
@@ -778,11 +826,17 @@
     document.getElementById('counter').textContent = (cur + 1) + ' / ' + total;
     document.getElementById('prev').disabled = (cur === 0);
     document.getElementById('next').disabled = (cur === total - 1);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    var pct = total > 1 ? (cur / (total - 1)) * 100 : 100;
+    document.getElementById('progress').style.width = pct + '%';
   }
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowRight') go(1);
-    if (e.key === 'ArrowLeft')  go(-1);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
   });
 </script>
 </body>
