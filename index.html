@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MorningInsight — AI & Tech Daily Digest · May 10, 2026</title>
+<title>MorningInsight — AI &amp; Tech Daily Digest · 2026-05-21</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg:     #0c0c0e;
     --card:   #131318;
@@ -17,76 +18,353 @@
     --body:   'Inter', system-ui, sans-serif;
     --mono:   'JetBrains Mono', monospace;
   }
-  html, body { width:100%; height:100%; background:var(--bg); color:var(--text); font-family:var(--body); overflow:hidden; }
 
-  .slide { display:none; width:100vw; height:100vh; flex-direction:column; position:relative; overflow:hidden; }
-  .slide.active { display:flex; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* TITLE */
-  .s-title { border-top:3px solid var(--accent); padding:64px 80px 100px; justify-content:space-between; }
-  .s-title .brand { font-family:var(--mono); font-size:13px; font-weight:500; color:var(--accent); letter-spacing:.18em; text-transform:uppercase; }
-  .s-title .main { flex:1; display:flex; flex-direction:column; justify-content:center; }
-  .s-title h1 { font-size:clamp(52px,7vw,96px); font-weight:900; line-height:1.0; letter-spacing:-.04em; margin-bottom:24px; }
-  .s-title h1 em { color:var(--accent); font-style:normal; }
-  .s-title .tagline { font-size:18px; color:var(--muted); font-weight:400; margin-bottom:8px; }
-  .s-title .date-line { font-family:var(--mono); font-size:13px; color:var(--muted); letter-spacing:.08em; }
-  .s-title .pills { display:flex; flex-wrap:wrap; gap:10px; }
-  .pill { font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); border-radius:99px; padding:6px 14px; opacity:.75; }
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    overflow: hidden;
+  }
 
-  /* DIVIDER */
-  .s-divider { border-left:4px solid var(--accent); padding:64px 80px 100px; justify-content:center; position:relative; overflow:hidden; }
-  .s-divider .sec-label { font-family:var(--mono); font-size:11px; font-weight:500; color:var(--accent); letter-spacing:.2em; text-transform:uppercase; margin-bottom:24px; }
-  .s-divider h2 { font-size:clamp(40px,5.5vw,80px); font-weight:900; line-height:1.05; letter-spacing:-.03em; max-width:700px; margin-bottom:24px; }
-  .s-divider .desc { font-size:17px; color:var(--muted); max-width:560px; line-height:1.6; }
-  .s-divider::after { content:attr(data-num); position:absolute; right:-20px; bottom:-60px; font-family:var(--mono); font-size:clamp(200px,28vw,380px); font-weight:900; color:var(--text); opacity:.025; line-height:1; user-select:none; pointer-events:none; }
+  /* ── Slide engine ── */
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide.active { display: flex; }
 
-  /* CONTENT */
-  .s-content { flex-direction:row; }
-  .s-content .sidebar { width:220px; min-width:220px; background:var(--card); border-right:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:48px 0; }
-  .s-content .sidebar .cat-label { font-family:var(--mono); font-size:11px; font-weight:500; color:var(--accent); letter-spacing:.18em; text-transform:uppercase; writing-mode:vertical-rl; transform:rotate(180deg); }
-  .s-content .sidebar .story-num { font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.1em; }
-  .s-content .body { flex:1; padding:64px 80px 100px; display:flex; flex-direction:column; justify-content:center; overflow-y:auto; }
-  .s-content .source-tag { font-family:var(--mono); font-size:12px; color:var(--accent); letter-spacing:.1em; margin-bottom:20px; display:flex; align-items:center; gap:8px; }
-  .s-content .source-tag::before { content:'—'; color:var(--accent); }
-  .s-content h3 { font-size:clamp(22px,2.8vw,38px); font-weight:800; line-height:1.15; letter-spacing:-.02em; margin-bottom:24px; max-width:720px; }
-  .s-content .summary { font-size:15px; color:var(--muted); line-height:1.75; max-width:680px; margin-bottom:28px; }
-  .why-block { display:flex; align-items:flex-start; gap:16px; background:rgba(200,164,90,.06); border:1px solid rgba(200,164,90,.15); border-radius:8px; padding:16px 20px; max-width:680px; }
-  .why-label { font-family:var(--mono); font-size:10px; font-weight:500; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; white-space:nowrap; padding-top:2px; min-width:110px; }
-  .why-text { font-size:14px; color:var(--muted); line-height:1.65; font-style:italic; }
+  /* ── Nav bar ── */
+  #nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 52px;
+    background: #0a0a0c;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 100;
+  }
+  #nav button {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.04em;
+  }
+  #nav button:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+  #nav button:disabled { opacity: 0.25; cursor: default; }
+  #counter {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
 
-  /* CLOSING */
-  .s-closing { flex-direction:row; }
-  .s-closing .left-panel { width:340px; min-width:340px; background:var(--card); border-right:1px solid var(--border); padding:64px 48px; display:flex; flex-direction:column; justify-content:center; border-top:3px solid var(--accent); }
-  .s-closing .left-panel h2 { font-size:52px; font-weight:900; line-height:1.05; letter-spacing:-.03em; margin-bottom:20px; }
-  .s-closing .left-panel h2 em { color:var(--accent); font-style:normal; display:block; }
-  .s-closing .left-panel .sub { font-size:14px; color:var(--muted); line-height:1.6; }
-  .s-closing .left-panel .date-stamp { font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:.1em; margin-top:24px; opacity:.7; }
-  .s-closing .right-panel { flex:1; padding:48px 64px 80px; display:flex; flex-direction:column; justify-content:center; }
-  .watch-item { display:flex; align-items:flex-start; gap:20px; padding:18px 0; border-bottom:1px solid var(--border); }
-  .watch-item:last-child { border-bottom:none; }
-  .watch-num { font-family:var(--mono); font-size:13px; font-weight:500; color:var(--accent); min-width:32px; padding-top:2px; }
-  .watch-content .lead { font-size:15px; font-weight:700; color:var(--text); margin-bottom:4px; }
-  .watch-content .explain { font-size:13px; color:var(--muted); line-height:1.55; }
+  /* ════════════════════════════════
+     TITLE SLIDE
+  ════════════════════════════════ */
+  .s-title {
+    border-top: 3px solid var(--accent);
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 100px 100px;
+    background: var(--bg);
+  }
+  .s-title .brand {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .s-title h1 {
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    color: var(--text);
+    max-width: 820px;
+    margin-bottom: 32px;
+  }
+  .s-title h1 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+  .s-title .tagline {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .s-title .date-line {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 72px;
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 6px 14px;
+    border-radius: 999px;
+    opacity: 0.75;
+  }
 
-  /* NAV */
-  #nav { position:fixed; bottom:0; left:0; width:100%; height:56px; background:rgba(12,12,14,.95); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 32px; z-index:100; backdrop-filter:blur(8px); }
-  #nav button { font-family:var(--mono); font-size:12px; font-weight:500; color:var(--accent); background:none; border:1px solid var(--border); border-radius:4px; padding:6px 16px; cursor:pointer; letter-spacing:.08em; transition:border-color .15s,opacity .15s; }
-  #nav button:hover:not(:disabled) { border-color:var(--accent); }
-  #nav button:disabled { opacity:.25; cursor:default; }
-  #counter { font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.1em; }
+  /* ════════════════════════════════
+     SECTION DIVIDER
+  ════════════════════════════════ */
+  .s-divider {
+    justify-content: flex-end;
+    padding: 80px 100px 100px;
+    border-left: 4px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .s-divider .sec-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .s-divider h2 {
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--text);
+    max-width: 680px;
+    margin-bottom: 24px;
+  }
+  .s-divider .desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+  .s-divider::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -30px;
+    right: 60px;
+    font-family: var(--mono);
+    font-size: 220px;
+    font-weight: 900;
+    color: var(--text);
+    opacity: 0.025;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ════════════════════════════════
+     CONTENT SLIDE
+  ════════════════════════════════ */
+  .s-content {
+    flex-direction: row !important;
+    height: calc(100vh - 52px);
+  }
+  .s-content .sidebar {
+    width: 220px;
+    min-width: 220px;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 0 60px;
+  }
+  .s-content .sidebar .cat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    opacity: 0.85;
+  }
+  .s-content .sidebar .story-counter {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .s-content .body {
+    flex: 1;
+    padding: 64px 80px 100px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .s-content .source-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+  .s-content .source-tag::before { content: "— "; }
+  .s-content h3 {
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 28px;
+    max-width: 760px;
+  }
+  .s-content .summary {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 720px;
+    margin-bottom: 32px;
+  }
+  .why-block {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    background: rgba(200, 164, 90, 0.05);
+    border: 1px solid rgba(200, 164, 90, 0.15);
+    border-radius: 4px;
+    padding: 20px 24px;
+    max-width: 720px;
+  }
+  .why-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .why-text {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* ════════════════════════════════
+     CLOSING SLIDE
+  ════════════════════════════════ */
+  .s-closing {
+    flex-direction: row !important;
+    height: calc(100vh - 52px);
+  }
+  .s-closing .left-panel {
+    width: 340px;
+    min-width: 340px;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 48px;
+  }
+  .s-closing .left-panel h2 {
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .s-closing .left-panel h2 em {
+    color: var(--accent);
+    font-style: normal;
+  }
+  .s-closing .left-panel .subtitle {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    line-height: 1.6;
+  }
+  .s-closing .right-panel {
+    flex: 1;
+    padding: 60px 72px 100px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .watch-item {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .watch-item:last-child { border-bottom: none; }
+  .watch-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+    flex-shrink: 0;
+    min-width: 28px;
+  }
+  .watch-content .lead {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .watch-content .explain {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
 </style>
 </head>
 <body>
 
-<!-- SLIDE 1: TITLE -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 1: TITLE
+══════════════════════════════════════════════ -->
 <div class="slide s-title active">
   <div class="brand">MorningInsight</div>
-  <div class="main">
-    <h1>AI &amp; Tech /<br><em>Daily Digest</em></h1>
-    <p class="tagline">Your morning briefing on AI, Big Data &amp; Financial Technology</p>
-    <p class="date-line">Sunday, May 10, 2026 &nbsp;·&nbsp; 16 stories &nbsp;·&nbsp; 6 sections</p>
-  </div>
-  <div class="pills">
+  <h1>AI &amp; Tech<br><em>Daily Digest</em></h1>
+  <p class="tagline">Curated intelligence on AI, Big Data &amp; Financial Technology</p>
+  <p class="date-line">Thursday, 21 May 2026 &nbsp;·&nbsp; 6 Sections &nbsp;·&nbsp; 18 Stories</p>
+  <div class="pill-row">
     <span class="pill">AI &amp; GenAI</span>
     <span class="pill">Tech Trends</span>
     <span class="pill">Banking &amp; FinServ</span>
@@ -96,307 +374,455 @@
   </div>
 </div>
 
-<!-- SLIDE 2: DIVIDER AI & GenAI -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 2: DIVIDER — AI & GENERATIVE AI
+══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="01">
-  <div class="sec-label">Section 01 of 06</div>
-  <h2>AI &amp; Generative AI</h2>
-  <p class="desc">From Mars-roving autonomy to workforce restructuring — the latest on how AI is reshaping capabilities, competition, and careers.</p>
+  <p class="sec-label">Section 01 of 06</p>
+  <h2>AI &amp;<br>Generative AI</h2>
+  <p class="desc">Platform shifts, model releases, and the emergence of multi-agent orchestration reshaping the intelligence layer.</p>
 </div>
 
-<!-- SLIDE 3 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 3: AI Story 01
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">AI &amp; GenAI</span><span class="story-num">01 / 04</span></div>
+  <div class="sidebar">
+    <span class="cat-label">AI &amp; Generative AI</span>
+    <span class="story-counter">01 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">ScienceDaily</div>
-    <h3>NASA Perseverance Rover Now Drives Autonomously Using AI-Planned Routes on Mars</h3>
-    <p class="summary">NASA's Perseverance rover has made history by driving across Mars using routes planned entirely by artificial intelligence rather than human operators. This marks a major milestone for autonomous space exploration, demonstrating AI's ability to handle real-time decision-making in complex, unstructured environments. The success opens the door to faster, more efficient planetary exploration missions.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">AI autonomy is maturing from lab demos to mission-critical deployments in the most challenging environments possible—validating its readiness for similarly complex enterprise use cases.</p></div>
+    <p class="source-tag">TechCrunch / Crescendo AI</p>
+    <h3>Apple to Allow Third-Party AI Providers in iOS 27, iPadOS 27, and macOS 27</h3>
+    <p class="summary">Apple is preparing a major AI platform shift that would allow users to select third-party AI providers such as Google and Anthropic to power Apple Intelligence features across iOS 27, iPadOS 27, and macOS 27. This move signals a more open, modular approach to on-device AI, potentially reshaping how consumers interact with AI assistants. The shift could intensify competition among AI model providers for a prime position in Apple's vast installed base.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Allowing users to swap in competing AI backends breaks Apple's typical walled-garden approach and could set a new industry standard for AI provider portability.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 4 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 4: AI Story 02
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">AI &amp; GenAI</span><span class="story-num">02 / 04</span></div>
+  <div class="sidebar">
+    <span class="cat-label">AI &amp; Generative AI</span>
+    <span class="story-counter">02 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">Microsoft Blog</div>
-    <h3>Global AI Adoption Hits 17.8% of Working-Age Population in Q1 2026</h3>
-    <p class="summary">The global adoption of AI continued to rise in Q1 2026, with usage increasing 1.5 percentage points to reach 17.8% of the world's working-age population. The State of Global AI Diffusion report from Microsoft highlights rapid penetration across both developed and emerging markets. Growth is being driven by accessibility of consumer AI tools and enterprise deployments.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Rising AI adoption signals a tipping point where AI skills and literacy are becoming fundamental workforce requirements rather than optional differentiators.</p></div>
+    <p class="source-tag">Google / Crescendo AI</p>
+    <h3>Gemini 3.5 Flash Goes GA: Frontier Intelligence at 4x the Speed</h3>
+    <p class="summary">Google's Gemini 3.5 Flash is now generally available, delivering frontier-level intelligence at four times the speed of comparable models. The release is aimed squarely at enterprise workloads that demand low-latency inference without sacrificing reasoning quality. Combined with Google's eighth-generation TPUs unveiled at Cloud Next '26, the update reinforces Google's push to dominate the agentic AI infrastructure layer.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Speed-cost improvements at this magnitude make real-time AI pipelines commercially viable for a far broader set of enterprise use cases.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 5 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 5: AI Story 03
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">AI &amp; GenAI</span><span class="story-num">03 / 04</span></div>
+  <div class="sidebar">
+    <span class="cat-label">AI &amp; Generative AI</span>
+    <span class="story-counter">03 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">MIT Tech Review</div>
-    <h3>Anthropic Leads AI Model Rankings as US-China Performance Gap Narrows — Stanford 2026 AI Index</h3>
-    <p class="summary">Stanford's 2026 AI Index reports Anthropic leading global AI model rankings as of March 2026, followed closely by xAI, Google, and OpenAI. Notably, the US and China are now nearly neck-and-neck on model performance according to the community-driven Arena ranking platform. The index also warns that societal understanding of AI is not keeping pace with AI's rapid advancement.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Intensifying US-China AI competition is reshaping the global technology landscape, with implications for enterprise vendor strategy and geopolitical AI governance.</p></div>
+    <p class="source-tag">MIT Tech Review</p>
+    <h3>Agentic AI Teams Emerge as the Next Frontier Beyond Individual AI Agents</h3>
+    <p class="summary">Industry analysts and researchers are highlighting a decisive shift from single AI agents to coordinated teams of agents that cooperate to achieve far more complex goals. MIT Technology Review's 2026 AI trend report identifies multi-agent orchestration as one of ten developments that matter most right now. Early production deployments are appearing in logistics, legal research, and financial analysis.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Multi-agent collaboration unlocks task complexity that single-model approaches cannot reach, marking the next inflection point in enterprise AI automation.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 6 -->
-<div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">AI &amp; GenAI</span><span class="story-num">04 / 04</span></div>
-  <div class="body">
-    <div class="source-tag">TechCrunch</div>
-    <h3>Snap Cuts 1,000 Jobs Citing AI Efficiency as Agentic AI Co-Scientists Emerge</h3>
-    <p class="summary">Snap CEO Evan Spiegel announced layoffs of approximately 1,000 employees and closure of over 300 open roles, directly attributing the move to AI enabling smaller teams to achieve equal output. Meanwhile, AI research labs are developing agentic multi-agent systems that cooperate on complex tasks, with researchers believing AI co-scientists will eventually produce Nobel Prize-worthy research.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">AI-driven workforce restructuring is accelerating across the tech sector, signaling a broader shift in how organizations are sizing and structuring their teams.</p></div>
-  </div>
-</div>
-
-<!-- SLIDE 7: DIVIDER Tech Trends -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 6: DIVIDER — TECH TRENDS
+══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="02">
-  <div class="sec-label">Section 02 of 06</div>
-  <h2>Tech Industry Trends</h2>
-  <p class="desc">Agentic AI moves from benchmarks to boardrooms — Google, NVIDIA, and enterprise CIOs reveal the real production shift.</p>
+  <p class="sec-label">Section 02 of 06</p>
+  <h2>Tech Industry<br>Trends</h2>
+  <p class="desc">Enterprise AI platforms, open-source toolkits, and the business model evolution of the major tech players.</p>
 </div>
 
-<!-- SLIDE 8 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 7: Tech Story 01
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Tech Trends</span><span class="story-num">01 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Tech Trends</span>
+    <span class="story-counter">01 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">Google Blog</div>
-    <h3>Google Unveils Gemini Enterprise Agent Platform and 8th-Gen TPUs at Cloud Next '26</h3>
-    <p class="summary">Google announced the Gemini Enterprise Agent Platform at Cloud Next '26, enabling organizations to build, manage, and govern autonomous AI agents for complex multi-step business workflows. Alongside it, Google revealed its eighth-generation TPUs optimized for the agentic AI era. The platform emphasizes enterprise-grade governance, allowing IT teams to oversee agent behavior and data access.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Google is positioning itself as the default agentic AI orchestration layer for enterprises, putting it in direct competition with Microsoft Copilot Studio and AWS Bedrock Agents.</p></div>
+    <p class="source-tag">Tech Research Online</p>
+    <h3>Google Cloud Next '26: Gemini Enterprise Agent Platform Targets Autonomous Business Workflows</h3>
+    <p class="summary">At Cloud Next '26, Google unveiled the Gemini Enterprise Agent Platform alongside eighth-generation TPUs optimized for the agentic era, positioning agents—not models—as the core architectural unit for enterprise AI. The platform allows organizations to connect data, applications, and workflows through autonomous agents acting on behalf of the business. Fortune 500 early adopters in manufacturing, logistics, and finance have already announced production deployments.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Google is betting that enterprises will standardize on agentic orchestration layers, making agent platforms the new battleground for cloud market share.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 9 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 8: Tech Story 02
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Tech Trends</span><span class="story-num">02 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Tech Trends</span>
+    <span class="story-counter">02 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">GTC 2026</div>
-    <h3>NVIDIA GTC 2026: Fortune 500 Companies Announce Production Agentic AI Deployments</h3>
-    <p class="summary">NVIDIA's GTC 2026 marked a clear pivot from benchmark announcements to real-world enterprise deployments, with Fortune 500 companies in manufacturing, logistics, and finance going live with agentic AI systems. NVIDIA introduced the open-source Agent Toolkit for building autonomous enterprise AI agents, and its NeMoCLAW and OpenCLAW agentic frameworks drew the largest attendance at the event.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">The shift from pilot to production agentic deployments at NVIDIA GTC signals that enterprise AI is entering a new phase of operational maturity.</p></div>
+    <p class="source-tag">OpenAI</p>
+    <h3>OpenAI Enterprise Surpasses 40% of Total Revenue, On Track to Match Consumer by Year-End</h3>
+    <p class="summary">OpenAI announced that enterprise customers now account for more than 40% of total revenue and the segment is on a trajectory to reach parity with the consumer business by the end of 2026. The milestone reflects rapid adoption of ChatGPT Enterprise, the API, and sector-specific deployments across finance, healthcare, and legal. OpenAI is investing heavily in compliance tooling and data residency options to sustain enterprise growth.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Enterprise revenue at this scale confirms that AI is transitioning from a productivity experiment to core business infrastructure for large organizations.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 10 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 9: Tech Story 03
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Tech Trends</span><span class="story-num">03 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Tech Trends</span>
+    <span class="story-counter">03 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">InformationWeek</div>
-    <h3>AI Sovereignty Becomes Mission-Critical: 93% of Executives See It as a Must in 2026</h3>
-    <p class="summary">A new survey of enterprise executives finds that 93% say factoring AI sovereignty—the ability to govern AI systems, data, and infrastructure without external dependency—into business strategy is now mission-critical. CIOs are also grappling with AI platform fragmentation and commodification as enterprise AI shifts from individual usage to orchestrated team workflows. AI is increasingly merging with platform engineering practices.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">AI sovereignty concerns are reshaping cloud and vendor strategy, pushing enterprises toward hybrid and multi-cloud architectures that keep control of their AI stack in-house.</p></div>
+    <p class="source-tag">PYMNTS / Crescendo AI</p>
+    <h3>NVIDIA Releases Open-Source Agent Toolkit at GTC 2026, Cuts Query Costs by 50%+</h3>
+    <p class="summary">NVIDIA unveiled its Agent Toolkit at GTC 2026, an open-source platform designed to simplify the building and deployment of autonomous enterprise AI agents. The accompanying AI-Q hybrid architecture reportedly cuts query costs by more than 50% compared to standard inference setups. The toolkit is already being evaluated by companies across manufacturing, financial services, and retail for production agentic workflows.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Open-source tooling from NVIDIA lowers the barrier for enterprises to deploy custom agents, potentially accelerating the shift away from generic SaaS AI tools.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 11: DIVIDER Banking -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 10: DIVIDER — BANKING & FINSERV
+══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="03">
-  <div class="sec-label">Section 03 of 06</div>
-  <h2>Banking &amp; Financial Services</h2>
-  <p class="desc">GenAI crosses the mainstream threshold in banking — $200–340B in potential value, but an execution gap in agentic deployment.</p>
+  <p class="sec-label">Section 03 of 06</p>
+  <h2>Banking &amp;<br>Financial Services</h2>
+  <p class="desc">GenAI adoption rates, agentic AI readiness gaps, and the accelerating ROI case in financial institutions.</p>
 </div>
 
-<!-- SLIDE 12 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 11: Banking Story 01
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Banking &amp; FinServ</span><span class="story-num">01 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Banking &amp; FinServ</span>
+    <span class="story-counter">01 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">Fintech Global</div>
-    <h3>78% of Banks Adopt GenAI Tactically in 2026, Up from 45% in 2023</h3>
-    <p class="summary">Adoption of generative AI in banking has surged to 78% of institutions in 2026, with leading banks like JPMorgan Chase, Morgan Stanley, Wells Fargo, and Goldman Sachs deploying it at scale across customer service, compliance, trading, and software engineering. This is a dramatic increase from 45% in 2023. Investment is also rising sharply, with 82% of banking compliance and risk leaders expecting AI budgets to grow more than 25% over the next two to three years.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">GenAI has crossed the mainstream adoption threshold in banking, meaning institutions without a strategy are now at a competitive disadvantage rather than simply being early movers.</p></div>
+    <p class="source-tag">IBM / FinTech Global</p>
+    <h3>78% of Banks Have Now Adopted GenAI Tactically, Up from 8% in 2024</h3>
+    <p class="summary">IBM's Global Banking &amp; Financial Markets Outlook for 2026 reveals that 78% of financial institutions have adopted generative AI tactically, a staggering jump from just 8% in 2024. NTT DATA's accompanying survey found that 58% of banking organizations have fully implemented GenAI in at least one function. McKinsey estimates the technology could deliver $200–340 billion in annual value to banking, equivalent to 9–15% of operating profits.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">The near-universal tactical adoption signals that GenAI has moved from pilot to competitive necessity in banking, raising urgency for laggards to accelerate or risk margin erosion.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 13 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 12: Banking Story 02
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Banking &amp; FinServ</span><span class="story-num">02 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Banking &amp; FinServ</span>
+    <span class="story-counter">02 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">FinTech Magazine</div>
-    <h3>GenAI Could Unlock $200–340 Billion in Annual Value for Banking Sector</h3>
-    <p class="summary">Analysis from multiple research firms pegs the potential annual value of generative AI in banking at $200–340 billion, equivalent to 9–15% of industry operating profits. Banks are integrating LLMs into underwriting automation, fraud detection, KYC processes, risk analytics, and real-time customer assistance via AI chat and voice interfaces. The full value realization is contingent on navigating data privacy, regulatory, and explainability challenges.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">The magnitude of projected GenAI value in banking—approaching a third of a trillion dollars annually—underscores why financial institutions are accelerating investment despite regulatory headwinds.</p></div>
+    <p class="source-tag">MX / FinTech Global</p>
+    <h3>Agentic AI Enters Banking: Only 31% Have Implemented Despite 77% Soft-Launching GenAI Apps</h3>
+    <p class="summary">While 77% of banks have soft-launched generative AI applications, just 31% have moved forward with agentic AI implementations as of mid-2026. Agentic AI—systems capable of autonomous, multi-step decision-making—is positioned as the next revenue-growth layer after GenAI's efficiency wins in back-office automation. Front-office productivity gains from current AI deployments are averaging 27–35% across institutions.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">The gap between GenAI adoption and agentic AI implementation represents a major near-term competitive differentiator for early-mover financial institutions.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 14 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 13: Banking Story 03
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Banking &amp; FinServ</span><span class="story-num">03 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Banking &amp; FinServ</span>
+    <span class="story-counter">03 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">MX Blog</div>
-    <h3>Agentic AI in Banking: Only 31% Have Implemented Despite 77% Soft-Launching GenAI</h3>
-    <p class="summary">While 77% of banks have soft-launched some form of GenAI application, only 31% have moved forward with actual implementation of agentic AI solutions, revealing a significant execution gap. Research projects that agentic AI will drive a 20% increase in operational efficiency for early adopters, and that AI-leveraging banks are already earning a 15% greater market share.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">The gap between GenAI experimentation and agentic implementation represents the next competitive frontier in banking—institutions that close it first stand to capture outsized market share.</p></div>
+    <p class="source-tag">Finastra / Backbase</p>
+    <h3>82% of Banking Risk Leaders Plan AI Investment Growth Exceeding 25% in Next Three Years</h3>
+    <p class="summary">A new industry survey finds that 82% of banking compliance and risk leaders expect AI investment to grow by more than 25% over the next two to three years, driven by regulatory pressure, fraud detection demands, and KYC automation requirements. AI-powered tools are being deployed to accelerate underwriting, enhance real-time fraud scoring, and enable personalized customer interactions at scale. Institutions that invested in AI have seen positive ROI within 18 months at a rate of 78%.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Sustained double-digit AI investment growth in banking's risk and compliance functions will reshape vendor landscapes and create new data infrastructure demands.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 15: DIVIDER Data Platforms -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 14: DIVIDER — DATA PLATFORMS
+══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="04">
-  <div class="sec-label">Section 04 of 06</div>
-  <h2>Data Platforms</h2>
-  <p class="desc">Databricks and Microsoft Fabric race for the enterprise data layer — interoperability, agentic storage, and a 31,000-customer milestone.</p>
+  <p class="sec-label">Section 04 of 06</p>
+  <h2>Data<br>Platforms</h2>
+  <p class="desc">Microsoft Fabric and Databricks deepen interoperability as the lakehouse becomes the AI agent's system of record.</p>
 </div>
 
-<!-- SLIDE 16 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 15: Data Story 01
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Data Platforms</span><span class="story-num">01 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Data Platforms</span>
+    <span class="story-counter">01 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">Databricks Blog</div>
-    <h3>Azure Databricks Launches Lakebase and Lakeflow at FabCon 2026</h3>
-    <p class="summary">At FabCon 2026, Azure Databricks announced general availability of Lakebase—a managed, serverless PostgreSQL service designed as the transactional system of record for AI agents—alongside a free tier for Lakeflow Connect and new Microsoft 365 integrations. AI-powered analytics with the Genie natural language interface also received updates. These launches position Databricks as a full-stack AI data platform beyond pure analytics.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Lakebase signals Databricks' ambition to own the operational data layer for AI agents, moving the platform into direct competition with traditional OLTP database vendors.</p></div>
+    <p class="source-tag">Microsoft Fabric Blog</p>
+    <h3>Microsoft and Databricks Deepen OneLake Integration: Bidirectional Data Interoperability Now in Public Preview</h3>
+    <p class="summary">At FabCon/SQLCon 2026, Microsoft and Databricks announced that native read access from OneLake through Azure Databricks Unity Catalog is now in public preview, with write support coming next. The partnership, now nearly a decade old, is deepening with Azure Databricks able to store data directly in OneLake without managing separate storage resources. The integration signals a shift from competition to complementarity between the two dominant data platforms.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Bidirectional OneLake interoperability removes a major friction point for enterprises running hybrid Fabric/Databricks architectures, reducing data duplication costs.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 17 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 16: Data Story 02
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Data Platforms</span><span class="story-num">02 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Data Platforms</span>
+    <span class="story-counter">02 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">Microsoft Azure</div>
-    <h3>Microsoft Fabric Tops 31,000 Customers; Remains Fastest-Growing Data Platform in Microsoft History</h3>
-    <p class="summary">Microsoft Fabric surpassed 31,000 customers as of FabCon 2026 in March, cementing its status as the fastest-growing data platform in Microsoft's history. The April 2026 Feature Summary introduced numerous updates across data engineering, data science, and real-time intelligence workloads. Microsoft is unifying its database and Fabric offerings on a single data platform following announcements at FabCon and SQLCon 2026.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Microsoft Fabric's rapid growth is reshaping the enterprise data platform market, pressuring Databricks and Snowflake to accelerate their own product roadmaps.</p></div>
+    <p class="source-tag">Azure / The Register</p>
+    <h3>Azure Databricks Launches Lakebase: Managed Serverless Postgres Built into the Lakehouse for AI Agents</h3>
+    <p class="summary">Azure Databricks announced Lakebase, a managed serverless Postgres service built directly into the lakehouse designed specifically to serve as the transactional system of record for AI agents. The service eliminates the need for a separate operational database, converging OLTP and OLAP workloads under a single lakehouse architecture. Microsoft's acquisition of Osmos, an AI-driven data engineering platform, will also be integrated into Microsoft Fabric to further streamline data pipelines.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Embedding a transactional database in the lakehouse directly addresses the biggest architectural gap for AI agent deployments, which require reliable, low-latency state management.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 18 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 17: Data Story 03
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Data Platforms</span><span class="story-num">03 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Data Platforms</span>
+    <span class="story-counter">03 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">Fabric Blog</div>
-    <h3>Databricks Unity Catalog and Microsoft OneLake Achieve Native Interoperability in Public Preview</h3>
-    <p class="summary">Microsoft and Databricks have reached a new level of interoperability, with Azure Databricks Unity Catalog now able to natively read from OneLake in public preview. A roadmap for writing and storing data directly in OneLake without additional storage was also shared at FabCon. This builds on a nearly decade-long partnership and is part of Microsoft's broader OneLake open interoperability strategy that already includes Snowflake GA support.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Native cross-platform data access between Databricks and Fabric removes a key barrier for organizations running multi-platform data architectures, reducing data duplication and pipeline complexity.</p></div>
+    <p class="source-tag">Microsoft Azure Blog</p>
+    <h3>FabCon 2026: Microsoft Bets on Unified Platform as Siloed Data Tooling Era Ends</h3>
+    <p class="summary">The FabCon and SQLCon 2026 announcements collectively point toward Microsoft's conviction that the era of separate transactional databases, analytical systems, and AI workloads is ending. Microsoft Fabric's April 2026 feature summary added new capabilities across OneLake, Real-Time Intelligence, and AI-native data pipelines. The overarching message: the winning architecture will be a single, unified platform that eliminates organizational data silos.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">If enterprises consolidate onto unified data platforms, spending on best-of-breed point solutions for ETL, warehousing, and AI inference infrastructure could compress significantly.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 19: DIVIDER Microsoft AI -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 18: DIVIDER — MICROSOFT AI
+══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="05">
-  <div class="sec-label">Section 05 of 06</div>
-  <h2>Microsoft AI</h2>
-  <p class="desc">Microsoft Foundry, DeepSeek model additions, and agentic AI embedded in Azure core — Redmond's full-stack AI push accelerates.</p>
+  <p class="sec-label">Section 05 of 06</p>
+  <h2>Microsoft<br>AI</h2>
+  <p class="desc">Foundry rebranding, multi-model expansion, and Copilot Agent Mode reaching every corner of Microsoft 365.</p>
 </div>
 
-<!-- SLIDE 20 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 19: Microsoft Story 01
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Microsoft AI</span><span class="story-num">01 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Microsoft AI</span>
+    <span class="story-counter">01 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">TechRepublic</div>
-    <h3>Microsoft Rebrands Azure AI Foundry to 'Microsoft Foundry' with New Third-Party AI Model Licensing</h3>
-    <p class="summary">Microsoft's January 2026 Product Terms update officially rebranded Azure AI Foundry to Microsoft Foundry, reflecting the platform's expanded role beyond Azure-native AI into a broader multi-model AI development hub. The update introduced new licensing terms for third-party AI models, giving enterprises clearer governance around model procurement and usage. Microsoft Foundry now serves as the unified entry point for model deployment across Microsoft's cloud.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">The rebrand and licensing update signal Microsoft's intent to position Foundry as a universal AI model marketplace, competing directly with AWS Bedrock and Google Vertex AI.</p></div>
+    <p class="source-tag">Microsoft / HubSite365</p>
+    <h3>Azure AI Foundry Rebranded to Microsoft Foundry; Anthropic Claude Now Available Alongside OpenAI</h3>
+    <p class="summary">Microsoft has rebranded Azure AI Foundry to Microsoft Foundry, with models now branded as "Microsoft Foundry Models (includes Azure OpenAI)." Anthropic's Claude models are now available within Microsoft Foundry, giving enterprise developers the ability to choose between frontier AI providers without leaving Microsoft's compliance and governance framework. The branding change reflects Microsoft's ambition to position Foundry as an AI model marketplace rather than an Azure-centric tool.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Hosting Anthropic Claude alongside OpenAI within Microsoft's enterprise compliance stack reduces lock-in risk for regulated industries and accelerates multi-model AI strategies.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 21 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 20: Microsoft Story 02
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Microsoft AI</span><span class="story-num">02 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Microsoft AI</span>
+    <span class="story-counter">02 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">HubSite365</div>
-    <h3>Microsoft Adds DeepSeek V4 Flash and Pro to Microsoft Foundry for Real-Time and Complex Reasoning Tasks</h3>
-    <p class="summary">In the May 2026 Azure update, Microsoft made DeepSeek V4 Flash and DeepSeek V4 Pro available in Microsoft Foundry. Flash is optimized for low-latency, cost-efficient real-time inference, while Pro targets complex reasoning and higher-throughput tasks. The additions expand the catalog of frontier models available to Azure enterprise customers beyond OpenAI and Microsoft's own models.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Adding DeepSeek models signals Microsoft's commitment to model neutrality in Foundry, giving enterprises best-of-breed model choice without leaving the Azure ecosystem.</p></div>
+    <p class="source-tag">Microsoft Azure / AzureCharts</p>
+    <h3>DeepSeek V4 Flash and Pro Models Launch in Microsoft Foundry for Low-Latency and Complex Reasoning Tasks</h3>
+    <p class="summary">In May 2026, Microsoft made DeepSeek V4 Flash and DeepSeek V4 Pro available in Microsoft Foundry. DeepSeek V4 Flash is optimized for low-latency, cost-efficient real-time inference, while DeepSeek V4 Pro targets complex reasoning and higher-throughput tasks. The additions expand Foundry's model catalog and offer enterprises cost-competitive alternatives to OpenAI's GPT-4 class models for specific workload profiles.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Availability of high-performing open-weight models in a compliant enterprise cloud environment increases pressure on proprietary model providers to compete on price and performance.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 22 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 21: Microsoft Story 03
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Microsoft AI</span><span class="story-num">03 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Microsoft AI</span>
+    <span class="story-counter">03 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">AzureCharts</div>
-    <h3>Microsoft Makes Agentic AI a Standard Azure Building Block in 2026 Strategy</h3>
-    <p class="summary">Microsoft's 2026 Azure roadmap centers on making agentic AI a standard capability for all Azure customers rather than a specialized feature, integrating autonomous agent orchestration into core Azure services. Copilot capabilities are also rolling out more broadly across Word, Excel, PowerPoint, Outlook, and OneNote with deeper inbox and calendar integration. The strategy reflects a shift from AI as an add-on to AI as a foundational platform layer.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">By embedding agentic AI into core Azure services, Microsoft is raising the competitive floor for enterprise cloud platforms and accelerating time-to-deployment for AI-first applications.</p></div>
+    <p class="source-tag">Cube Peaks / Microsoft Build</p>
+    <h3>Microsoft Copilot Agent Mode Rolls Out Across Word, Excel, PowerPoint, Outlook, and OneNote</h3>
+    <p class="summary">Microsoft's Build 2026 announcements confirm that Copilot Agent Mode—enabling iterative, multi-step AI task execution—is now expanding across the full Microsoft 365 suite including Word, Excel, PowerPoint, Outlook, and OneNote. New Foundry IQ and Fabric IQ services simplify connecting diverse data sources to Copilot workflows, while Azure HorizonDB adds AI-optimized database capabilities with built-in vector indexing. Microsoft is also introducing new Azure AI certifications launching in July 2026.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Agentic Copilot capabilities embedded in everyday productivity tools represent the most direct path for AI to shift from a specialized skill to a universal workplace expectation.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 23: DIVIDER Cybersecurity -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 22: DIVIDER — CYBERSECURITY
+══════════════════════════════════════════════ -->
 <div class="slide s-divider" data-num="06">
-  <div class="sec-label">Section 06 of 06</div>
-  <h2>Cybersecurity</h2>
-  <p class="desc">2026: the year AI-assisted attacks go mainstream — exploit timelines collapse, LLM risks escalate, and defenders scramble to keep pace.</p>
+  <p class="sec-label">Section 06 of 06</p>
+  <h2>Cyber&shy;security</h2>
+  <p class="desc">LLM attack surfaces, AI-automated exploit pipelines, and supply chain threats targeting agentic deployments.</p>
 </div>
 
-<!-- SLIDE 24 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 23: Cyber Story 01
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Cybersecurity</span><span class="story-num">01 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Cybersecurity</span>
+    <span class="story-counter">01 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">Hacker News</div>
-    <h3>2026 Named 'The Year of AI-Assisted Attacks' as LLM Malware Moves from PoC to Practice</h3>
-    <p class="summary">Security researchers are marking 2026 as the year AI-assisted cyberattacks shifted from proof-of-concept to widespread practice, with attackers leveraging LLMs to automatically generate data extraction code, reconnaissance scripts, and adversary-in-the-middle toolkits that adapt to defenses. A phenomenon called 'vibe-hacking' has emerged, where generative AI is used to mimic authentic behavior and accelerate intrusion. Predictions warn that at least one major global enterprise breach in 2026 will be caused or significantly advanced by a fully autonomous agentic AI system.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">AI is now a force multiplier for attackers, not just defenders—security teams that don't integrate AI-native threat detection will face an asymmetric disadvantage.</p></div>
+    <p class="source-tag">Sombrainc / OWASP</p>
+    <h3>LLM Security Risks in 2026: Prompt Injection, Shadow AI, and RAG Data Leaks Top Enterprise Concerns</h3>
+    <p class="summary">As LLMs become embedded in IDEs, CRMs, and office suites, prompt injection, agent misuse, retrieval-augmented generation (RAG) leaks, and unsanctioned "Shadow AI" tools have emerged as the defining security risks of 2026. The OWASP LLM Top 10 has been updated to reflect these threats, with enterprises urged to implement input validation, output filtering, and usage monitoring controls. Research assessments found certain attack techniques achieving success rates exceeding 50%, with some cases reaching 88% across tested models.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Embedded LLMs dramatically expand the enterprise attack surface, requiring security teams to develop AI-specific red-teaming and monitoring capabilities urgently.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 25 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 24: Cyber Story 02
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Cybersecurity</span><span class="story-num">02 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Cybersecurity</span>
+    <span class="story-counter">02 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">SecurityWeek</div>
-    <h3>Exploit Development Timeline Collapses to 44 Days; 28% of CVEs Now Weaponized Within 24 Hours</h3>
-    <p class="summary">The average time from vulnerability disclosure to active exploit has plummeted from over 700 days in 2020 to just 44 days in 2025, with 28.3% of Common Vulnerabilities and Exposures (CVEs) now being exploited within 24 hours of disclosure. AI-assisted tooling is accelerating exploit development, with patches routinely arriving after exploits are already in the wild. This dramatically compresses the window organizations have to patch critical systems.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">Traditional patch management cycles are no longer viable—organizations must shift to risk-prioritized, near-real-time patching processes or accept significantly elevated breach risk.</p></div>
+    <p class="source-tag">SecurityWeek / Google Cloud</p>
+    <h3>AI Automates the Full Cyberattack Lifecycle: From Vulnerability Discovery to Malware Delivery</h3>
+    <p class="summary">Threat actors are now using generative AI to automate the complete cyberattack lifecycle, spanning vulnerability detection, exploit production, and malware payload delivery. Google Cloud's Threat Intelligence team reports adversaries are leveraging AI to better mimic authentic user behavior, refine social engineering lures, and accelerate technical intrusion steps. LLM-enabled malware has progressed from proof-of-concept to active use in campaigns observed throughout early 2026.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">AI-powered attack automation compresses the window between vulnerability disclosure and active exploitation, fundamentally shortening the patch cycles security teams must hit.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 26 -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 25: Cyber Story 03
+══════════════════════════════════════════════ -->
 <div class="slide s-content">
-  <div class="sidebar"><span class="cat-label">Cybersecurity</span><span class="story-num">03 / 03</span></div>
+  <div class="sidebar">
+    <span class="cat-label">Cybersecurity</span>
+    <span class="story-counter">03 / 03</span>
+  </div>
   <div class="body">
-    <div class="source-tag">OWASP / Sombra</div>
-    <h3>Prompt Injection, RAG Data Leaks, and Shadow AI Top LLM Security Risk Rankings for 2026</h3>
-    <p class="summary">With LLMs now embedded in IDEs, CRMs, and office suites, OWASP and security researchers rank prompt injection, insecure output handling, retrieval-augmented generation (RAG) data leaks, and Shadow AI deployments as the top enterprise LLM security risks for 2026. Agentic AI systems introduce new insider-threat-like risks due to their privileged access to critical APIs and data. CEOs surveyed cite data leaks (30%) and adversarial capability advancement (28%) as their top generative AI security concerns.</p>
-    <div class="why-block"><span class="why-label">Why it matters</span><p class="why-text">As enterprises scale LLM integrations, securing the AI layer—not just the perimeter—has become a board-level priority requiring dedicated AI security governance frameworks.</p></div>
+    <p class="source-tag">SecurityWeek / Arctiq</p>
+    <h3>Threat Actors Exploit AI Supply Chain Gaps: Malicious Patches in Open-Source Code Targeting LLM Pipelines</h3>
+    <p class="summary">In a growing attack pattern, threat actors are using AI to scan open-source code repositories and craft malicious patches targeting LLM integration libraries and AI agent dependencies. While frontier models' core security logic has not been broken in early 2026, attackers are exploiting supply chain weaknesses, data poisoning vectors, and prompt injection in multi-agent pipelines. Security researchers at Arctiq note that board-level AI security strategy is now critical as agentic deployments expand.</p>
+    <div class="why-block">
+      <span class="why-label">Why It Matters</span>
+      <p class="why-text">Supply chain attacks on AI tooling can silently corrupt agent behavior at scale, making AI bill-of-materials tracking and model provenance verification urgent priorities.</p>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 27: CLOSING -->
+<!-- ══════════════════════════════════════════════
+     SLIDE 26: CLOSING — WHAT TO WATCH
+══════════════════════════════════════════════ -->
 <div class="slide s-closing">
   <div class="left-panel">
     <h2>What to<br><em>Watch</em></h2>
-    <p class="sub">Five signals worth tracking as the week unfolds.</p>
-    <div class="date-stamp">May 10, 2026</div>
+    <p class="subtitle">Five signals worth tracking<br>after today's digest<br><br>Thursday, 21 May 2026</p>
   </div>
   <div class="right-panel">
     <div class="watch-item">
       <span class="watch-num">01</span>
       <div class="watch-content">
-        <div class="lead">Agentic Banking Execution Gap</div>
-        <div class="explain">Only 31% of banks with GenAI have moved to agentic AI — watch which institutions announce agentic deployments and how they communicate the competitive advantage to investors.</div>
+        <p class="lead">Apple's AI provider openness</p>
+        <p class="explain">The shift to swappable AI backends in iOS 27 sets a precedent for platform neutrality — watch for developer and regulatory responses that could cascade across mobile AI.</p>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">02</span>
       <div class="watch-content">
-        <div class="lead">AI-Accelerated Exploit Timelines</div>
-        <div class="explain">With 28% of CVEs weaponized within 24 hours, the next major breach linked to AI-assisted exploitation could trigger sweeping regulatory action on enterprise AI security requirements.</div>
+        <p class="lead">Banking's agentic AI gap</p>
+        <p class="explain">With only 31% of banks implementing agentic AI despite near-universal GenAI adoption, the next 12 months will separate fast-movers from laggards — watch early-mover ROI announcements.</p>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">03</span>
       <div class="watch-content">
-        <div class="lead">US-China AI Model Parity</div>
-        <div class="explain">Stanford's AI Index shows the performance gap narrowing fast — new model releases from Chinese labs could tip the Arena rankings and accelerate US policy responses this quarter.</div>
+        <p class="lead">Microsoft Foundry as a multi-model marketplace</p>
+        <p class="explain">Claude and DeepSeek joining OpenAI inside Microsoft's enterprise compliance stack accelerates multi-model adoption — monitor enterprise procurement shifts in Q3 2026.</p>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">04</span>
       <div class="watch-content">
-        <div class="lead">Foundry vs. Bedrock vs. Vertex AI</div>
-        <div class="explain">Three hyperscalers racing to be the enterprise AI model marketplace — watch for enterprise customer wins, pricing changes, and partner ecosystem announcements in the coming weeks.</div>
+        <p class="lead">Lakebase and the converged OLTP/OLAP architecture</p>
+        <p class="explain">Databricks embedding Postgres directly in the lakehouse removes the last major barrier to pure-lakehouse architectures for AI agents — watch for legacy database vendor responses.</p>
       </div>
     </div>
     <div class="watch-item">
       <span class="watch-num">05</span>
       <div class="watch-content">
-        <div class="lead">AI Sovereignty Regulation</div>
-        <div class="explain">With 93% of executives naming AI sovereignty mission-critical, expect new EU and APAC regulatory proposals targeting data residency, model governance, and AI supply-chain transparency.</div>
+        <p class="lead">AI supply chain security standards</p>
+        <p class="explain">Malicious patches targeting LLM pipelines are moving from research to production threats — watch for regulatory guidance and industry standards on AI bill-of-materials (AI-BOM) requirements.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- NAV -->
+<!-- ══════════════════════════════════════════════
+     NAVIGATION BAR
+══════════════════════════════════════════════ -->
 <div id="nav">
   <button id="prev" onclick="go(-1)" disabled>&#8592; Prev</button>
-  <span id="counter">1 / 27</span>
+  <span id="counter">1 / 26</span>
   <button id="next" onclick="go(1)">Next &#8594;</button>
 </div>
 
@@ -404,6 +830,7 @@
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
   let cur = 0;
+
   document.getElementById('counter').textContent = '1 / ' + total;
 
   function go(dir) {
