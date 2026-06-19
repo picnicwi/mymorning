@@ -7,14 +7,27 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Set it in your shell before running: export GITHUB_TOKEN="ghp_..."
 # Or store it in ~/.morninginsight_token (gitignored) and it will be loaded below.
 if [ -z "$GITHUB_TOKEN" ]; then
+  # 1. Try Mac home folder token file
   if [ -f "$HOME/.morninginsight_token" ]; then
     GITHUB_TOKEN="$(cat "$HOME/.morninginsight_token")"
-  else
-    echo "❌ GITHUB_TOKEN is not set."
-    echo "   Run: export GITHUB_TOKEN='your_token_here'"
-    echo "   Or save token to: ~/.morninginsight_token"
-    exit 1
+  # 2. Try token file next to this script (works from Cowork sandbox)
+  elif [ -f "$REPO_DIR/.morninginsight_token" ]; then
+    GITHUB_TOKEN="$(cat "$REPO_DIR/.morninginsight_token")"
+  # 3. Try parsing github-config.txt in the same folder
+  elif [ -f "$REPO_DIR/github-config.txt" ]; then
+    GITHUB_TOKEN="$(grep -E '^GITHUB_TOKEN=' "$REPO_DIR/github-config.txt" | cut -d= -f2 | tr -d '[:space:]')"
+    if [ "$GITHUB_TOKEN" = "YOUR_TOKEN_HERE" ] || [ -z "$GITHUB_TOKEN" ]; then
+      GITHUB_TOKEN=""
+    fi
   fi
+fi
+
+if [ -z "$GITHUB_TOKEN" ]; then
+  echo "❌ GITHUB_TOKEN is not set. Try one of:"
+  echo "   a) Save token to: ~/.morninginsight_token"
+  echo "   b) Save token to: $REPO_DIR/.morninginsight_token"
+  echo "   c) Edit github-config.txt and set GITHUB_TOKEN=ghp_yourtoken"
+  exit 1
 fi
 TOKEN="$GITHUB_TOKEN"
 REPO="picnicwi/mymorning"
@@ -95,6 +108,6 @@ fi
 # Push
 echo ""
 echo "🚀 Pushing to GitHub..."
-git push origin $BRANCH --force \
+git push origin $BRANCH \
   && echo "✅ Pushed successfully → https://picnicwi.github.io/mymorning/" \
   || echo "❌ Push failed — check token or network"
